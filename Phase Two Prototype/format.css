@@ -1,10 +1,10 @@
-/* USED IN LOGIN.HTML */
-
+/* Global, used in all .html files ==============================*/
 div
 {
 	margin: auto;
 }
 
+/* USED IN LOGIN.HTML ===========================================*/
 .login_fields
 {
 	position: relative;
@@ -24,4 +24,4 @@ div
 	text-align: center;
 }
 
-/* USED IN _____.HTML */
+/* USED IN _____.HTML ===========================================*/
