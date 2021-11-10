@@ -1,0 +1,23 @@
+div
+{
+	margin: auto;
+}
+
+.login_fields
+{
+	position: relative;
+	width: 30%;
+}
+
+.center
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.footer
+{
+	font-size: 12px;
+	text-align: center;
+}
