@@ -36,3 +36,9 @@ div
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.button_center
+{
+	margin-left: 42%;
+	margin-right: auto;
+}
