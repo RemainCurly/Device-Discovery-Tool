@@ -4,6 +4,12 @@ div
 	margin: auto;
 }
 
+.footer
+{
+	font-size: 12px;
+	text-align: center;
+}
+
 /* USED IN LOGIN.HTML ===========================================*/
 .login_fields
 {
@@ -16,12 +22,6 @@ div
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-
-.footer
-{
-	font-size: 12px;
-	text-align: center;
 }
 
 /* USED IN _____.HTML ===========================================*/
