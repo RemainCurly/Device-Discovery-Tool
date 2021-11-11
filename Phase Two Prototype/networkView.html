@@ -3,17 +3,37 @@
 	<head>
 		<link rel="stylesheet" a href="css/bootstrap.css"/>
 		<link rel="stylesheet" a href="format.css"/>
-		<title>STAPL Solutions - (##PAGE NAME HERE##)</title>
+		<title>STAPL Solutions - Network View</title>
 	</head>
 	<body>
+		<h1 class="display-4 center">Network View</h1>
+		<br>
 	
+		<div class="dropdown float_from_left">
+			<p class="text-start">Sort by: </p>
+			<button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+			Select Order
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+				<li><a class="dropdown-item" href="#">Number of Vulnerabilities</a></li>
+				<li><a class="dropdown-item" href="#">Number of Infections</a></li>
+				<li><a class="dropdown-item" href="#">Number of Compromises</a></li>
+				<li><a class="dropdown-item" href="#">Number of Impacted Devices</a></li>
+			</ul>
+		</div>
 	
+		<img src="networkViewGraph.jpg" class="img-fluid center_image" alt="Network View Graph"/>
 	
-	
+		<br> <br>
+		<div class="d-grid gap-2 col-1 mx-auto">
+			<button type="button" class="btn btn-primary" onclick="location.href='index.html'">Return to Home</button>
+		</div>
 	
 		<br> 
 		<hr>
 		<p class="footer">© Copyright 2021 - STAPL Solutions</p>
 	</body>
-	<script src="js/bootstrap.js/>
+	<!--For some reason, the local version of "bootstrap.min.js" was preventing dropdowns from working, so I had to import it online-->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" ></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>	
 </html>

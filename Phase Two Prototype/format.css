@@ -24,4 +24,21 @@ div
 	justify-content: center;
 }
 
-/* USED IN _____.HTML ===========================================*/
+/* USED IN scanDevices.HTML / networkView.HTML =================*/
+.float_from_left
+{
+	margin-left: 15%;
+}
+
+.center_image
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button_center
+{
+	margin-left: 42%;
+	margin-right: auto;
+}
