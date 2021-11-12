@@ -1,10 +1,4 @@
 /* Global, used in all .html files ==============================*/
-div /*TESTING PURPOSES, DELETE WHEN PROTO IS DONE*/
-{
-	border-style: solid;
-	border-width: thin;
-}
-
 .footer
 {
 	font-size: 12px;
