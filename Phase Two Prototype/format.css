@@ -31,6 +31,24 @@ div /*TEST, DELETE WHEN PROTO DONE*/
 	margin-right: 15px;
 }
 
+.top-buffer
+{
+    margin-top:-700px;
+    margin-right:-100px;
+
+}
+
+.bottom-buffer1
+{
+    margin-top: 100px
+
+}
+
+.bottom-buffer2
+{
+    margin-top: 200px;
+}
+
 .nav_pad
 {
 	margin-left: 10px;
