@@ -1,14 +1,4 @@
 /* Global, used in all .html files ==============================*/
-div
-{
-	margin: auto;
-}
-
-h1
-{
-	color: white;
-}
-
 .footer
 {
 	font-size: 12px;
@@ -16,11 +6,34 @@ h1
 }
 
 /* USED IN index.html ===========================================*/
+.bt_first_col
+{
+	width: 75%;
+	height: 10%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.left_div
+{
+	margin-left: 15px;
+}
+
+.right_div
+{
+	margin-right: 15px;
+}
+
 .nav_pad
 {
-	margin-left:10px;
-	margin-right:10px;
-	margin-top:10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+.logo
+{
+	color: white;
 }
 
 /* USED IN LOGIN.HTML ===========================================*/
@@ -28,6 +41,7 @@ h1
 {
 	position: relative;
 	width: 30%;
+	margin: auto;
 }
 
 .center

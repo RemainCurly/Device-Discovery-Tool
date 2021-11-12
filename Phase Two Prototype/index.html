@@ -7,18 +7,98 @@
 	</head>
 	<body>
 		
-		<nav class="navbar navbar-dark bg-primary">
+		<nav class="navbar navbar-dark bg-secondary">
 			<div class="container-fluid">
-				<h1>STAPL Solutions</h1>
+				<h1 class="logo">STAPL Solutions</h1>
 				<form class="d-flex">
 					<button type="button" class="btn btn-dark nav_pad">Notifications</button>
 					<button type="button" class="btn btn-dark nav_pad" onclick="location.href='login.html'">Sign Out</button>
 				</form>
 			</div>
 		</nav>
+		
+		<br>
+		<div class="position-relative col-xxl-2 float-start left_div">
+			<button type="button" class="btn btn-lg btn-primary fs-2 bt_first_col " onclick="location.href='devices.html'">Network Devices</button>
+			<button type="button" class="btn btn-lg btn-primary fs-2 bt_first_col " onclick="location.href='scanDevices.html'">Scan Devices</button>
+			<button type="button" class="btn btn-lg btn-primary fs-2 bt_first_col " onclick="location.href='utilFrame.html'">Device Utility</button>
+			<button type="button" class="btn btn-lg btn-primary fs-2 bt_first_col " onclick="location.href='updownStatus.html'">Up/Down Status</button>
+		</div>
+		<div class="col-xxl-9 float-end right_div">
+			<div class="col-sm-6 float-start">
+				<table class="table">
+					<thead>
+					<tr>
+						<th>Favorite</th>
+						<th>Device Name</th>
+						<th>IP Address</th>
+						<th>MAC Address</th>
+						<th>Description</th>
+						<th>Status</th>
+					</tr>
+					</thead>
+					<tbody>
+
+					<tr>
+						<th scope="col">
+							<div class="form-check">
+							<input
+								class="form-check-input"
+								type="checkbox"
+								value=""
+								id="flexCheckChecked" checked
+							/>
+							</div>
+						</th>
+						<td>Aruba AP</td>
+						<td>192.168.1.250</td>
+						<td>d8:c7:c8:cc:43:12</td>
+						<td>Aruba Networks</td>
+						<td>Up</td>
+					</tr>
+					<tr>
+						<th scope="col">
+						<div class="form-check">
+						<input
+							class="form-check-input"
+							type="checkbox"
+							value=""
+							id="flexCheckChecked" checked
+						/>
+					</div>
+					</th>
+
+						<td>FDesk Hp1</td>
+						<td>192.168.1.23</td>
+						<td>d2:c1:c8:55:43:00</td>
+						<td>Client/User</td>
+						<td>Up</td>
+					</tr>
+					<tr>
+						<th scope="col">
+							<div class="form-check">
+							<input
+								class="form-check-input"
+								type="checkbox"
+								value=""
+								id="flexCheckChecked" checked
+							/>
+							</div>
+						</th>
+						<td>Staff CB 1</td>
+						<td>192.168.1.24</td>
+						<td>d2:c9:c3:52:12:99</td>
+						<td>Client/User</td>
+						<td>Down</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	
 	
-		<br> 
+		<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
+		<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
 		<hr>
 		<p class="footer">© Copyright 2021 - STAPL Solutions</p>
 	</body>
