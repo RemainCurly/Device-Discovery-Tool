@@ -1,4 +1,10 @@
 /* Global, used in all .html files ==============================*/
+div /*TEST, DELETE WHEN PROTO DONE*/
+{
+	border-style: solid;
+	border-width: thin;
+}
+
 .footer
 {
 	font-size: 12px;
@@ -21,6 +27,7 @@
 
 .right_div
 {
+    width: 75%
 	margin-right: 15px;
 }
 
