@@ -4,10 +4,23 @@ div
 	margin: auto;
 }
 
+h1
+{
+	color: white;
+}
+
 .footer
 {
 	font-size: 12px;
 	text-align: center;
+}
+
+/* USED IN index.html ===========================================*/
+.nav_pad
+{
+	margin-left:10px;
+	margin-right:10px;
+	margin-top:10px;
 }
 
 /* USED IN LOGIN.HTML ===========================================*/
