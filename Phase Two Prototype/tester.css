@@ -10,6 +10,7 @@ form button
 
 .dashboard
 {
+    position: relative;
     margin: auto;
     margin-top: 50px;
 }
@@ -59,15 +60,24 @@ form button
 
 .footer
 {
+    position: absolute;
+    bottom: -750px;
     width: 100%;
     text-align: center;
-    /*TODO: KEEP FOOTER AT BOTTOM*/
 }
 
+/*Allows pages to look cleaner on mobile/smaller screens*/
 @media(max-width: 1100px)
 {
     .footer
     {
         visibility: hidden;
+    }
+
+    .buttons, .middle-tables, .linked-graph
+    {
+        padding: 0px;
+        margin: 0px 0px 10px 0px;
+        width: 100%;
     }
 }
