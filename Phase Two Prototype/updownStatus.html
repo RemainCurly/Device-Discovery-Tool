@@ -1,34 +1,37 @@
-<!--DOCTYPE HTML-->
+<!DOCTYPE HTML>
 <html>
 	<head>
 		<link rel="stylesheet" a href="css/bootstrap.css"/>
-		<link rel="stylesheet" a href="format.css"/>
+		<link rel="stylesheet" a href="tester.css"/>
 		<title>STAPL Solutions - Up/Down Status</title>
 	</head>
 	<body>
 		<h1 class="display-4 center">Up/Down Status</h1>
-		<br>
 		
-		<div class="dropdown float_from_left">
-			<p class="text-start">View as: </p>
-			<button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-			Select View Type
-			</button>
-			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-				<li><a class="dropdown-item" href="#">Pie Chart</a></li>
-				<li><a class="dropdown-item" href="#">Line Graph</a></li>
-			</ul>
+		<div class="dashboard compact">
+			<div class="sort-area">
+				<p class="text-start">View as: </p>
+				<button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+				Select View Type
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+					<li><a class="dropdown-item" href="#">Pie Chart</a></li>
+					<li><a class="dropdown-item" href="#">Line Graph</a></li>
+				</ul>
+			</div>
 		</div>
 	
-		<img src="upDownPieGraph.jpg" class="img-fluid center_image" alt="Network View Graph"/>
+		<img src="upDownPieGraph.jpg" class="center-image" alt="Network View Graph"/>
 	
-		<br> <br> <br>
-		<button type="button" class="btn btn-secondary button_center" onclick="location.href='downDeviceList.html'">List of Down Devices</button>
-		<button type="button" class="btn btn-primary" onclick="location.href='index.html'">Return to Home</button>
+		<div class="d-grid gap-2 col-1 mx-auto">
+			<button type="button" class="btn btn-secondary button_center" onclick="location.href='downDeviceList.html'">List of Down Devices</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='index.html'">Return to Home</button>
+		</div>
 		
-		<br> 
-		<hr>
-		<p class="footer">© Copyright 2021 - STAPL Solutions</p>
+		<div class="footer-short">
+			<hr>
+			<p>&copy; Copyright 2021 - STAPL Solutions</p>
+		</div>
 	</body>
 	<!--For some reason, the local version of "bootstrap.min.js" was preventing dropdowns from working, so I had to import it online-->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" ></script>

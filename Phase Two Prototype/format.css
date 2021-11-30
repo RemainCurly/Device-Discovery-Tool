@@ -1,8 +1,11 @@
 /* Global, used in all .html files ==============================*/
 .footer
 {
+	margin-top: 800px;
 	font-size: 12px;
 	text-align: center;
+	width: 100%;
+	margin: auto;
 }
 
 /* USED IN index.html ===========================================*/
@@ -34,13 +37,6 @@
 {
     margin-top:-550px;
     margin-right:20px;
-}
-
-.bottom-buffer1
-{
-    /*margin-top: 100px;*/
-    /*margin-right:-200px;*/
-
 }
 
 .bottom-buffer2

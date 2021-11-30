@@ -1,38 +1,40 @@
-<!--DOCTYPE HTML-->
+<!DOCTYPE HTML-->
 <html>
 	<head>
 		<link rel="stylesheet" a href="css/bootstrap.css"/>
-		<link rel="stylesheet" a href="format.css"/>
+		<link rel="stylesheet" a href="tester.css"/>
 		<title>STAPL Solutions - Scan Devices</title>
 	</head>
 	<body>
 		<h1 class="display-4 center">Scan Devices</h1>
-		<br>
-	
-		<div class="dropdown float_from_left">
-			<p class="text-start">Scan type: </p>
-			<button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-			Select Scan Type
-			</button>
-			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-				<li><a class="dropdown-item" href="#">Entire Network</a></li>
-				<li><a class="dropdown-item" href="#">By Device Type</a></li>
-				<li><a class="dropdown-item" href="#">By OS</a></li>
-				<li><a class="dropdown-item" href="#">By IP Address</a></li>
-				<li><a class="dropdown-item" href="#">By hostname</a></li>
-			</ul>
+		
+		<div class="dashboard ">
+			<div class="dropdown sort-area">
+				<p class="text-start">Scan type: </p>
+				<button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+				Select Scan Type
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+					<li><a class="dropdown-item" href="#">Entire Network</a></li>
+					<li><a class="dropdown-item" href="#">By Device Type</a></li>
+					<li><a class="dropdown-item" href="#">By OS</a></li>
+					<li><a class="dropdown-item" href="#">By IP Address</a></li>
+					<li><a class="dropdown-item" href="#">By hostname</a></li>
+				</ul>
+			</div>
+
+			<img src="scanGraph.jpg" class="center-image" alt="Scan Bar Graph"/>
+			
 		</div>
 	
-		<img src="scanGraph.jpg" class="img-fluid center_image" alt="Scan Bar Graph"/>
-	
-		<br>
 		<div class="d-grid gap-2 col-1 mx-auto">
 			<button type="button" class="btn btn-primary" onclick="location.href='index.html'">Return to Home</button>
 		</div>
 	
-		<br> 
-		<hr>
-		<p class="footer">© Copyright 2021 - STAPL Solutions</p>
+		<div class="footer-short">
+			<hr>
+			<p>&copy; Copyright 2021 - STAPL Solutions</p>
+		</div>
 	</body>
 	<!--For some reason, the local version of "bootstrap.min.js" was preventing dropdowns from working, so I had to import it online-->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" ></script>
