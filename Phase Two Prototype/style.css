@@ -108,6 +108,14 @@ button img
 }
 
 /*Allows pages to look cleaner on mobile/smaller screens*/
+@media(max-width: 1600px)
+{
+    .separator
+    {
+        margin: 0px;
+    }
+}
+
 @media(max-width: 1100px)
 {
     .footer

@@ -2,17 +2,20 @@
 <html>
 	<head>
 		<link rel="stylesheet" a href="css/bootstrap.css"/>
-		<link rel="stylesheet" a href="tester.css"/>
+		<link rel="stylesheet" href="style.css">
 		<title>STAPL Solutions - Scan Devices</title>
 	</head>
 	<body>
-		<h1 class="display-4 center">Scan Devices</h1>
 		
-		<div class="dashboard ">
+		<h1 class="display-4">Scan Devices</h1>
+		
+		<div class="dashboard compact">
+
 			<div class="dropdown sort-area">
+
 				<p class="text-start">Scan type: </p>
 				<button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-				Select Scan Type
+					Select Scan Type
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 					<li><a class="dropdown-item" href="#">Entire Network</a></li>
@@ -21,6 +24,7 @@
 					<li><a class="dropdown-item" href="#">By IP Address</a></li>
 					<li><a class="dropdown-item" href="#">By hostname</a></li>
 				</ul>
+
 			</div>
 
 			<img src="scanGraph.jpg" class="center-image" alt="Scan Bar Graph"/>
@@ -35,6 +39,7 @@
 			<hr>
 			<p>&copy; Copyright 2021 - STAPL Solutions</p>
 		</div>
+
 	</body>
 	<!--For some reason, the local version of "bootstrap.min.js" was preventing dropdowns from working, so I had to import it online-->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" ></script>

@@ -1,37 +1,44 @@
-<!--DOCTYPE HTML-->
+<!DOCTYPE HTML>
 <html>
 	<head>
 		<link rel="stylesheet" a href="css/bootstrap.css"/>
-		<link rel="stylesheet" a href="format.css"/>
+		<link rel="stylesheet" href="style.css">
 		<title>STAPL Solutions - Network View</title>
 	</head>
 	<body>
-		<h1 class="display-4 center">Network View</h1>
-		<br>
+
+		<h1 class="display-4">Network View</h1>
 	
-		<div class="dropdown float_from_left">
-			<p class="text-start">Sort by: </p>
-			<button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-			Select Order
-			</button>
-			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-				<li><a class="dropdown-item" href="#">Number of Vulnerabilities</a></li>
-				<li><a class="dropdown-item" href="#">Number of Infections</a></li>
-				<li><a class="dropdown-item" href="#">Number of Compromises</a></li>
-				<li><a class="dropdown-item" href="#">Number of Impacted Devices</a></li>
-			</ul>
+		<div class="dashboard compact">
+
+			<div class="dropdown sort-area">
+
+				<p class="text-start">Sort by: </p>
+				<button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+					Select Order
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+					<li><a class="dropdown-item" href="#">Number of Vulnerabilities</a></li>
+					<li><a class="dropdown-item" href="#">Number of Infections</a></li>
+					<li><a class="dropdown-item" href="#">Number of Compromises</a></li>
+					<li><a class="dropdown-item" href="#">Number of Impacted Devices</a></li>
+				</ul>
+				
+			</div>
+			
 		</div>
 	
-		<img src="networkViewGraph.jpg" class="img-fluid center_image" alt="Network View Graph"/>
+		<img src="networkViewGraph.jpg" class="center-image" alt="Network View Graph"/>
 	
-		<br> <br>
 		<div class="d-grid gap-2 col-1 mx-auto">
 			<button type="button" class="btn btn-primary" onclick="location.href='index.html'">Return to Home</button>
 		</div>
 	
-		<br> 
-		<hr>
-		<p class="footer">© Copyright 2021 - STAPL Solutions</p>
+		<div class="footer-short">
+			<hr>
+			<p>&copy; Copyright 2021 - STAPL Solutions</p>
+		</div>
+
 	</body>
 	<!--For some reason, the local version of "bootstrap.min.js" was preventing dropdowns from working, so I had to import it online-->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" ></script>
