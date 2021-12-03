@@ -15,19 +15,18 @@
 
                 <h1 class="logo">STAPL Solutions</h1>
                 <form class="d-flex">
-                    <button type="button" data-toggle="popover" title="Notifications" data-content="No new notifications" class="btn btn-dark">
+                    <button type="button"  class="btn btn-dark" data-bs-toggle="popover" title="Notifications: No new notifications">
                         <img src="notif.png" alt="Notifications" />
-                        Notifications
+                        Notifications <span class="badge bg-secondary">0</span>
                     </button>
                     <button type="button" class="btn btn-dark" onclick="location.href='login.html'">Sign Out</button>
                 </form>
-
             </div>
         </nav>
         <script>
             $(document).ready(function(){
             html:true,
-            $('[data-toggle="popover"]').popover();
+            $('[data-bs-toggle="popover"]').popover();
            });
         </script>
 
@@ -180,11 +179,11 @@
                 </a>
             </div>
 
-            <div class="separator"></div>
-             <div class="card">
+
+             <div class="card pull-right position-absolute top-100 start-100 card-buffer card-size">
                 <div class="card-body">
                     <h4 class="card-title">2 devices down</h4>
-                <button type="button" class="btn btn-lg btn-primary fs-3  "  onclick="location.href='downDeviceList.html'"> List of Down Devices </button>
+                <button type="button" class="btn btn-sm btn-primary fs-3  "  onclick="location.href='downDeviceList.html'"> List of Down Devices </button>
             </div>
              </div>
 

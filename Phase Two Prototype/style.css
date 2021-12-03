@@ -92,11 +92,15 @@ button img
 	margin-right: auto;
     margin-bottom: 50px;
 }
-.bottom-card
+
+.card-size
 {
-    width:100%;
-    height:200px;
-    position:relative;
+   width:200px;
+}
+.card-buffer
+{
+    margin-right: -500px;
+    margin-top: 450px;
 
 }
 .footer
