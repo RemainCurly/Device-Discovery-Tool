@@ -15,28 +15,34 @@
 
                 <h1 class="logo">STAPL Solutions</h1>
                 <form class="d-flex">
-                    <button type="button" class="btn btn-dark">
+                    <button type="button"  class="btn btn-dark" data-bs-toggle="popover" title="Notifications: No new notifications">
                         <img src="notif.png" alt="Notifications" />
-                        Notifications
+                        Notifications <span class="badge bg-secondary">0</span>
                     </button>
                     <button type="button" class="btn btn-dark" onclick="location.href='login.html'">Sign Out</button>
                 </form>
-
             </div>
         </nav>
+        <script>
+            $(document).ready(function(){
+            html:true,
+            $('[data-bs-toggle="popover"]').popover();
+           });
+        </script>
 
         <div class="dashboard">
 
             <div class="buttons">
                 <button type="button" class="btn btn-lg btn-primary fs-3  " onclick="location.href='devices.html'">Network Devices</button>
-                <button type="button" class="btn btn-lg btn-primary fs-3  " onclick="location.href='scanDevices.html'">Scan Devices</button>
-                <button type="button" class="btn btn-lg btn-primary fs-3  " onclick="location.href='utilFrame.html'">Device Utility</button>
                 <button type="button" class="btn btn-lg btn-primary fs-3  " onclick="location.href='updownStatus.html'">Up/Down Status</button>
+                <button type="button" class="btn btn-lg btn-primary fs-3  " onclick="location.href='scanDevices.html'">Scan Devices</button>
+                <button type="button" class="btn btn-lg btn-info fs-3  " >Scan Now</button>
+                <button type="button" class="btn btn-lg btn-primary fs-3  " onclick="location.href='utilFrame.html'">Device Utility</button>
             </div>
 
             <div class="middle-tables">
 
-                <h4>Favorite Devices</h4>
+                <h4 class="font-center">Favorite Devices</h4>
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -104,10 +110,11 @@
                     </tr>
                     </tbody>
                 </table>
-                
+
                 <div class="separator"></div>
 
-                <h4>Favorite Contacts</h2>
+                <h4 class="font-center">Favorite Contacts</h4>
+                
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -164,10 +171,15 @@
 
             </div>
 
+
             <div class="container-l linked-graph">
                 <a href="networkView.html">
                     <img src="networkViewGraph.JPG" alt="Click for Network View" />
                 </a>
+
+                <br> <br>
+                <h4 class="card-title font-center">2 devices down</h4>
+                <button type="button" class="btn btn-sm btn-danger fs-3 center-button"  onclick="location.href='downDeviceList.html'"> List of Down Devices </button>
             </div>
 
             <div class="footer">
