@@ -1,5 +1,6 @@
 import React from 'react'
 import "../App.css"
+import FavoriteDevices from './FavoriteDevices'
 
 function HomeScreen() {
     return (

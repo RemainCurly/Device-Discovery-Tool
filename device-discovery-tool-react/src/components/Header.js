@@ -15,7 +15,7 @@ function Header()
                 <Navbar.Collapse id="basic-navbar-nav"/>
                     <Nav className="mr-auto"> //margins auto
                         <LinkContainer to="/">
-                            <Nav.Link><i class="far fa-bell"></i>Notifications</Nav.Link>
+                            <Nav.Link><i className="far fa-bell"></i>Notifications</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/auth">
                             <Nav.Link><i className="fas fa-user"></i>Login</Nav.Link>

@@ -12,7 +12,7 @@ function App() {
       <Header />
       <main className="py-3">
         <Container>
-          <Route path='/' component={HomeScreen} exact />
+          <Route exact path='/' component={HomeScreen} />
           <Route path="/auth" component={auth}/>
         </Container>
       </main>
