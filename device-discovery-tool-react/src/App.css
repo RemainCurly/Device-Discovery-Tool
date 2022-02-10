@@ -1,3 +1,5 @@
+
+
 .App {
   background-color: rgb(240, 240, 240);
   position: fixed;
@@ -5,10 +7,7 @@
   width: 100%;
 }
 
-form {
-  background-color: rgb(219, 219, 219);
-  border-radius: 1em;
-}
+
 
 .login-image {
   width: auto;
@@ -72,3 +71,42 @@ form {
 .navbar * {
   padding: 0 20px;
 }
+
+.App, #root, .auth-wrapper {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+}
+
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+  flex: 1;
+}
+
+.auth-inner {
+  width: 80em;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all .3s;
+  flex: 1;
+}
+
+.auth-wrapper .form-control:focus {
+  border-color: #167bff;
+  box-shadow: none;
+}
+
+.auth-wrapper h3 {
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
+}
+
+
