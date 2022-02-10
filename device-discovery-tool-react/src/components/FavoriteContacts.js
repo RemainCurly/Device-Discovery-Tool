@@ -19,9 +19,11 @@ function FavoriteContacts(props) {
                         <th>Notes</th>
                     </tr>
                 </thead>
+                {/* Only show contacts that exist in the DB */}
                 { props.contacts && props.contacts.map( contact => {
                     return (
                         <tbody key={contact.id}>
+                            {/* Only show a contact if it's favorited */}
                             { (contact.favorite == true) ? 
                                 <tr>
                                     <td><Form.Check onClick={() => toggleFavorite(contact)} /></td>
