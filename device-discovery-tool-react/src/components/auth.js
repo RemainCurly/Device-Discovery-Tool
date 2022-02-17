@@ -3,7 +3,6 @@ import logo from './logo.png'
 import '../App.css'
 
 
-
 export default class Auth extends Component {
     render() {
         return (
