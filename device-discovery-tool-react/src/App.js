@@ -1,12 +1,23 @@
-import React from 'react';
-import './App.css';
-import Navbar from './components/navbar';
+import {Container} from 'react-bootstrap'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+
+import Header from './components/Header'
+import Footer from './components/Footer'
+import HomeScreen from './components/HomeScreen'
+import auth from './components/auth'
 
 function App() {
   return (
-    <div className='App'>
-      <Navbar />
-    </div>
+    <Router>
+      <Header />
+      <main className="py-3">
+        <Switch>
+          <Route path='/' component={HomeScreen} exact />
+          <Route path="/auth" component={auth}/>
+        </Switch>
+      </main>
+      <Footer />
+    </Router>
   );
 }
 
