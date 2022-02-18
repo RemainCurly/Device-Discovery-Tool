@@ -13,7 +13,7 @@ function Header()
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav"/>
-                    <Nav className="mr-auto"> //margins auto
+                    <Nav className="mr-auto"> {/* Margins auto */}
                         <LinkContainer to="/">
                             <Nav.Link><i className="far fa-bell"></i>Notifications</Nav.Link>
                         </LinkContainer>
