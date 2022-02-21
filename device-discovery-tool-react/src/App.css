@@ -1,13 +1,9 @@
-
-
 .App {
   background-color: rgb(240, 240, 240);
   position: fixed;
   top: 0;
   width: 100%;
 }
-
-
 
 .login-image {
   width: auto;
@@ -17,7 +13,6 @@
   margin: auto;
 }
 
-/* TODO: Align these login fields PROPERLY */
 .login-fields {
   justify-content: center;
   width: 40%;
