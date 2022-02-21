@@ -103,4 +103,10 @@
   padding-bottom: 20px;
 }
 
+.upDevices {
+  background-color: rgb(40, 185, 40);
+}
 
+.downDevices {
+  background-color: rgb(199, 10, 10);
+}

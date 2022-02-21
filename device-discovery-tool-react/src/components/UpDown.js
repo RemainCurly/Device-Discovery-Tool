@@ -11,11 +11,11 @@ function UpDownAlert(props) {
     return (
         <div>
             { (hasDownDevices)? 
-                <div>
+                <div className='downDevices'>
                     <p>YES!</p>
                 </div>
             : //No devices down
-                <div>
+                <div className='upDevices'>
                     <p>NONE!</p>
                 </div>
             }
