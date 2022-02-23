@@ -1,14 +1,13 @@
 import React from "react";
-import { Table } from 'react-bootstrap';
+import { Form, Table } from 'react-bootstrap';
 
 
 function NetworkDevices(props) {
 
-    function NetworkDevices(props) {
         const toggleFavorite = device => {
             props.toggleFavorite(device);
         }
-    }
+
     return (
         <div className="main">
             <h1><center>Network Devices</center></h1>
@@ -24,26 +23,24 @@ function NetworkDevices(props) {
                         <th>Location</th>
                     </tr>
              </thead>
-            <tbody>
-                <tr>
-                    <td> <input type="checkbox" /> </td>
-                    {Array.from({ length: 6 }).map((_, index) => (
-                        <td key={index}>Table cell {index}</td>
-                    ))}
-                </tr>
-                <tr>
-                    <td> <input type="checkbox" /> </td>
-                    {Array.from({ length: 6 }).map((_, index) => (
-                        <td key={index}>Table cell {index}</td>
-                    ))}
-                </tr>
-                <tr>
-                    <td> <input type="checkbox" /> </td>
-                    {Array.from({ length: 6 }).map((_, index) => (
-                        <td key={index}>Table cell {index}</td>
-                    ))}
-                </tr>
-        </tbody>
+                {/* Only show devices that exist in the DB */}
+                { props.devices && props.devices.map( device => {
+                    return (
+                        <tbody key={device.id}>
+                            {/* Only show a device if it's favorited */}
+                            { (device.favorite == true) ?
+                                <tr>
+                                    <td><Form.Check onClick={() => toggleFavorite(device)} /></td>
+                                    <td>{device.name}</td>
+                                    <td>{device.ip}</td>
+                                    <td>{device.mac}</td>
+                                    <td>{device.description}</td>
+                                    <td>{device.isUp}</td>
+                                </tr>
+                            : null }
+                        </tbody>
+                    )
+                })}
         </Table>
         </div>
     )
