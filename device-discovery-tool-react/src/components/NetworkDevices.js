@@ -28,7 +28,7 @@ function NetworkDevices(props) {
                     return (
                         <tbody key={device.id}>
                             {/* Only show a device if it's favorited */}
-                            { (device.favorite == true) ?
+                            { (device.favorite == false) ?
                                 <tr>
                                     <td><Form.Check onClick={() => toggleFavorite(device)} /></td>
                                     <td>{device.name}</td>
