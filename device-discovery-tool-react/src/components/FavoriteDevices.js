@@ -18,6 +18,7 @@ function FavoriteDevices(props) {
                         <th>MAC Address</th>
                         <th>Description</th>
                         <th>Status</th>
+                        <th>Location</th>
                     </tr>
                 </thead>
                 {/* Only show devices that exist in the DB */}
@@ -33,6 +34,7 @@ function FavoriteDevices(props) {
                                     <td>{device.mac}</td>
                                     <td>{device.description}</td>
                                     <td>{device.isUp}</td>
+                                    <td>{device.location}</td>
                                 </tr>
                             : null }
                         </tbody>

@@ -9,7 +9,7 @@ function DownDevices(props) {
 
     return (
         <div>
-           <h>Down Devices</h>
+           <h1><center>Down Devices</center></h1>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -19,6 +19,7 @@ function DownDevices(props) {
                         <th>MAC Address</th>
                         <th>Description</th>
                         <th>Status</th>
+                        <th>Location</th>
                     </tr>
                 </thead>
                 {/* Only show devices that exist in the DB */}
@@ -34,6 +35,7 @@ function DownDevices(props) {
                                     <td>{device.mac}</td>
                                     <td>{device.description}</td>
                                     <td>{device.isUp}</td>
+                                    <td>{device.location}</td>
                                 </tr>
                             : null }
                         </tbody>
