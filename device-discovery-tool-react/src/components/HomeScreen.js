@@ -14,7 +14,7 @@ function HomeScreen() {
             ip: '123.123.98.455',
             mac: 'AA:AA:AA:bc:dc',
             description: '',
-            isUp: true,
+            isUp: false,
             location: 'Office A'
         },
         {
@@ -25,17 +25,17 @@ function HomeScreen() {
             description: 'poop',
             isUp: false,
             location: 'Office B'
+        },
+        {
+            favorite: true,
+            name: 'Example3',
+            ip: '123.123.98.455',
+            mac: 'AA:AA:AA:bc:dc',
+            description: 'poop',
+            isUp: false,
+            location: 'Office B'
         }
     ];
-
-    console.log(tester.map((testItem) => {
-        if(testItem.isUp === false)
-            return "DOWN DEVICE!"
-        else
-            return "Device is up"
-    }).filter((item) => {
-        console.log('Filter: ' + item);
-    }));
 
     return (
         <div className="main">
