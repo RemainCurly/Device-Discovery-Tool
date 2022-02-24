@@ -5,7 +5,10 @@ function UpDownAlert(props) {
     const [hasDownDevices, setDownDevices] = useState(false);
 
     useEffect( () => {
-        console.log('YES!')
+        if(props.Status === false)
+            setDownDevices(true)
+        else
+            setDownDevices(false)
     })
 
     return (
