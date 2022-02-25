@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import HomeScreen from './components/HomeScreen'
 import auth from './components/auth'
+import NetworkDevices from './components/NetworkDevices'
 import DownDevices from './components/DownDevices'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route path='/' component={HomeScreen} exact />
           <Route path="/auth" component={auth}/>
+          <Route path="/network" component={NetworkDevices}/>
           <Route path="/down" component={DownDevices}/>
         </Switch>
       </main>
