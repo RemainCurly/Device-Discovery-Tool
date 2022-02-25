@@ -27,8 +27,6 @@ function NetworkDevices(props) {
                 { props.devices && props.devices.map( device => {
                     return (
                         <tbody key={device.id}>
-                            {/* Only show a device if it's favorited */}
-                            { (device.favorite == false) ?
                                 <tr>
                                     <td><Form.Check onClick={() => toggleFavorite(device)} /></td>
                                     <td>{device.name}</td>
@@ -37,7 +35,6 @@ function NetworkDevices(props) {
                                     <td>{device.description}</td>
                                     <td>{device.isUp}</td>
                                 </tr>
-                            : null }
                         </tbody>
                     )
                 })}
