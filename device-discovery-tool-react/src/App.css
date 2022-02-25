@@ -105,8 +105,19 @@
 
 .upDevices {
   background-color: rgb(40, 185, 40);
+  padding: 20px;
 }
 
 .downDevices {
   background-color: rgb(230, 109, 109);
+  padding: 20px;
+}
+
+.test {
+  text-decoration: none;
+  color: black;
+}
+
+.test a:visited {
+  color: black;
 }

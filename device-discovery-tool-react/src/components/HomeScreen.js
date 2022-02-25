@@ -1,12 +1,13 @@
 import React from 'react'
 import "../App.css"
+//Below are all components that must be imported to the homescreen
 import FavoriteContacts from './FavoriteContacts'
 import FavoriteDevices from './FavoriteDevices'
 import UpDownAlert from './UpDown'
 
 function HomeScreen() {
 
-    //TODO: Make example JSON to load into UpDownAlert
+    // Example JSON array usable for testing!
     const tester = [
         {
             favorite: true,
@@ -23,7 +24,7 @@ function HomeScreen() {
             ip: '123.123.98.455',
             mac: 'AA:AA:AA:bc:dc',
             description: 'poop',
-            isUp: false,
+            isUp: true,
             location: 'Office B'
         },
         {
@@ -32,7 +33,7 @@ function HomeScreen() {
             ip: '123.123.98.455',
             mac: 'AA:AA:AA:bc:dc',
             description: 'poop',
-            isUp: false,
+            isUp: true,
             location: 'Office B'
         }
     ];
@@ -41,6 +42,7 @@ function HomeScreen() {
         <div className="main">
             <h1>MAIN PAGE (INDEX PAGE?)</h1>
             <UpDownAlert devices={tester} />
+            <FavoriteDevices devices={tester} />
         </div>
     )
 }
