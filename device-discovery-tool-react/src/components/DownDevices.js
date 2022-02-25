@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Table } from 'react-bootstrap';
 
-function FavoriteDevices(props) {
+function DownDevices(props) {
     
     const toggleFavorite = device => {
         props.toggleFavorite(device);
@@ -9,6 +9,7 @@ function FavoriteDevices(props) {
 
     return (
         <div>
+           <h1><center>Down Devices</center></h1>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -45,4 +46,4 @@ function FavoriteDevices(props) {
     )
 }
 
-export default FavoriteDevices;
+export default DownDevices;
