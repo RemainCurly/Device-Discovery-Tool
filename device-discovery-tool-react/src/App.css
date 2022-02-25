@@ -113,11 +113,11 @@
   padding: 20px;
 }
 
-.test {
+.link {
   text-decoration: none;
   color: black;
 }
 
-.test a:visited {
+.link a:visited {
   color: black;
 }

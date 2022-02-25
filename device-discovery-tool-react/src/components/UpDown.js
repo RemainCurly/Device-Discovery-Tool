@@ -19,6 +19,7 @@ function UpDownAlert(props) {
             }
         });
 
+        console.log(counter + " devices down!");
         setNumDownDevices(counter);
 
     }, [numDownDevices])
@@ -27,7 +28,7 @@ function UpDownAlert(props) {
         <div>
             { (numDownDevices > 0)? 
                 <div className='downDevices'>
-                    <Link className={'test'} to={'/down'}>
+                    <Link className={'link'} to={'/down'}>
                         <h2><center>{numDownDevices} device(s) down!</center></h2>
                     </Link>
                 </div>

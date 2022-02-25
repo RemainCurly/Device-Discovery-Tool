@@ -7,6 +7,7 @@ import HomeScreen from './components/HomeScreen'
 import auth from './components/auth'
 import NetworkDevices from './components/NetworkDevices'
 import DownDevices from './components/DownDevices'
+import { tester } from './components/HomeScreen'
 
 function App() {
   return (
