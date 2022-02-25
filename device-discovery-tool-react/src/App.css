@@ -1,13 +1,9 @@
-
-
 .App {
   background-color: rgb(240, 240, 240);
   position: fixed;
   top: 0;
   width: 100%;
 }
-
-
 
 .login-image {
   width: auto;
@@ -17,7 +13,6 @@
   margin: auto;
 }
 
-/* TODO: Align these login fields PROPERLY */
 .login-fields {
   justify-content: center;
   width: 40%;
@@ -108,4 +103,21 @@
   padding-bottom: 20px;
 }
 
+.upDevices {
+  background-color: rgb(40, 185, 40);
+  padding: 20px;
+}
 
+.downDevices {
+  background-color: rgb(230, 109, 109);
+  padding: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link a:visited {
+  color: black;
+}
