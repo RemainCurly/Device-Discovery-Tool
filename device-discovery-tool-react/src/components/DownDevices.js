@@ -3,9 +3,6 @@ import { Form, Table } from 'react-bootstrap';
 
 function DownDevices(props) {
     
-    const toggleFavorite = device => {
-        props.toggleFavorite(device);
-    }
 
     return (
         <div>
@@ -13,7 +10,6 @@ function DownDevices(props) {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Favorite</th>
                         <th>Device Name</th>
                         <th>IP Address</th>
                         <th>MAC Address</th>
@@ -26,10 +22,9 @@ function DownDevices(props) {
                 { props.devices && props.devices.map( device => {
                     return (
                         <tbody key={device.id}>
-                            {/* Only show a device if it's favorited */}
-                            { (device.favorite == true) ?
+                            {/* Only show a device if it's down*/}
+                            { (device.isUp == false) ?
                                 <tr>
-                                    <td><Form.Check onClick={() => toggleFavorite(device)} /></td>
                                     <td>{device.name}</td>
                                     <td>{device.ip}</td>
                                     <td>{device.mac}</td>
