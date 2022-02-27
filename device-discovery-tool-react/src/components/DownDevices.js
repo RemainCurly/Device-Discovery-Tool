@@ -13,7 +13,6 @@ function DownDevices(props) {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Favorite</th>
                         <th>Device Name</th>
                         <th>IP Address</th>
                         <th>MAC Address</th>
