@@ -17,6 +17,7 @@ function Contacts(props) {
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone Number</th>
+                        <th>Notes</th>
                     </tr>
                 </thead>
                 {/* Only show contacts that exist in the DB */}
@@ -28,6 +29,7 @@ function Contacts(props) {
                                     <td>{contact.name}</td>
                                     <td>{contact.email}</td>
                                     <td>{contact.phoneNum}</td>
+                                    <td>{contact.notes}</td>
                                 </tr>
                         </tbody>
                     )
