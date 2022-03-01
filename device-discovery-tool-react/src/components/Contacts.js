@@ -13,6 +13,7 @@ function Contacts(props) {
             <Table striped bordered hover>
                 <thead>
                     <tr>
+                        <th>Favorite</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone Number</th>
