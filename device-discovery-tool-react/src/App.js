@@ -8,6 +8,7 @@ import auth from './components/auth'
 import NetworkDevices from './components/NetworkDevices'
 import DownDevices from './components/DownDevices'
 import { tester } from './components/HomeScreen'
+import NewPage from './components/NewPage'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/auth" component={auth}/>
           <Route path="/network" component={NetworkDevices}/>
           <Route path="/down" component={DownDevices}/>
+          <Route path="/newpage" component={NewPage}/>
         </Switch>
       </main>
       <Footer />
