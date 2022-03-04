@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import '../App.css';
-import { Table } from 'react-bootstrap';
 import { Container, Row, Col } from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap'
 
 function NewPage(props) {
   return (
@@ -10,31 +10,36 @@ function NewPage(props) {
       <Container>
         <Row>
           <Col>
-            <div className='row m-2'>
+            <div className='row m-3'>
               <div className='col'>
-                <Button href="http://www.google.com" size="lg" target="_blank" variant="primary">1</Button>
+              <LinkContainer to="/network">
+                <Button size="lg"  target="_blank" variant="primary">Network Devices</Button>
+              </LinkContainer>
               </div>
             </div>
-            <div className='row m-2'>
+            <div className='row m-3'>
               <div className='col'>
-                <Button href="http://www.google.com" size="lg" target="_blank" variant="primary">2</Button>
+                <Button href="http://www.google.com" size="lg" target="_blank" variant="primary">Up/Down Status</Button>
               </div>
             </div>
 
-            <div className='row m-2'>
+            <div className='row m-3'>
               <div className='col'>
-                <Button href="http://www.google.com" size="lg" target="_blank" variant="primary">Primary9</Button>
-              </div>
-
-            </div>
-            <div className='row m-2'>
-              <div className='col'>
-                <Button href="http://www.google.com" size="lg" target="_blank" variant="primary">Primary12</Button>
+                <Button href="http://www.google.com" size="lg" target="_blank" variant="primary">Scan Devices</Button>
               </div>
 
             </div>
+            <div className='row m-3'>
+              <div className='col'>
+                <Button href="http://www.google.com" size="lg" target="_blank" variant="primary">Scan Now</Button>
+              </div>
+            </div>
 
-
+            <div className='row m-3'>
+              <div className='col'>
+                <Button href="http://www.google.com" size="lg" target="_blank" variant="primary">Device Utility</Button>
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>

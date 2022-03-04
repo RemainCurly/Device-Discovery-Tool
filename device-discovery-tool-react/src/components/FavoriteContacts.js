@@ -1,5 +1,8 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import { Form, Table } from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap'
+import "../App.css"
 
 function FavoriteContacts(props) {
 
@@ -9,6 +12,7 @@ function FavoriteContacts(props) {
 
     return (
         <div>
+            <h1><center>Favorite Contacts</center></h1>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -26,7 +30,7 @@ function FavoriteContacts(props) {
                             {/* Only show a contact if it's favorited */}
                             { (contact.favorite == true) ? 
                                 <tr>
-                                    <td><Form.Check onClick={() => toggleFavorite(contact)} /></td>
+                                    <td><Form.Check defaultChecked='checked' onClick={() => toggleFavorite(contact)} /></td>
                                     <td>{contact.name}</td>
                                     <td>{contact.email}</td>
                                     <td>{contact.phoneNum}</td>
@@ -37,6 +41,14 @@ function FavoriteContacts(props) {
                     )
                 })}
             </Table>
+
+            <div className='allContactsButton'>
+              <div className='btn btn-primaryl'>
+                <LinkContainer to="/contacts">
+                    <Button size="lg" target="_blank" variant="primary">See All Contacts</Button>
+                </LinkContainer>
+              </div>
+            </div>
         </div>
     )
 }

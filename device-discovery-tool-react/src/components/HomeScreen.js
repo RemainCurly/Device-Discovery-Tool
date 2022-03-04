@@ -1,58 +1,44 @@
 import React from 'react'
 import "../App.css"
+import deviceTester from "../DevicesList"
+import contactTester from "../ContactsList"
 //Below are all components that must be imported to the homescreen
 import FavoriteContacts from './FavoriteContacts'
 import FavoriteDevices from './FavoriteDevices'
 import UpDownAlert from './UpDown'
-import { Container, Row, Col } from 'react-bootstrap';
+import {Row, Col } from 'react-bootstrap';
 import LeftHandButtons from './LeftHandButtons'
 
 // Example JSON array usable for testing!
-export const tester = [
-    {
-        favorite: true,
-        name: 'Example1',
-        ip: '123.123.98.455',
-        mac: 'AA:AA:AA:bc:dc',
-        description: '',
-        isUp: true,
-        location: 'Office A'
-    },
-    {
-        favorite: true,
-        name: 'Example2',
-        ip: '123.123.98.455',
-        mac: 'AA:AA:AA:bc:dc',
-        description: 'poop',
-        isUp: true,
-        location: 'Office B'
-    },
-    {
-        favorite: true,
-        name: 'Example3',
-        ip: '123.123.98.455',
-        mac: 'AA:AA:AA:bc:dc',
-        description: 'poop',
-        isUp: true,
-        location: 'Office B'
-    }
-];
+// export const tester = [
+//Created individual tester files to import json data from
 
 function HomeScreen() {
 
     return (
-        <Container className="main">
-            <h1>MAIN PAGE (INDEX PAGE?)</h1>
-            <UpDownAlert devices={tester} />
+        <div className="main">
             <Row>
                 <Col>
                     <LeftHandButtons />
                 </Col>
                 <Col>
-                    <FavoriteDevices devices={tester} />
+                    <Row>
+                        <FavoriteDevices devices={deviceTester} />
+                    </Row>
+                    <Row>
+                        <FavoriteContacts contacts={contactTester} />
+                    </Row>
+                </Col>
+                <Col>
+                    <Row>
+                        Num of impacted Devices Chart HERE (Row 1 of this Col)
+                    </Row>
+                    <Row>
+                        <UpDownAlert devices={deviceTester} />
+                    </Row>
                 </Col>
             </Row>
-        </Container>
+        </div>
     )
 }
 
