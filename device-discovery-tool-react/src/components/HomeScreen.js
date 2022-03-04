@@ -4,6 +4,8 @@ import "../App.css"
 import FavoriteContacts from './FavoriteContacts'
 import FavoriteDevices from './FavoriteDevices'
 import UpDownAlert from './UpDown'
+import { Container, Row, Col } from 'react-bootstrap';
+import LeftHandButtons from './LeftHandButtons'
 
 // Example JSON array usable for testing!
 export const tester = [
@@ -39,12 +41,19 @@ export const tester = [
 function HomeScreen() {
 
     return (
-        <div className="main">
+        <Container className="main">
             <h1>MAIN PAGE (INDEX PAGE?)</h1>
             <UpDownAlert devices={tester} />
-            <FavoriteDevices devices={tester} />
-        </div>
+            <Row>
+                <Col>
+                    <LeftHandButtons />
+                </Col>
+                <Col>
+                    <FavoriteDevices devices={tester} />
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
-export default HomeScreen
+export default HomeScreen;
