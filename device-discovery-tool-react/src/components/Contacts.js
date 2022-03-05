@@ -8,7 +8,7 @@ function Contacts(props) {
     }
 
     return (
-        <div>
+        <div><center>
             <h1><center>Contacts</center></h1>
             <Table striped bordered hover>
                 <thead>
@@ -35,6 +35,7 @@ function Contacts(props) {
                     )
                 })}
             </Table>
+            </center>
         </div>
     )
 }
