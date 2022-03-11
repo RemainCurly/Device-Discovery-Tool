@@ -13,7 +13,7 @@ const deviceTester = [
         name: 'Example2',
         ip: '123.123.98.455',
         mac: 'AA:AA:AA:bc:dc',
-        description: 'poop',
+        description: '',
         isUp: true,
         location: 'Office B'
     },
@@ -22,7 +22,7 @@ const deviceTester = [
         name: 'Example3',
         ip: '123.123.98.455',
         mac: 'AA:AA:AA:bc:dc',
-        description: 'poop',
+        description: 'this is an example description!',
         isUp: true,
         location: 'Office B'
     }

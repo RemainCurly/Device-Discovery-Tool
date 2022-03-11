@@ -7,7 +7,7 @@ function UpDownAlert(props) {
 
     useEffect( () => {
         let counter = 0;
-        const subjects = props.devices.map((item) => {
+        props.devices.map((item) => {
             if(item.isUp === false)
             {
                 counter++;

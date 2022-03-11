@@ -1,22 +1,20 @@
 import React from 'react'
 import "../App.css"
+import {Row, Col } from 'react-bootstrap';
+//These are both for testing purposes
 import deviceTester from "../DevicesList"
 import contactTester from "../ContactsList"
 //Below are all components that must be imported to the homescreen
 import FavoriteContacts from './FavoriteContacts'
 import FavoriteDevices from './FavoriteDevices'
 import UpDownAlert from './UpDown'
-import {Row, Col } from 'react-bootstrap';
 import LeftHandButtons from './LeftHandButtons'
-
-// Example JSON array usable for testing!
-// export const tester = [
-//Created individual tester files to import json data from
 
 function HomeScreen() {
 
     return (
         <div className="main">
+            <UpDownAlert devices={deviceTester} />
             <Row>
                 <Col>
                     <LeftHandButtons />
@@ -32,9 +30,6 @@ function HomeScreen() {
                 <Col>
                     <Row>
                         Num of impacted Devices Chart HERE (Row 1 of this Col)
-                    </Row>
-                    <Row>
-                        <UpDownAlert devices={deviceTester} />
                     </Row>
                 </Col>
             </Row>
