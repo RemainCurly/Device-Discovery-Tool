@@ -29,7 +29,8 @@ function HomeScreen() {
                 </Col>
                 <Col>
                     <Row>
-                        Num of impacted Devices Chart HERE (Row 1 of this Col)
+                        <p>Total number of discovered devices here (pie chart? up devices and down)</p>
+                        <p>Also put device category in pie chart (<i>discoverable</i> operating system)</p>
                     </Row>
                 </Col>
             </Row>
