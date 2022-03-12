@@ -9,6 +9,7 @@ function FavoriteDevices(props) {
 
     return (
         <div>
+            <h1><center>Favorite Devices</center></h1>
             <Table striped bordered hover>
                 <thead>
                     <tr>
