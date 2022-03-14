@@ -14,4 +14,4 @@ osinfo = [
     },
 ]
 
-osinfo.append(scanner.scan(ip_addr, arguments="-O")['scan'][ip_addr]['osmatch'][1])
+osinfo.append(scanner.scan(ip_addr, arguments="-O")['scan'][ip_addr]['osmatch'][0])
