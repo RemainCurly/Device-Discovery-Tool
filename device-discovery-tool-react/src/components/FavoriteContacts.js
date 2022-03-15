@@ -11,8 +11,9 @@ function FavoriteContacts(props) {
     }
 
     return (
-        <div>
+        <div> 
             <h1><center>Favorite Contacts</center></h1>
+            <div className='scroll'>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -41,6 +42,7 @@ function FavoriteContacts(props) {
                     )
                 })}
             </Table>
+            </div>
 
             <div className='allContactsButton'>
               <div className='btn btn-primaryl'>

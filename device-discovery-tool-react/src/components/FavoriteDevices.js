@@ -10,6 +10,7 @@ function FavoriteDevices(props) {
     return (
         <div>
             <h1><center>Favorite Devices</center></h1>
+            <div className="scroll">
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -46,6 +47,7 @@ function FavoriteDevices(props) {
                     )
                 })}
             </Table>
+            </div>
         </div>
     )
 }

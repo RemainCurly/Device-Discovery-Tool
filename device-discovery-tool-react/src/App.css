@@ -134,14 +134,23 @@
   border: 2px solid forestgreen;
   width: 800px;
   height: 200px;
+  margin: auto;
+  flex: auto;
 }
   
 .th {
   border-bottom: 1px solid black;
+  display: block;
+  overflow: hidden;
 }
   
 .td {
   text-align: center;
+  display:block;
+  overflow:auto;
+  overflow-y: scroll;
+  height: 200px;
+  width:100%;
 }
 
 
@@ -150,4 +159,11 @@
   width: 30%;
   display: flex;
   margin: auto;
+}
+
+.scroll {
+  height:300px;
+  overflow:auto;  
+  margin-top:20px;
+  flex: auto;
 }

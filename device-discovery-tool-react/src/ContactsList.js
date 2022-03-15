@@ -13,14 +13,14 @@ const contactsTester = [{
     "phoneNum": "580-124-8442",
     "notes": "sit amet eros suspendisse accumsan"
   }, {
-    "favorite": false,
+    "favorite": true,
     "id": 3,
     "name": "Orelie",
     "email": "oorigin2@360.cn",
     "phoneNum": "564-890-9173",
     "notes": "id luctus nec"
   }, {
-    "favorite": false,
+    "favorite": true,
     "id": 4,
     "name": "Atlante",
     "email": "ahearle3@multiply.com",
