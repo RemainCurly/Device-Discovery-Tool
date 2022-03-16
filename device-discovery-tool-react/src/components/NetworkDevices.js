@@ -1,5 +1,7 @@
 import React from "react";
 import { Form, Table } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import * as ReactBootStrap from "react-bootstrap";
 
 function NetworkDevices(props) {
 
@@ -10,9 +12,10 @@ function NetworkDevices(props) {
     return (
         <div className="main">
             <h1><center>Network Devices</center></h1>
-            <Table striped bordered hover>
+            <div class="scrollable">
+                <ReactBootStrap.Table striped bordered hover>
                 <thead>
-                        <tr>
+                        <tr> 
                             <th>Favorite</th>
                             <th>Device Name</th>
                             <th>IP Address</th>
@@ -26,24 +29,19 @@ function NetworkDevices(props) {
                     { props.devices && props.devices.map( device => {
                         return (
                             <tbody key={device.id}>
-                                <tr>
-                                    {/* TODO: Autocheck boxes based on value of device.favorite */}
-                                    <td><Form.Check onClick={() => toggleFavorite(device)} /></td>
-                                    <td>{device.name}</td>
-                                    <td>{device.ip}</td>
-                                    <td>{device.mac}</td>
-                                    <td>{device.description}</td>
-                                    { device.isUp === true?
-                                        <td className='table-success'>Up</td>
-                                    :
-                                        <td className='table-danger'>DOWN</td>
-                                    }
-                                    <td>{device.location}</td>
-                                </tr>
+                                    <tr>
+                                        <td><Form.Check onClick={() => toggleFavorite(device)} /></td>
+                                        <td>{device.name}</td>
+                                        <td>{device.ip}</td>
+                                        <td>{device.mac}</td>
+                                        <td>{device.description}</td>
+                                        <td>{device.isUp}</td>
+                                    </tr>
                             </tbody>
                         )
                     })}
-            </Table>
+            </ReactBootStrap.Table>
+            </div>
         </div>
     )
 }
