@@ -35,6 +35,15 @@ export default class HomeScreen extends React.Component  {
             })
         }      
 
+      funcOne(props){
+          var id = props.match.params.id
+            axios.get(`http://127.0.0.1:8000/os/${id}/?format=json`)
+              .then(res => {
+                const OS = res.data;
+                this.setState({ OS });
+              })
+          }      
+      
 
     render() {
         return (
