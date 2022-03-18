@@ -7,6 +7,8 @@ import HomeScreen from './components/HomeScreen'
 import auth from './components/auth'
 import NetworkDevices from './components/NetworkDevices'
 import DownDevices from './components/DownDevices'
+import Contacts from './components/Contacts'
+import { tester } from './components/HomeScreen'
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           <Route path="/auth" component={auth}/>
           <Route path="/network" component={NetworkDevices}/>
           <Route path="/down" component={DownDevices}/>
+          <Route path="/contacts" component={Contacts}/>
         </Switch>
       </main>
       <Footer />

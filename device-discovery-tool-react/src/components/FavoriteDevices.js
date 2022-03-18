@@ -9,6 +9,8 @@ function FavoriteDevices(props) {
 
     return (
         <div>
+            <h1><center>Favorite Devices</center></h1>
+            <div className="scroll">
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -27,13 +29,17 @@ function FavoriteDevices(props) {
                         <tbody key={device.id}>
                             {/* Only show a device if it's favorited */}
                             { (device.favorite == true) ?
-                                <tr>
-                                    <td><Form.Check onClick={() => toggleFavorite(device)} /></td>
+                                <tr key={device.id}>
+                                    <td><Form.Check defaultChecked='checked' onClick={() => toggleFavorite(device)} /></td>
                                     <td>{device.name}</td>
                                     <td>{device.ip}</td>
                                     <td>{device.mac}</td>
                                     <td>{device.description}</td>
-                                    <td>{device.isUp}</td>
+                                    { device.isUp === true?
+                                        <td className='table-success'>Up</td>
+                                    :
+                                        <td className='table-danger'>DOWN</td>
+                                    }
                                     <td>{device.location}</td>
                                 </tr>
                             : null }
@@ -41,6 +47,7 @@ function FavoriteDevices(props) {
                     )
                 })}
             </Table>
+            </div>
         </div>
     )
 }

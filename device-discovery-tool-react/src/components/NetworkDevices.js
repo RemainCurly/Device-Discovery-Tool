@@ -5,9 +5,9 @@ import * as ReactBootStrap from "react-bootstrap";
 
 function NetworkDevices(props) {
 
-        const toggleFavorite = device => {
-            props.toggleFavorite(device);
-        }
+    const toggleFavorite = device => {
+        props.toggleFavorite(device);
+    }
 
     return (
         <div className="main">

@@ -1,13 +1,9 @@
-
-
 .App {
   background-color: rgb(240, 240, 240);
   position: fixed;
   top: 0;
   width: 100%;
 }
-
-
 
 .login-image {
   width: auto;
@@ -17,24 +13,32 @@
   margin: auto;
 }
 
-/* TODO: Align these login fields PROPERLY */
 .login-fields {
   justify-content: center;
-  width: 40%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   margin: auto;
 }
 
-.login-fields * {
-  width: 40%;
+.login-fields.form-check{
+  padding-top: .5em;
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
 }
+
+.login-fields .form-check-label{
+  padding-left: .5em;
+}
+
 
 .button {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 3em;
+  padding-bottom: 2em;
+  padding-top: 2em;
 }
 
 .navbar {
@@ -108,4 +112,58 @@
   padding-bottom: 20px;
 }
 
+.upDevices {
+  background-color: rgb(40, 185, 40);
+  padding: 20px;
+}
 
+.downDevices {
+  background-color: rgb(230, 109, 109);
+  padding: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link a:visited {
+  color: black;
+}
+.table {
+  border: 2px solid forestgreen;
+  width: 800px;
+  height: 50px;
+  margin: auto;
+  flex: auto;
+}
+  
+.th {
+  border-bottom: 1px solid black;
+  display: block;
+  overflow: hidden;
+}
+  
+.td {
+  text-align: center;
+  display:block;
+  overflow:auto;
+  overflow-y: scroll;
+  height: 200px;
+  width:100%;
+}
+
+
+.allContactsButton{
+  justify-content: center;
+  width: 30%;
+  display: flex;
+  margin: auto;
+}
+
+.scroll {
+  height:300px;
+  overflow:auto;  
+  margin-top:20px;
+  flex: auto;
+}

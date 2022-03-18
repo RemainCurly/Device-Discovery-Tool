@@ -1,26 +1,22 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import { Form, Table } from 'react-bootstrap';
-import {LinkContainer} from 'react-router-bootstrap'
-import "../App.css"
 
-function FavoriteContacts(props) {
+function Contacts(props) {
 
-    const toggleFavorite = contact => {
-        props.toggleFavorite(contact);
+    const toggleFavorite = device => {
+        props.toggleFavorite(device);
     }
 
     return (
-        <div> 
-            <h1><center>Favorite Contacts</center></h1>
-            <div className='scroll'>
+        <div><center>
+            <h1><center>Contacts</center></h1>
             <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th>Favorite</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Phone #</th>
+                        <th>Phone Number</th>
                         <th>Notes</th>
                     </tr>
                 </thead>
@@ -28,31 +24,20 @@ function FavoriteContacts(props) {
                 { props.contacts && props.contacts.map( contact => {
                     return (
                         <tbody key={contact.id}>
-                            {/* Only show a contact if it's favorited */}
-                            { (contact.favorite == true) ? 
                                 <tr>
-                                    <td><Form.Check defaultChecked='checked' onClick={() => toggleFavorite(contact)} /></td>
+                                    <td><Form.Check onClick={() => toggleFavorite(contact)} /></td>
                                     <td>{contact.name}</td>
                                     <td>{contact.email}</td>
                                     <td>{contact.phoneNum}</td>
                                     <td>{contact.notes}</td>
                                 </tr>
-                            : null }
                         </tbody>
                     )
                 })}
             </Table>
-            </div>
-
-            <div className='allContactsButton'>
-              <div className='btn btn-primaryl'>
-                <LinkContainer to="/contacts">
-                    <Button size="lg" target="_blank" variant="primary">See All Contacts</Button>
-                </LinkContainer>
-              </div>
-            </div>
+            </center>
         </div>
     )
 }
 
-export default FavoriteContacts;
+export default Contacts;
