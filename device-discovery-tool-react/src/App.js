@@ -10,7 +10,8 @@ import ScanDevicesScheduled from './components/ScanDevicesScheduled'
 import DeviceUtility from './components/DeviceUtility'
 import ScanDevices from './components/ScanDevices'
 
-function App() {
+function App(props) {
+  props = props.name
   return (
     <Router>
       <Header />

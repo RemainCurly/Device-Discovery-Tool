@@ -14,7 +14,7 @@ import UpDownPieChart from './UpDownPieChart';
 
 const deviceTestList = numberRatios;
 
-export default class HomeScreen extends React.Component {
+export default class HomeScreen extends React.Component  {
 
     state = {
         OS: []
