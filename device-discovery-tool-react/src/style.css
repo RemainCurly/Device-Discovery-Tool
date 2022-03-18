@@ -1,4 +1,5 @@
 .scrollable{
     height: 400px;
     overflow: scroll;
+    width: auto;
 }
