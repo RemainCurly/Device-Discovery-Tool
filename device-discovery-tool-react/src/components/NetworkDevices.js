@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import * as ReactBootStrap from "react-bootstrap";
+import deviceTester from "../DevicesList";
 
 function NetworkDevices(props) {
 
@@ -9,11 +9,13 @@ function NetworkDevices(props) {
         props.toggleFavorite(device);
     }
 
+    var testList = deviceTester
+
     return (
-        <div className="main">
+        <div>
             <h1><center>Network Devices</center></h1>
-            <div class="scrollable">
-                <ReactBootStrap.Table striped bordered hover>
+            <div className="scroll">
+            <Table striped bordered hover>
                 <thead>
                         <tr> 
                             <th>Favorite</th>
@@ -26,21 +28,26 @@ function NetworkDevices(props) {
                         </tr>
                 </thead>
                     {/* Only show devices that exist in the DB */}
-                    { props.devices && props.devices.map( device => {
+                    { testList && testList.map( device => {
                         return (
                             <tbody key={device.id}>
-                                    <tr>
+                                    <tr key={device.id}>
                                         <td><Form.Check onClick={() => toggleFavorite(device)} /></td>
                                         <td>{device.name}</td>
                                         <td>{device.ip}</td>
                                         <td>{device.mac}</td>
                                         <td>{device.description}</td>
-                                        <td>{device.isUp}</td>
-                                    </tr>
+                                        { device.isUp === true?
+                                        <td className='table-success'>Up</td>
+                                    :
+                                        <td className='table-danger'>DOWN</td>
+                                    }
+                                    <td>{device.location}</td>
+                                </tr>
                             </tbody>
                         )
                     })}
-            </ReactBootStrap.Table>
+            </Table>
             </div>
         </div>
     )
