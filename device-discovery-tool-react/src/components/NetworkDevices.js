@@ -1,5 +1,7 @@
 import React from "react";
 import { Form, Table } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import deviceTester from "../DevicesList";
 
 function NetworkDevices(props) {
 
@@ -7,11 +9,14 @@ function NetworkDevices(props) {
         props.toggleFavorite(device);
     }
 
+    var testList = deviceTester
+
     return (
-        <div className="main">
+        <div>
             <h1><center>Network Devices</center></h1>
-            <Table striped bordered hover>
-                <thead>
+            <div className="scroll">
+                <Table striped bordered hover>
+                    <thead>
                         <tr>
                             <th>Favorite</th>
                             <th>Device Name</th>
@@ -21,21 +26,20 @@ function NetworkDevices(props) {
                             <th>Status</th>
                             <th>Location</th>
                         </tr>
-                </thead>
+                    </thead>
                     {/* Only show devices that exist in the DB */}
-                    { props.devices && props.devices.map( device => {
+                    {testList && testList.map(device => {
                         return (
                             <tbody key={device.id}>
-                                <tr>
-                                    {/* TODO: Autocheck boxes based on value of device.favorite */}
+                                <tr key={device.id}>
                                     <td><Form.Check onClick={() => toggleFavorite(device)} /></td>
                                     <td>{device.name}</td>
                                     <td>{device.ip}</td>
                                     <td>{device.mac}</td>
                                     <td>{device.description}</td>
-                                    { device.isUp === true?
+                                    {device.isUp === true ?
                                         <td className='table-success'>Up</td>
-                                    :
+                                        :
                                         <td className='table-danger'>DOWN</td>
                                     }
                                     <td>{device.location}</td>
@@ -43,7 +47,8 @@ function NetworkDevices(props) {
                             </tbody>
                         )
                     })}
-            </Table>
+                </Table>
+            </div>
         </div>
     )
 }
