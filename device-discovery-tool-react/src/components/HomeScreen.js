@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import "../App.css"
-import {Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 //These are both for testing purposes
 import deviceTester from "../DevicesList"
 import contactTester from "../ContactsList"
@@ -19,48 +19,48 @@ export default class HomeScreen extends React.Component {
 
     state = {
         OS: []
-      }
-    
-      componentDidMount() {
+    }
+
+    componentDidMount() {
         axios.get(`http://127.0.0.1:8000/os/`)
-          .then(res => {
-            const OS = res.data;
-            this.setState({ OS });
-          })
-      }
-    
+            .then(res => {
+                const OS = res.data;
+                this.setState({ OS });
+            })
+    }
 
-    render(){
-    return (
-        <div className="main">
-            <UpDownAlert devices={deviceTester} />
-            <Row>
-                <Col>
-                    <LeftHandButtons />
-                </Col>
-                <Col>
-                    <Row>
-                        <FavoriteDevices devices={deviceTester} />
-                    </Row>
-                    <Row>
-                        <FavoriteContacts contacts={contactTester} />
-                    </Row>
-                </Col>
-                <Col>
-                    <Row>
-                        <p>Total number of discovered devices here (pie chart? up devices and down)</p>
-                        <p>Also put device category in pie chart (<i>discoverable</i> operating system)</p>
 
-                        <h1>Local Machine OS Info:</h1>
-                        {
-                        this.state.OS
-                            .map(OS =><h3> {OS.name}</h3>)
-                        }
-                    </Row>
-                </Col>
-            </Row>
-        </div>
-    )
+    render() {
+        return (
+            <div className="main">
+                <UpDownAlert devices={deviceTester} />
+                <Row>
+                    <Col>
+                        <LeftHandButtons />
+                    </Col>
+                    <Col>
+                        <Row>
+                            <FavoriteDevices devices={deviceTester} />
+                        </Row>
+                        <Row>
+                            <FavoriteContacts contacts={contactTester} />
+                        </Row>
+                    </Col>
+                    <Col>
+                        <Row>
+                            <p>Total number of discovered devices here (pie chart? up devices and down)</p>
+                            <p>Also put device category in pie chart (<i>discoverable</i> operating system)</p>
+
+                            <h1>Local Machine OS Info:</h1>
+                            {
+                                this.state.OS
+                                    .map(OS => <h3> {OS.name}</h3>)
+                            }
+                        </Row>
+                    </Col>
+                </Row>
+            </div>
+        )
     }
 }
 
