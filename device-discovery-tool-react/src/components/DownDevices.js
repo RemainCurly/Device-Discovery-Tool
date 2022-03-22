@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Row, Table, Col, Button } from 'react-bootstrap';
+import { Row, Table, Col, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
 
 function DownDevices(props) {
@@ -35,7 +35,7 @@ function DownDevices(props) {
                             return (
                                 <tbody key={device.id}>
                                     {/* Only show a device if it's down*/}
-                                    {(device.isUp == false) ?
+                                    {(device.isUp === false) ?
                                         <tr>
                                             <td>{device.name}</td>
                                             <td>{device.ip}</td>

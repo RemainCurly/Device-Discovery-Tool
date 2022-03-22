@@ -1,6 +1,4 @@
-import {Container} from 'react-bootstrap'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-
 import Header from './components/Header'
 import Footer from './components/Footer'
 import HomeScreen from './components/HomeScreen'
@@ -11,7 +9,6 @@ import Contacts from './components/Contacts'
 import ScanDevicesScheduled from './components/ScanDevicesScheduled'
 import DeviceUtility from './components/DeviceUtility'
 import ScanDevices from './components/ScanDevices'
-import { tester } from './components/HomeScreen'
 
 function App() {
   return (

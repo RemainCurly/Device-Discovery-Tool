@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import "../App.css"
 import {Row, Col } from 'react-bootstrap';
 //These are both for testing purposes
