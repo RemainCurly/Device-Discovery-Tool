@@ -29,7 +29,7 @@ function NewPage(props) {
 
             <div className='row m-3'>
               <div className='col'>
-                <LinkContainer to="/">
+                <LinkContainer to="/scanSchedule">
                   <Button size="lg" target="_blank" variant="primary">Scan Devices (schedule)</Button>
                 </LinkContainer>
               </div>
@@ -37,7 +37,7 @@ function NewPage(props) {
 
             <div className='row m-3'>
               <div className='col'>
-                <LinkContainer to="/">
+                <LinkContainer to="/scanNow">
                   <Button size="lg" target="_blank" variant="primary">Scan Now</Button>
                 </LinkContainer>
               </div>
@@ -45,7 +45,7 @@ function NewPage(props) {
 
             <div className='row m-3'>
               <div className='col'>
-                <LinkContainer to="/">
+                <LinkContainer to="/deviceUtility">
                   <Button size="lg" target="_blank" variant="primary">Device Utility</Button>
                 </LinkContainer>
               </div>
