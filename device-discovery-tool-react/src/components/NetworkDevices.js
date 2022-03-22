@@ -8,8 +8,6 @@ function NetworkDevices(props) {
         props.toggleFavorite(device);
     }
 
-    var testList = deviceTester
-
     return (
         <div>
             <h1><center>Network Devices</center></h1>
