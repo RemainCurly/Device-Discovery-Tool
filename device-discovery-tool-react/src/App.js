@@ -17,13 +17,13 @@ function App() {
       <main className="py-3">
         <Switch>
           <Route path='/' component={HomeScreen} exact />
-          <Route path="/auth" component={auth}/>
-          <Route path="/network" component={NetworkDevices}/>
-          <Route path="/down" component={DownDevices}/>
-          <Route path="/contacts" component={Contacts}/>
-          <Route path="/scanSchedule" component={ScanDevicesScheduled}/>
-          <Route path="/deviceUtility" component={DeviceUtility}/>
-          <Route path="/scanNow" component={ScanDevices}/>
+          <Route path="/auth" component={auth} />
+          <Route path="/network" component={NetworkDevices} />
+          <Route path="/down" component={DownDevices} />
+          <Route path="/contacts" component={Contacts} />
+          <Route path="/scanSchedule" component={ScanDevicesScheduled} />
+          <Route path="/deviceUtility" component={DeviceUtility} />
+          <Route path="/scanNow" component={ScanDevices} />
         </Switch>
       </main>
       <Footer />

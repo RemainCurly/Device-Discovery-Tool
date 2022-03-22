@@ -25,6 +25,15 @@ const deviceTester = [
         description: 'this is an example description!',
         isUp: true,
         location: 'Office B'
+    },
+    {
+        favorite: false,
+        name: 'Example4',
+        ip: '123.224.98.465',
+        mac: 'AA:AB:AA:bc:dc',
+        description: 'This device is in building A',
+        isUp: false,
+        location: 'The kings room'
     }
 ];
 
