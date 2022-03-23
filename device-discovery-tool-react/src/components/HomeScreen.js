@@ -1,6 +1,7 @@
 import React from 'react'
 import "../App.css"
 import { Row, Col } from 'react-bootstrap';
+import axios from 'axios';
 //These are both for testing purposes
 import deviceTester from "../DevicesList"
 import contactTester from "../ContactsList"
@@ -9,9 +10,7 @@ import FavoriteContacts from './FavoriteContacts'
 import FavoriteDevices from './FavoriteDevices'
 import UpDownAlert from './UpDown'
 import LeftHandButtons from './LeftHandButtons'
-import axios from 'axios';
-
-
+import UpDownPieChart from './UpDownPieChart';
 
 
 export default class HomeScreen extends React.Component {
@@ -57,6 +56,7 @@ export default class HomeScreen extends React.Component {
                         <Row>
                             <p>Total number of discovered devices here (pie chart? up devices and down)</p>
                             <p>Also put device category in pie chart (<i>discoverable</i> operating system)</p>
+                            <UpDownPieChart />
 
                             <h3>Scanned Network Device for OS Info</h3>
                             {
