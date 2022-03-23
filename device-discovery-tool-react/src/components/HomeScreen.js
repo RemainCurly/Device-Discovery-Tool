@@ -19,15 +19,22 @@ export default class HomeScreen extends React.Component {
 
     state = {
         OS: []
+      }
+
+    constructor(props){
+        super()
+        this.funcOne(props)
     }
 
-    componentDidMount() {
-        axios.get(`http://127.0.0.1:8000/os/`)
+
+    funcOne(props){
+        var id = props.match.params.id
+          axios.get(`http://127.0.0.1:8000/os/${id}/?format=json`)
             .then(res => {
-                const OS = res.data;
-                this.setState({ OS });
+              const OS = res.data;
+              this.setState({ OS });
             })
-    }
+        }      
 
 
     render() {
@@ -51,11 +58,17 @@ export default class HomeScreen extends React.Component {
                             <p>Total number of discovered devices here (pie chart? up devices and down)</p>
                             <p>Also put device category in pie chart (<i>discoverable</i> operating system)</p>
 
-                            <h1>Local Machine OS Info:</h1>
+                            <h3>Scanned Network Device for OS Info</h3>
                             {
-                                this.state.OS
-                                    .map(OS => <h3> {OS.name}</h3>)
+                                this.state.OS.map(OS => <h3>{OS.IP_Address}</h3>)
                             }
+                            <hr></hr>
+                            <h3>Detected OS of Device</h3>
+                            {
+                            this.state.OS
+                                .map(OS => <h3> {OS.name}</h3>)
+                            }
+                            <hr></hr>
                         </Row>
                     </Col>
                 </Row>

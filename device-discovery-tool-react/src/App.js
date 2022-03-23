@@ -17,6 +17,7 @@ function App() {
       <main className="py-3">
         <Switch>
           <Route path='/' component={HomeScreen} exact />
+          <Route path="/os/:id" component={HomeScreen}/>
           <Route path="/auth" component={auth} />
           <Route path="/network" component={NetworkDevices} />
           <Route path="/down" component={DownDevices} />
