@@ -19,7 +19,6 @@ function UpDownAlert(props) {
             }
         });
 
-        console.log(counter + " devices down!");
         setNumDownDevices(counter);
 
     }, [numDownDevices])
