@@ -6,7 +6,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 function NewPage(props) {
   return (
-    <div classname='newpage'>
+    <div className='newpage'>
       <Container>
         <Row>
           <Col>

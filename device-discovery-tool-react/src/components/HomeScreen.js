@@ -54,9 +54,9 @@ export default class HomeScreen extends React.Component {
                     </Col>
                     <Col>
                         <Row>
-                            <p>Total number of discovered devices here (pie chart? up devices and down)</p>
-                            <p>Also put device category in pie chart (<i>discoverable</i> operating system)</p>
-                            <UpDownPieChart />
+                            {/**Total number of discovered devices here (pie chart? up devices and down)
+                            Also put device category in pie chart (discoverable operating system)**/}
+                            <UpDownPieChart devices={deviceTester} />
 
                             <h3>Scanned Network Device for OS Info</h3>
                             {
