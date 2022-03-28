@@ -81,13 +81,26 @@ WSGI_APPLICATION = 'DeviceDiscoveryTool.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# UNCOMMENT THIS TO USE MSSQL (when Sean's SQL server is running)=======
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "mssql",
+#         "NAME": "adt",
+#         "USER": "adt_admin",
+#         "PASSWORD": "What'sBrack1n!",
+#         "HOST": "23.121.188.140",
+#         "PORT": "1433",
+#         "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server"},
+#     },
+# }
+
+# UNCOMMENT THIS TO RUN DJANGO LOCALLY==================================
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
