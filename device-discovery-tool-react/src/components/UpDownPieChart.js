@@ -1,8 +1,6 @@
 import React from 'react';
-import CanvasJSReact from '../canvasjs.react';
-
-var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 
 function deviceRetriever(props, deviceType, isUp) {
     return props.devices.filter((device) => {
@@ -17,90 +15,89 @@ function wasDeviceFound(props, deviceType) {
     }).length > 0;
 }
 
+function randomGreenColor() {
+    const max = 200;
+    const min = 100;
+    let green = Math.floor(Math.random() * (max - min + 1)) + min;
+    return `rgba(0, ${green}, 0, 0.2)`;
+}
+
+function randomRedColor() {
+    const max = 200;
+    const min = 100;
+    let red = Math.floor(Math.random() * (max - min + 1)) + min;
+    return `rgba(${red}, 0, 0, 0.2)`;
+}
+
 function UpDownPieChart(props) {
 
     // let upDevices = props.devices.map((device) => {
-        
     //     let counter = 0;
-        
     //     if(device.isUp === true)
     //         counter++;
-
     //     return counter;
     // }).reduce((a,b) => a + b, 0);
-    
     // let downDevices = Object.keys(props.devices).length - upDevices;
 
-    CanvasJS.addColorSet("redGreen",
-        [
-            "#33cc33", //Green
-            "#ff0000"  //Red
-        ]);
+    ChartJS.register(ArcElement, Tooltip, Legend);
 
-    let data = [
-        // Up Device Types
-        ...((wasDeviceFound(props, 'Endpoint') && deviceRetriever(props, 'Endpoint', true) != []) ?
-            [{ y : deviceRetriever(props, 'Endpoint', true).length, label: 'Endpoint' }] : []),
-        ...((wasDeviceFound(props, 'Server') && deviceRetriever(props, 'Server', true) != []) ?
-            [{ y : deviceRetriever(props, 'Server', true).length, label: 'Server' }] : []),
-        ...((wasDeviceFound(props, 'Access-Points') && deviceRetriever(props, 'Access-Points', true) != []) ?
-            [{ y : deviceRetriever(props, 'Access-Points', true).length, label: 'Access-Points' }] : []),
-        ...((wasDeviceFound(props, 'IoT/Cameras') && deviceRetriever(props, 'IoT/Cameras', true) != []) ?
-            [{ y : deviceRetriever(props, 'IoT/Cameras', true).length, label: 'IoT/Cameras' }] : []),
-        ...((wasDeviceFound(props, 'Firewalls') && deviceRetriever(props, 'Firewalls', true) != []) ?
-            [{ y : deviceRetriever(props, 'Firewalls', true).length, label: 'Firewalls' }] : []),
-        ...((wasDeviceFound(props, 'Switches') && deviceRetriever(props, 'Switches', true) != []) ?
-            [{ y : deviceRetriever(props, 'Switches', true).length, label: 'Switches' }] : []),
-        ...((wasDeviceFound(props, 'Routers') && deviceRetriever(props, 'Routers', true) != []) ?
-            [{ y : deviceRetriever(props, 'Routers', true).length, label: 'Routers' }] : []),
-        ...((wasDeviceFound(props, 'Phones') && deviceRetriever(props, 'Phones', true) != []) ?
-            [{ y : deviceRetriever(props, 'Phones', true).length, label: 'Phones' }] : []),
-        ...((wasDeviceFound(props, 'Unknown') && deviceRetriever(props, 'Unknown', true) != []) ?
-            [{ y : deviceRetriever(props, 'Unknown', true).length, label: 'Unknown' }] : []),
-        // Down Device Types
-        ...((wasDeviceFound(props, 'Endpoint') && deviceRetriever(props, 'Endpoint', false) != []) ?
-            [{ y : deviceRetriever(props, 'Endpoint', false).length, label: 'Endpoint' }] : []),
-        ...((wasDeviceFound(props, 'Server') && deviceRetriever(props, 'Server', false) != []) ?
-            [{ y : deviceRetriever(props, 'Server', false).length, label: 'Server' }] : []),
-        ...((wasDeviceFound(props, 'Access-Points') && deviceRetriever(props, 'Access-Points', false) != []) ?
-            [{ y : deviceRetriever(props, 'Access-Points', false).length, label: 'Access-Points' }] : []),
-        ...((wasDeviceFound(props, 'IoT/Cameras') && deviceRetriever(props, 'IoT/Cameras', false) != []) ?
-            [{ y : deviceRetriever(props, 'IoT/Cameras', false).length, label: 'IoT/Cameras' }] : []),
-        ...((wasDeviceFound(props, 'Firewalls') && deviceRetriever(props, 'Firewalls', false) != []) ?
-            [{ y : deviceRetriever(props, 'Firewalls', false).length, label: 'Firewalls' }] : []),
-        ...((wasDeviceFound(props, 'Switches') && deviceRetriever(props, 'Switches', false) != []) ?
-            [{ y : deviceRetriever(props, 'Switches', false).length, label: 'Switches' }] : []),
-        ...((wasDeviceFound(props, 'Routers') && deviceRetriever(props, 'Routers', false) != []) ?
-            [{ y : deviceRetriever(props, 'Routers', false).length, label: 'Routers' }] : []),
-        ...((wasDeviceFound(props, 'Phones') && deviceRetriever(props, 'Phones', false) != []) ?
-            [{ y : deviceRetriever(props, 'Phones', false).length, label: 'Phones' }] : []),
-        ...((wasDeviceFound(props, 'Unknown') && deviceRetriever(props, 'Unknown', false) != []) ?
-            [{ y : deviceRetriever(props, 'Unknown', false).length, label: 'Unknown' }] : [])
-    ]
-
-    const options = {
-        //colorSet: "redGreen",
-        exportEnabled: true,
-        animationEnabled: true,
-        title: {
-            text: "Device Status"
+    const data = {
+        labels: ['Endpoint', 'Server', 'Access-Points', 'IoT/Cameras', 'Firewalls', 'Switches', 'Routers', 'Phones', 'Unknown'],
+        options: {
+            responsive: false,
         },
-        data: [{
-            type: "pie",
-            startAngle: 75,
-            toolTipContent: "<b>{label}</b>: {y}",
-            showInLegend: "true",
-            legendText: "{label}",
-            indexLabelFontSize: 16,
-            indexLabelThickness: (data.length < 1) ? 0 : 1,
-            indexLabel: "{label} - {y}",
-            dataPoints: data
+        datasets: [
+        {
+            label: '# of Devices',
+            data: [ 
+                deviceRetriever(props, 'Endpoint', true).length,
+                deviceRetriever(props, 'Server', true).length,
+                deviceRetriever(props, 'Access-Points', true).length,
+                deviceRetriever(props, 'IoT/Cameras', true).length,
+                deviceRetriever(props, 'Firewalls', true).length,
+                deviceRetriever(props, 'Switches', true).length,
+                deviceRetriever(props, 'Routers', true).length,
+                deviceRetriever(props, 'Phones', true).length,
+                deviceRetriever(props, 'Unknown', true).length,
+                deviceRetriever(props, 'Endpoint', false).length,
+                deviceRetriever(props, 'Server', false).length,
+                deviceRetriever(props, 'Access-Points', false).length,
+                deviceRetriever(props, 'IoT/Cameras', false).length,
+                deviceRetriever(props, 'Firewalls', false).length,
+                deviceRetriever(props, 'Switches', false).length,
+                deviceRetriever(props, 'Routers', false).length,
+                deviceRetriever(props, 'Phones', false).length,
+                deviceRetriever(props, 'Unknown', false).length
+            ],
+            backgroundColor: [
+                randomGreenColor(),
+                randomGreenColor(),
+                randomGreenColor(),
+                randomGreenColor(),
+                randomGreenColor(),
+                randomGreenColor(),
+                randomGreenColor(),
+                randomGreenColor(),
+                randomGreenColor(),
+                randomRedColor(),
+                randomRedColor(),
+                randomRedColor(),
+                randomRedColor(),
+                randomRedColor(),
+                randomRedColor(),
+                randomRedColor(),
+                randomRedColor(),
+                randomRedColor()
+            ]
         }]
-    }
+    };
 
     return (
         <div>
-            <CanvasJSChart options={options} />
+            <Pie data={data} options={{
+                responsive: false,
+                maintainAspectRatio: false,
+            }}/>
         </div>
     )
 }
