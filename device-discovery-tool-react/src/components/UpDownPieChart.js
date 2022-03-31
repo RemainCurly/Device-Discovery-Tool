@@ -2,6 +2,11 @@ import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
+const deviceTypes = [
+    'Endpoint', 'Server', 'Access-Points', 'IoT/Cameras', 'Firewalls',
+    'Switches', 'Routers', 'Phones', 'Unknown'
+]
+
 function deviceRetriever(props, deviceType, isUp) {
     return props.devices.filter((device) => {
         if(device.deviceType === deviceType && device.isUp === isUp)
@@ -9,93 +14,76 @@ function deviceRetriever(props, deviceType, isUp) {
     });
 }
 
-function wasDeviceFound(props, deviceType) {
-    return props.devices.filter((device) => {
-        return device.deviceType === deviceType;
-    }).length > 0;
+function wasDeviceFound(props, deviceType, isUp) {
+    let found = false;
+    for(let i = 0; i < props.devices.length; i++)
+    {
+        if(props.devices[i].deviceType === deviceType && props.devices[i].isUp === isUp)
+            found = true;
+    }
+    return found;
 }
 
-function randomGreenColor() {
-    const max = 200;
-    const min = 100;
-    let green = Math.floor(Math.random() * (max - min + 1)) + min;
-    return `rgba(0, ${green}, 0, 0.2)`;
+//TODO: Figure out formula for calculating the colors
+function randomGreenColor(modifier) {
+    const lighten = modifier + 1;
+    const r = 26; const g = 255; const b = 26;
+    let max = Math.max(Math.max(r, Math.max(g, b)), 1);
+    let step = 255 / (max * 10);
+    return `rgba(${r * step * lighten}, ${g * step * lighten}, ${b * step * lighten}, 0.9)`;
 }
 
-function randomRedColor() {
-    const max = 200;
-    const min = 100;
-    let red = Math.floor(Math.random() * (max - min + 1)) + min;
-    return `rgba(${red}, 0, 0, 0.2)`;
+function randomRedColor(modifier) {
+    const lighten = modifier + 1;
+    const r = 255; const g = 26; const b = 26;
+    let max = Math.max(Math.max(r, Math.max(g, b)), 1);
+    let step = 255 / (max * 10);
+    return `rgba(${r * step * lighten}, ${g * step * lighten}, ${b * step * lighten}, 0.9)`;
 }
 
 function UpDownPieChart(props) {
 
-    // let upDevices = props.devices.map((device) => {
-    //     let counter = 0;
-    //     if(device.isUp === true)
-    //         counter++;
-    //     return counter;
-    // }).reduce((a,b) => a + b, 0);
-    // let downDevices = Object.keys(props.devices).length - upDevices;
-
     ChartJS.register(ArcElement, Tooltip, Legend);
+    let retrievedData = [];
+    let retrievedColors = [];
+    let retrievedLabels = [];
+
+    for(let i = 0; i < deviceTypes.length; i++)
+    {
+        if(wasDeviceFound(props, deviceTypes[i], true) === true)
+        {
+            retrievedData.push(deviceRetriever(props, deviceTypes[i], true).length);
+            retrievedColors.push(randomGreenColor(i+1));
+            retrievedLabels.push(deviceTypes[i]);
+        }
+    }
+
+    for(let i = 0; i < deviceTypes.length; i++)
+    {
+        if(wasDeviceFound(props, deviceTypes[i], false) === true)
+        {
+            retrievedData.push(deviceRetriever(props, deviceTypes[i], false).length);
+            retrievedColors.push(randomRedColor(i+1));
+            retrievedLabels.push(`${deviceTypes[i]} (Down)`);
+        }
+    }
 
     const data = {
-        labels: ['Endpoint', 'Server', 'Access-Points', 'IoT/Cameras', 'Firewalls', 'Switches', 'Routers', 'Phones', 'Unknown'],
-        options: {
-            responsive: false,
-        },
+        labels: retrievedLabels,
         datasets: [
         {
             label: '# of Devices',
-            data: [ 
-                deviceRetriever(props, 'Endpoint', true).length,
-                deviceRetriever(props, 'Server', true).length,
-                deviceRetriever(props, 'Access-Points', true).length,
-                deviceRetriever(props, 'IoT/Cameras', true).length,
-                deviceRetriever(props, 'Firewalls', true).length,
-                deviceRetriever(props, 'Switches', true).length,
-                deviceRetriever(props, 'Routers', true).length,
-                deviceRetriever(props, 'Phones', true).length,
-                deviceRetriever(props, 'Unknown', true).length,
-                deviceRetriever(props, 'Endpoint', false).length,
-                deviceRetriever(props, 'Server', false).length,
-                deviceRetriever(props, 'Access-Points', false).length,
-                deviceRetriever(props, 'IoT/Cameras', false).length,
-                deviceRetriever(props, 'Firewalls', false).length,
-                deviceRetriever(props, 'Switches', false).length,
-                deviceRetriever(props, 'Routers', false).length,
-                deviceRetriever(props, 'Phones', false).length,
-                deviceRetriever(props, 'Unknown', false).length
-            ],
-            backgroundColor: [
-                randomGreenColor(),
-                randomGreenColor(),
-                randomGreenColor(),
-                randomGreenColor(),
-                randomGreenColor(),
-                randomGreenColor(),
-                randomGreenColor(),
-                randomGreenColor(),
-                randomGreenColor(),
-                randomRedColor(),
-                randomRedColor(),
-                randomRedColor(),
-                randomRedColor(),
-                randomRedColor(),
-                randomRedColor(),
-                randomRedColor(),
-                randomRedColor(),
-                randomRedColor()
-            ]
+            data: retrievedData,
+            backgroundColor: retrievedColors,
+            borderColor: '#bfbfbf',
+            borderWidth: 1,
         }]
     };
 
     return (
-        <div>
+        <div className="canvas">
             <Pie data={data} options={{
-                responsive: false,
+                responsive: true,
                 maintainAspectRatio: false,
             }}/>
         </div>
