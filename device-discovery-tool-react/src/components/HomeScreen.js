@@ -3,7 +3,7 @@ import "../App.css"
 import { Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 //These are both for testing purposes
-import deviceTester from "../DevicesList"
+import { deviceTester, manyUpSomeDown, numberRatios, manyUp } from "../DevicesList"
 import contactTester from "../ContactsList"
 //Below are all components that must be imported to the homescreen
 import FavoriteContacts from './FavoriteContacts'
@@ -12,9 +12,9 @@ import UpDownAlert from './UpDown'
 import LeftHandButtons from './LeftHandButtons'
 import UpDownPieChart from './UpDownPieChart';
 
+const deviceTestList = deviceTester;
 
 export default class HomeScreen extends React.Component {
-
 
     state = {
         OS: []
@@ -39,14 +39,14 @@ export default class HomeScreen extends React.Component {
     render() {
         return (
             <div className="main">
-                <UpDownAlert devices={deviceTester} />
+                <UpDownAlert devices={deviceTestList} />
                 <Row>
                     <Col>
                         <LeftHandButtons />
                     </Col>
                     <Col>
                         <Row>
-                            <FavoriteDevices devices={deviceTester} />
+                            <FavoriteDevices devices={deviceTestList} />
                         </Row>
                         <Row>
                             <FavoriteContacts contacts={contactTester} />
@@ -54,9 +54,7 @@ export default class HomeScreen extends React.Component {
                     </Col>
                     <Col>
                         <Row>
-                            {/**Total number of discovered devices here (pie chart? up devices and down)
-                            Also put device category in pie chart (discoverable operating system)**/}
-                            <UpDownPieChart devices={deviceTester} />
+                            <UpDownPieChart devices={deviceTestList} />
 
                             <h3>Scanned Network Device for OS Info</h3>
                             {
