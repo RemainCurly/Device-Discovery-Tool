@@ -12,7 +12,7 @@ import UpDownAlert from './UpDown'
 import LeftHandButtons from './LeftHandButtons'
 import UpDownPieChart from './UpDownPieChart';
 
-const deviceTestList = deviceTester;
+const deviceTestList = manyUpSomeDown;
 
 export default class HomeScreen extends React.Component {
 

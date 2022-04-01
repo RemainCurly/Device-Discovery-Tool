@@ -27,18 +27,19 @@ function wasDeviceFound(props, deviceType, isUp) {
 //TODO: Figure out formula for calculating the colors
 function randomGreenColor(modifier) {
     const lighten = 11 - modifier;
-    const r = 26; const g = 255; const b = 26;
+    const r = 0; const g = 255; const b = 0;
     let max = Math.max(Math.max(r, Math.max(g, b)), 1);
     let step = 255 / (max * 10);
-    return `rgba(${r * step * lighten}, ${g * step * lighten}, ${b * step * lighten}, 0.9)`;
+    //return `rgba(${r}, ${g * step * lighten}, ${b}, ${modifier*.1})`;
+    return `rgba(${r}, ${g}, ${b}, ${modifier*.1})`;
 }
 
 function randomRedColor(modifier) {
     const lighten = 11 - modifier;
-    const r = 255; const g = 26; const b = 26;
+    const r = 255; const g = 0; const b = 0;
     let max = Math.max(Math.max(r, Math.max(g, b)), 1);
     let step = 255 / (max * 10);
-    return `rgba(${r * step * lighten}, ${g * step * lighten}, ${b * step * lighten}, 0.9)`;
+    return `rgba(${r}, ${g}, ${b}, ${modifier*.1})`;
 }
 
 function UpDownPieChart(props) {
@@ -75,7 +76,7 @@ function UpDownPieChart(props) {
             label: '# of Devices',
             data: retrievedData,
             backgroundColor: retrievedColors,
-            borderColor: '#bfbfbf',
+            borderColor: '#000000',
             borderWidth: 1,
         }]
     };
