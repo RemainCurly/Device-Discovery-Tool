@@ -1,54 +1,91 @@
 import React from 'react';
-import CanvasJSReact from '../canvasjs.react';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 
-var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+const deviceTypes = [
+    'Endpoint', 'Server', 'Access-Points', 'IoT/Cameras', 'Firewalls',
+    'Switches', 'Routers', 'Phones', 'Unknown'
+]
+
+function deviceRetriever(props, deviceType, isUp) {
+    return props.devices.filter((device) => {
+        if(device.deviceType === deviceType && device.isUp === isUp)
+            return device;
+    });
+}
+
+function wasDeviceFound(props, deviceType, isUp) {
+    let found = false;
+    for(let i = 0; i < props.devices.length; i++)
+    {
+        if(props.devices[i].deviceType === deviceType && props.devices[i].isUp === isUp)
+            found = true;
+    }
+    return found;
+}
+
+//TODO: Figure out formula for calculating the colors
+function randomGreenColor(modifier) {
+    const lighten = modifier + 1;
+    const r = 26; const g = 255; const b = 26;
+    let max = Math.max(Math.max(r, Math.max(g, b)), 1);
+    let step = 255 / (max * 10);
+    return `rgba(${r * step * lighten}, ${g * step * lighten}, ${b * step * lighten}, 0.9)`;
+}
+
+function randomRedColor(modifier) {
+    const lighten = modifier + 1;
+    const r = 255; const g = 26; const b = 26;
+    let max = Math.max(Math.max(r, Math.max(g, b)), 1);
+    let step = 255 / (max * 10);
+    return `rgba(${r * step * lighten}, ${g * step * lighten}, ${b * step * lighten}, 0.9)`;
+}
 
 function UpDownPieChart(props) {
 
-    let upDevices = props.devices.map((device) => {
-        
-        let counter = 0;
-        
-        if(device.isUp === true)
-            counter++;
+    ChartJS.register(ArcElement, Tooltip, Legend);
+    let retrievedData = [];
+    let retrievedColors = [];
+    let retrievedLabels = [];
 
-        return counter;
-    }).reduce((a,b) => a + b, 0);
-    
-    let downDevices = Object.keys(props.devices).length - upDevices;
-
-    CanvasJS.addColorSet("redGreen",
-        [
-            "#33cc33", //Green
-            "#ff0000"  //Red
-        ]);
-
-    const options = {
-        colorSet: "redGreen",
-        exportEnabled: true,
-        animationEnabled: true,
-        title: {
-            text: "Device Status"
-        },
-        data: [{
-            type: "pie",
-            startAngle: 75,
-            toolTipContent: "<b>{label}</b>: {y}",
-            showInLegend: "true",
-            legendText: "{label}",
-            indexLabelFontSize: 16,
-            indexLabel: "{label} - {y}",
-            dataPoints: [
-                { label: "Up Devices", y: upDevices },
-                { label: "Down Devices", y: downDevices }
-            ]
-        }]
+    for(let i = 0; i < deviceTypes.length; i++)
+    {
+        if(wasDeviceFound(props, deviceTypes[i], true) === true)
+        {
+            retrievedData.push(deviceRetriever(props, deviceTypes[i], true).length);
+            retrievedColors.push(randomGreenColor(i+1));
+            retrievedLabels.push(deviceTypes[i]);
+        }
     }
-    
+
+    for(let i = 0; i < deviceTypes.length; i++)
+    {
+        if(wasDeviceFound(props, deviceTypes[i], false) === true)
+        {
+            retrievedData.push(deviceRetriever(props, deviceTypes[i], false).length);
+            retrievedColors.push(randomRedColor(i+1));
+            retrievedLabels.push(`${deviceTypes[i]} (Down)`);
+        }
+    }
+
+    const data = {
+        labels: retrievedLabels,
+        datasets: [
+        {
+            label: '# of Devices',
+            data: retrievedData,
+            backgroundColor: retrievedColors,
+            borderColor: '#bfbfbf',
+            borderWidth: 1,
+        }]
+    };
+
     return (
-        <div>
-            <CanvasJSChart options={options} />
+        <div className="canvas">
+            <Pie data={data} options={{
+                responsive: true,
+                maintainAspectRatio: false,
+            }}/>
         </div>
     )
 }

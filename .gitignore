@@ -1,6 +1,6 @@
 # JS files used for testing
-/device-discovery-tool-react/src/DevicesList.js
-/device-discovery-tool-react/src/ContactsList.js
+DevicesList.js
+ContactsList.js
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
