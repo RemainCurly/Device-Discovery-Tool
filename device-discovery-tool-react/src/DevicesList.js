@@ -13,7 +13,7 @@ const deviceTester = [
     },
     {
         deviceType: 'Access-Points',
-        isUp: false,
+        isUp: true,
     },
     {
         deviceType: 'IoT/Cameras',
@@ -49,7 +49,7 @@ const deviceTester = [
     },
     {
         deviceType: 'Access-Points',
-        isUp: true,
+        isUp: false,
     },
     {
         deviceType: 'IoT/Cameras',
@@ -127,23 +127,39 @@ const numberRatios = [
     }
 ]
 
-const manyUp = [
+const allUp = [
     {
         deviceType: 'IoT/Cameras',
         isUp: true,
     },
     {
-        deviceType: 'IoT/Cameras',
+        deviceType: 'Unknown',
         isUp: true,
     },
     {
-        deviceType: 'IoT/Cameras',
+        deviceType: 'Phones',
         isUp: true,
     },
     {
-        deviceType: 'IoT/Cameras',
-        isUp: false,
+        deviceType: 'Firewalls',
+        isUp: true,
+    },
+    {
+        deviceType: 'Switches',
+        isUp: true,
+    },
+    {
+        deviceType: 'Server',
+        isUp: true,
+    },
+    {
+        deviceType: 'Endpoint',
+        isUp: true,
+    },
+    {
+        deviceType: 'Routers',
+        isUp: true,
     },
 ]
 
-export { deviceTester, manyUpSomeDown, numberRatios, manyUp };
+export { deviceTester, manyUpSomeDown, numberRatios, allUp };

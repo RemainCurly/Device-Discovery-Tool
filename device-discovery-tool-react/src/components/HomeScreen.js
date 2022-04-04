@@ -3,7 +3,7 @@ import "../App.css"
 import { Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 //These are both for testing purposes
-import { deviceTester, manyUpSomeDown, numberRatios, manyUp } from "../DevicesList"
+import { deviceTester, manyUpSomeDown, numberRatios, allUp } from "../DevicesList"
 import contactTester from "../ContactsList"
 //Below are all components that must be imported to the homescreen
 import FavoriteContacts from './FavoriteContacts'
@@ -12,7 +12,7 @@ import UpDownAlert from './UpDown'
 import LeftHandButtons from './LeftHandButtons'
 import UpDownPieChart from './UpDownPieChart';
 
-const deviceTestList = manyUpSomeDown;
+const deviceTestList = numberRatios;
 
 export default class HomeScreen extends React.Component {
 

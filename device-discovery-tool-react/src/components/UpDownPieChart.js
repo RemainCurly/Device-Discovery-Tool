@@ -24,22 +24,12 @@ function wasDeviceFound(props, deviceType, isUp) {
     return found;
 }
 
-//TODO: Figure out formula for calculating the colors
 function randomGreenColor(modifier) {
-    const lighten = 11 - modifier;
-    const r = 0; const g = 255; const b = 0;
-    let max = Math.max(Math.max(r, Math.max(g, b)), 1);
-    let step = 255 / (max * 10);
-    //return `rgba(${r}, ${g * step * lighten}, ${b}, ${modifier*.1})`;
-    return `rgba(${r}, ${g}, ${b}, ${modifier*.1})`;
+    return `hsl(114, 80%, 27%)`;
 }
 
 function randomRedColor(modifier) {
-    const lighten = 11 - modifier;
-    const r = 255; const g = 0; const b = 0;
-    let max = Math.max(Math.max(r, Math.max(g, b)), 1);
-    let step = 255 / (max * 10);
-    return `rgba(${r}, ${g}, ${b}, ${modifier*.1})`;
+    return `hsl(0, 100%, 47%)`;
 }
 
 function UpDownPieChart(props) {
@@ -55,17 +45,17 @@ function UpDownPieChart(props) {
         {
             retrievedData.push(deviceRetriever(props, deviceTypes[i], true).length);
             retrievedColors.push(randomGreenColor(i+1));
-            retrievedLabels.push(deviceTypes[i]);
+            retrievedLabels.push(`(${retrievedData[retrievedData.length - 1]}) ${deviceTypes[i]}`);
         }
     }
 
-    for(let i = 0; i < deviceTypes.length; i++)
+    for(let i = deviceTypes.length; i >= 0; i--)
     {
         if(wasDeviceFound(props, deviceTypes[i], false) === true)
         {
             retrievedData.push(deviceRetriever(props, deviceTypes[i], false).length);
             retrievedColors.push(randomRedColor(i+1));
-            retrievedLabels.push(`${deviceTypes[i]} (Down)`);
+            retrievedLabels.push(`(${retrievedData[retrievedData.length - 1]}) ${deviceTypes[i]} (Down)`);
         }
     }
 
@@ -86,6 +76,13 @@ function UpDownPieChart(props) {
             <Pie data={data} options={{
                 responsive: true,
                 maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            boxWidth: 0
+                        }
+                    }
+                }
             }}/>
         </div>
     )
