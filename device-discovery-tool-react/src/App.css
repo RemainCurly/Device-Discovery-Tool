@@ -167,3 +167,10 @@
   margin-top:20px;
   flex: auto;
 }
+
+.canvas {
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  margin-bottom: 20px;
+}

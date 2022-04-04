@@ -17,10 +17,12 @@
         "@testing-library/user-event": "^13.5.0",
         "axios": "^0.26.1",
         "bootstrap": "^5.1.3",
+        "chart.js": "^3.7.1",
         "mdbreact": "^5.2.0",
         "react": "^17.0.2",
         "react-bootstrap": "^2.1.2",
         "react-bootstrap-dropdown-menu": "^1.1.23",
+        "react-chartjs-2": "^4.0.1",
         "react-dom": "^17.0.2",
         "react-redux": "^7.2.6",
         "react-router-bootstrap": "^0.25.0",
@@ -5187,13 +5189,9 @@
       }
     },
     "node_modules/chart.js": {
-      "version": "2.9.4",
-      "resolved": "https://registry.npmjs.org/chart.js/-/chart.js-2.9.4.tgz",
-      "integrity": "sha512-B07aAzxcrikjAPyV+01j7BmOpxtQETxTSlQ26BEYJ+3iUkbNKaOJ/nDbT6JjyqYxseM0ON12COHYdU2cTIjC7A==",
-      "dependencies": {
-        "chartjs-color": "^2.1.0",
-        "moment": "^2.10.2"
-      }
+      "version": "3.7.1",
+      "resolved": "https://registry.npmjs.org/chart.js/-/chart.js-3.7.1.tgz",
+      "integrity": "sha512-8knRegQLFnPQAheZV8MjxIXc5gQEfDFD897BJgv/klO/vtIyFFmgMXrNfgrXpbTr/XbTturxRgxIXx/Y+ASJBA=="
     },
     "node_modules/chartjs-color": {
       "version": "2.4.1",
@@ -11436,6 +11434,15 @@
         "@types/react": "*"
       }
     },
+    "node_modules/mdbreact/node_modules/chart.js": {
+      "version": "2.9.4",
+      "resolved": "https://registry.npmjs.org/chart.js/-/chart.js-2.9.4.tgz",
+      "integrity": "sha512-B07aAzxcrikjAPyV+01j7BmOpxtQETxTSlQ26BEYJ+3iUkbNKaOJ/nDbT6JjyqYxseM0ON12COHYdU2cTIjC7A==",
+      "dependencies": {
+        "chartjs-color": "^2.1.0",
+        "moment": "^2.10.2"
+      }
+    },
     "node_modules/mdbreact/node_modules/classnames": {
       "version": "2.2.6",
       "resolved": "https://registry.npmjs.org/classnames/-/classnames-2.2.6.tgz",
@@ -14089,6 +14096,15 @@
       "integrity": "sha512-fAAE9ClSuniyXnuwpeJAU7JYRS5iJNiX4dU9yizZFj8VTsmSXqr5xyJI9f+x9P/rBGLXcbnzYdv27hZepQWNLQ==",
       "peerDependencies": {
         "react": "^17.0.1"
+      }
+    },
+    "node_modules/react-chartjs-2": {
+      "version": "4.0.1",
+      "resolved": "https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-4.0.1.tgz",
+      "integrity": "sha512-q8bgWzKoFvBvD7YcjT/hXG8jt55TaMAuJ1dmI3tKFJ7CijUWYz4pIfOhkTI6PBTwqu/pmeWsClBRd/7HiWzN1g==",
+      "peerDependencies": {
+        "chart.js": "^3.5.0",
+        "react": "^16.8.0 || ^17.0.0"
       }
     },
     "node_modules/react-dev-utils": {
@@ -21005,13 +21021,9 @@
       "integrity": "sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw=="
     },
     "chart.js": {
-      "version": "2.9.4",
-      "resolved": "https://registry.npmjs.org/chart.js/-/chart.js-2.9.4.tgz",
-      "integrity": "sha512-B07aAzxcrikjAPyV+01j7BmOpxtQETxTSlQ26BEYJ+3iUkbNKaOJ/nDbT6JjyqYxseM0ON12COHYdU2cTIjC7A==",
-      "requires": {
-        "chartjs-color": "^2.1.0",
-        "moment": "^2.10.2"
-      }
+      "version": "3.7.1",
+      "resolved": "https://registry.npmjs.org/chart.js/-/chart.js-3.7.1.tgz",
+      "integrity": "sha512-8knRegQLFnPQAheZV8MjxIXc5gQEfDFD897BJgv/klO/vtIyFFmgMXrNfgrXpbTr/XbTturxRgxIXx/Y+ASJBA=="
     },
     "chartjs-color": {
       "version": "2.4.1",
@@ -25601,6 +25613,15 @@
             "@types/react": "*"
           }
         },
+        "chart.js": {
+          "version": "2.9.4",
+          "resolved": "https://registry.npmjs.org/chart.js/-/chart.js-2.9.4.tgz",
+          "integrity": "sha512-B07aAzxcrikjAPyV+01j7BmOpxtQETxTSlQ26BEYJ+3iUkbNKaOJ/nDbT6JjyqYxseM0ON12COHYdU2cTIjC7A==",
+          "requires": {
+            "chartjs-color": "^2.1.0",
+            "moment": "^2.10.2"
+          }
+        },
         "classnames": {
           "version": "2.2.6",
           "resolved": "https://registry.npmjs.org/classnames/-/classnames-2.2.6.tgz",
@@ -27394,6 +27415,12 @@
       "version": "1.1.23",
       "resolved": "https://registry.npmjs.org/react-bootstrap-dropdown-menu/-/react-bootstrap-dropdown-menu-1.1.23.tgz",
       "integrity": "sha512-fAAE9ClSuniyXnuwpeJAU7JYRS5iJNiX4dU9yizZFj8VTsmSXqr5xyJI9f+x9P/rBGLXcbnzYdv27hZepQWNLQ==",
+      "requires": {}
+    },
+    "react-chartjs-2": {
+      "version": "4.0.1",
+      "resolved": "https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-4.0.1.tgz",
+      "integrity": "sha512-q8bgWzKoFvBvD7YcjT/hXG8jt55TaMAuJ1dmI3tKFJ7CijUWYz4pIfOhkTI6PBTwqu/pmeWsClBRd/7HiWzN1g==",
       "requires": {}
     },
     "react-dev-utils": {

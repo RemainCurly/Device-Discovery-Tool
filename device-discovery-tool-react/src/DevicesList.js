@@ -1,40 +1,165 @@
+//Possible deviceTypes: Endpoint, Server, Access-Points,
+//                      IoT (cameras), Firewalls, Switches,
+//                      Routers, Phones, Unknown
+
 const deviceTester = [
     {
-        favorite: true,
-        name: 'Example1',
-        ip: '123.123.98.455',
-        mac: 'AA:AA:AA:bc:dc',
-        description: '',
-        isUp: false,
-        location: 'Office A'
-    },
-    {
-        favorite: true,
-        name: 'Example2',
-        ip: '123.123.98.455',
-        mac: 'AA:AA:AA:bc:dc',
-        description: '',
+        deviceType: 'Endpoint',
         isUp: true,
-        location: 'Office B'
     },
     {
-        favorite: true,
-        name: 'Example3',
-        ip: '123.123.98.455',
-        mac: 'AA:AA:AA:bc:dc',
-        description: 'this is an example description!',
+        deviceType: 'Server',
         isUp: true,
-        location: 'Office B'
     },
     {
-        favorite: false,
-        name: 'Example4',
-        ip: '123.224.98.465',
-        mac: 'AA:AB:AA:bc:dc',
-        description: 'This device is in building A',
+        deviceType: 'Access-Points',
+        isUp: true,
+    },
+    {
+        deviceType: 'IoT/Cameras',
+        isUp: true,
+    },
+    {
+        deviceType: 'Firewalls',
+        isUp: true,
+    },
+    {
+        deviceType: 'Switches',
+        isUp: true,
+    },
+    {
+        deviceType: 'Routers',
+        isUp: true,
+    },
+    {
+        deviceType: 'Phones',
+        isUp: true,
+    },
+    {
+        deviceType: 'Unknown',
+        isUp: true,
+    },
+    {
+        deviceType: 'Endpoint',
         isUp: false,
-        location: 'The kings room'
-    }
+    },
+    {
+        deviceType: 'Server',
+        isUp: false,
+    },
+    {
+        deviceType: 'Access-Points',
+        isUp: false,
+    },
+    {
+        deviceType: 'IoT/Cameras',
+        isUp: false,
+    },
+    {
+        deviceType: 'Firewalls',
+        isUp: false,
+    },
+    {
+        deviceType: 'Switches',
+        isUp: false,
+    },
+    {
+        deviceType: 'Routers',
+        isUp: false,
+    },
+    {
+        deviceType: 'Phones',
+        isUp: false,
+    },
+    {
+        deviceType: 'Unknown',
+        isUp: false,
+    },
 ];
 
-export default deviceTester;
+const manyUpSomeDown = [
+    {
+        deviceType: 'Endpoint',
+        isUp: true,
+    },
+    {
+        deviceType: 'Phones',
+        isUp: true,
+    },
+    {
+        deviceType: 'Unknown',
+        isUp: true,
+    },
+    {
+        deviceType: 'IoT/Cameras',
+        isUp: true,
+    },
+    {
+        deviceType: 'Unknown',
+        isUp: false,
+    }
+]
+
+const numberRatios = [
+    {
+        deviceType: 'IoT/Cameras',
+        isUp: true,
+    },
+    {
+        deviceType: 'IoT/Cameras',
+        isUp: true,
+    },
+    {
+        deviceType: 'IoT/Cameras',
+        isUp: true,
+    },
+    {
+        deviceType: 'Phones',
+        isUp: false,
+    },
+    {
+        deviceType: 'IoT/Cameras',
+        isUp: true,
+    },
+    {
+        deviceType: 'IoT/Cameras',
+        isUp: true,
+    }
+]
+
+const allUp = [
+    {
+        deviceType: 'IoT/Cameras',
+        isUp: true,
+    },
+    {
+        deviceType: 'Unknown',
+        isUp: true,
+    },
+    {
+        deviceType: 'Phones',
+        isUp: true,
+    },
+    {
+        deviceType: 'Firewalls',
+        isUp: true,
+    },
+    {
+        deviceType: 'Switches',
+        isUp: true,
+    },
+    {
+        deviceType: 'Server',
+        isUp: true,
+    },
+    {
+        deviceType: 'Endpoint',
+        isUp: true,
+    },
+    {
+        deviceType: 'Routers',
+        isUp: true,
+    },
+]
+
+export { deviceTester, manyUpSomeDown, numberRatios, allUp };
