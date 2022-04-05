@@ -24,11 +24,11 @@ function wasDeviceFound(props, deviceType, isUp) {
     return found;
 }
 
-function randomGreenColor(modifier) {
+function randomGreenColor() {
     return `hsl(114, 80%, 27%)`;
 }
 
-function randomRedColor(modifier) {
+function randomRedColor() {
     return `hsl(0, 100%, 47%)`;
 }
 
@@ -44,7 +44,7 @@ function UpDownPieChart(props) {
         if(wasDeviceFound(props, deviceTypes[i], true) === true)
         {
             retrievedData.push(deviceRetriever(props, deviceTypes[i], true).length);
-            retrievedColors.push(randomGreenColor(i+1));
+            retrievedColors.push(randomGreenColor());
             retrievedLabels.push(`(${retrievedData[retrievedData.length - 1]}) ${deviceTypes[i]}`);
         }
     }
@@ -54,7 +54,7 @@ function UpDownPieChart(props) {
         if(wasDeviceFound(props, deviceTypes[i], false) === true)
         {
             retrievedData.push(deviceRetriever(props, deviceTypes[i], false).length);
-            retrievedColors.push(randomRedColor(i+1));
+            retrievedColors.push(randomRedColor());
             retrievedLabels.push(`(${retrievedData[retrievedData.length - 1]}) ${deviceTypes[i]} (Down)`);
         }
     }
