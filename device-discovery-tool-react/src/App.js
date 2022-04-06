@@ -9,6 +9,7 @@ import Contacts from './components/Contacts'
 import ScanDevicesScheduled from './components/ScanDevicesScheduled'
 import DeviceUtility from './components/DeviceUtility'
 import ScanDevices from './components/ScanDevices'
+import Notifications from './components/Notifications'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/' component={HomeScreen} exact />
           <Route path="/os/:id" component={HomeScreen}/>
           <Route path="/auth" component={auth} />
+          <Route path="/Notifications" component={Notifications} />
           <Route path="/network" component={NetworkDevices} />
           <Route path="/down" component={DownDevices} />
           <Route path="/contacts" component={Contacts} />
