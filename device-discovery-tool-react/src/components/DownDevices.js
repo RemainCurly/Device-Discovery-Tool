@@ -28,6 +28,7 @@ function DownDevices(props) {
                                 <th>Description</th>
                                 <th>Status</th>
                                 <th>Location</th>
+                                <th>Device Type</th>
                             </tr>
                         </thead>
                         {/* Only show devices that exist in the DB */}
@@ -43,6 +44,7 @@ function DownDevices(props) {
                                             <td>{device.description}</td>
                                             <td>{device.isUp}</td>
                                             <td>{device.location}</td>
+                                            <td>{device.type}</td>
                                         </tr>
                                         : null}
                                 </tbody>
