@@ -21,6 +21,7 @@ function FavoriteDevices(props) {
                         <th>Description</th>
                         <th>Status</th>
                         <th>Location</th>
+                        <th>Device Type</th>
                     </tr>
                 </thead>
                 {/* Only show devices that exist in the DB */}
@@ -41,6 +42,7 @@ function FavoriteDevices(props) {
                                         <td className='table-danger'>DOWN</td>
                                     }
                                     <td>{device.location}</td>
+                                    <td>{device.type}</td>
                                 </tr>
                             : null }
                         </tbody>

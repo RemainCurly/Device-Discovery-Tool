@@ -32,6 +32,7 @@ function NetworkDevices(props) {
                                 <th>Description</th>
                                 <th>Status</th>
                                 <th>Location</th>
+                                <th>Device Type</th>
                             </tr>
                         </thead>
                         {/* Only show devices that exist in the DB */}
@@ -51,6 +52,7 @@ function NetworkDevices(props) {
                                             <td className='table-danger'>DOWN</td>
                                         }
                                         <td>{device.location}</td>
+                                        <td>{device.type}</td>
                                     </tr>
                                 </tbody>
                             )
