@@ -6,9 +6,12 @@ import DownDevices from './DownDevices';
 export default class Notifications extends Component {
     render() {
         return (
-            <div className="auth-wrapper">
-              <DownDevices/>
-          </div>
+            <div>
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+                <div>Item 4</div>
+            </div>
         );
     }
 }
