@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'DeviceDiscoveryTool.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "mssql",
-        "NAME": "adt_admin",
+        "NAME": "adt_test",
         "USER": "adt_test",
         "PASSWORD": "What'sBrack1n!",
         "HOST": "23.121.188.140",
