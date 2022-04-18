@@ -87,7 +87,7 @@ DATABASES = {
         "HOST": "23.121.188.140",
         "PORT": "1433",
         "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server"},
-        'DRIVER': 'SQL Server Native Client 11.0'
+        # 'DRIVER': 'SQL Server Native Client 11.0'
     },
 }
 
