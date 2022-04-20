@@ -89,17 +89,7 @@ export default class HomeScreen extends React.Component {
                                         return (
                                             <tbody key={OS.pinged}>
                                                 <div><center>
-                                                        <tr>{OS.pinged[0]}</tr>
-                                                        <tr>{OS.pinged[1]}</tr>
-                                                        <tr>{OS.pinged[2]}</tr>
-                                                        <tr>{OS.pinged[3]}</tr>
-                                                        <tr>{OS.pinged[4]}</tr>
-                                                        <tr>{OS.pinged[5]}</tr>
-                                                        <tr>{OS.pinged[6]}</tr>
-                                                        <tr>{OS.pinged[7]}</tr>
-                                                        <tr>{OS.pinged[8]}</tr>
-                                                        <tr>{OS.pinged[9]}</tr>
-                                                        <tr>{OS.pinged[10]}</tr>
+                                                        <tr>{OS.pinged}</tr>
                                                 </center></div>
                                             </tbody>
                                         )
