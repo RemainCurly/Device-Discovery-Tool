@@ -1,6 +1,6 @@
 import React from 'react'
 import "../App.css"
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Table } from 'react-bootstrap';
 import axios from 'axios';
 //These are both for testing purposes
 import { deviceTester, manyUpSomeDown, numberRatios, allUp } from "../DevicesList"
@@ -56,17 +56,46 @@ export default class HomeScreen extends React.Component {
                         <Row>
                             <UpDownPieChart devices={deviceTestList} />
 
-                            <h3>Scanned Network Device for OS Info</h3>
-                            {
-                                this.state.OS.map(OS => <h3>{OS.IP_Address}</h3>)
-                            }
+                            <div className='scroll'>
+                                <h3><center>Scanned Device OS</center></h3>
+                                <Table striped bordered hover>
+                                    <thead>
+                                        <tr>
+                                            <th>Device IP</th>
+                                            <th>OS Detected</th>
+                                        </tr>
+                                    </thead>
+                                    { this.state.OS && this.state.OS.map( OS => {
+                                        return (
+                                            <tbody key={OS.IP_Address}>
+                                                        <td>{OS.IP_Address}</td>
+                                                        <td>{OS.name}</td>
+                                            </tbody>
+                                        )
+                                    })}
+                                </Table>
+                            </div>
                             <hr></hr>
-                            <h3>Detected OS of Device</h3>
-                            {
-                            this.state.OS
-                                .map(OS => <h3> {OS.name}</h3>)
-                            }
-                            <hr></hr>
+                            <div className='scroll'>
+                                <h3><center>Up Devices on Network</center></h3>
+                                <Table striped bordered hover>
+                                    <thead>
+                                        <tr>
+                                            <th>Device IP</th>
+                                        </tr>
+                                    </thead>
+                                    { this.state.OS && this.state.OS.map( OS => {
+                                        {/*hard coded, need help automating this, loop?*/}
+                                        return (
+                                            <tbody key={OS.pinged}>
+                                                <div><center>
+                                                        <tr>{OS.pinged}</tr>
+                                                </center></div>
+                                            </tbody>
+                                        )
+                                    })}
+                                </Table>
+                            </div>
                         </Row>
                     </Col>
                 </Row>

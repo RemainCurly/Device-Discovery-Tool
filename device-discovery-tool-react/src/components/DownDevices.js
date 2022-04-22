@@ -1,61 +1,82 @@
 import React from 'react';
 import { Row, Table, Col, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
+import axios from 'axios';
 
-function DownDevices(props) {
+export default class DownDevices extends React.Component{
 
+    state = {
+        Devices: []
+      }
 
-    return (
-        <div>
-            <h1><center>Down Devices</center></h1>
-            <Row>
-                <Col>
-                    <div className='row m-3'>
-                        <div className='col'>
-                            <LinkContainer to="/">
-                                <Button size="lg" target="_blank" variant="primary">Home Page</Button>
-                            </LinkContainer>
+    constructor(){
+        super()
+        this.funcOne()
+    }
+
+    funcOne(){
+        axios.get(`http://127.0.0.1:8000/network/devices?format=json`)
+          .then(res => {
+            const Devices = res.data;
+            this.setState({ Devices });
+          })
+      }      
+
+    render() {
+        return (
+            <div>
+                <h1><center>Down Devices</center></h1>
+                <Row>
+                    <Col>
+                        <div className='row m-3'>
+                            <div className='col'>
+                                <LinkContainer to="/">
+                                    <Button size="lg" target="_blank" variant="primary">Home Page</Button>
+                                </LinkContainer>
+                            </div>
                         </div>
-                    </div>
-                </Col>
-                <Col>
-                    <Table striped bordered hover>
-                        <thead>
-                            <tr>
-                                <th>Device Name</th>
-                                <th>IP Address</th>
-                                <th>MAC Address</th>
-                                <th>Description</th>
-                                <th>Status</th>
-                                <th>Location</th>
-                                <th>Device Type</th>
-                            </tr>
-                        </thead>
-                        {/* Only show devices that exist in the DB */}
-                        {props.devices && props.devices.map(device => {
-                            return (
-                                <tbody key={device.id}>
-                                    {/* Only show a device if it's down*/}
-                                    {(device.isUp === false) ?
-                                        <tr>
-                                            <td>{device.name}</td>
-                                            <td>{device.ip}</td>
-                                            <td>{device.mac}</td>
-                                            <td>{device.description}</td>
-                                            <td>{device.isUp}</td>
-                                            <td>{device.location}</td>
-                                            <td>{device.type}</td>
-                                        </tr>
-                                        : null}
-                                </tbody>
-                            )
-                        })}
-                    </Table>
-                </Col>
-                <Col></Col>
-            </Row>
-        </div>
-    )
+                    </Col>
+                    <Col>
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th>Device Name</th>
+                                    <th>IP Address</th>
+                                    <th>MAC Address</th>
+                                    <th>Description</th>
+                                    <th>Status</th>
+                                    <th>Location</th>
+                                    <th>Device Type</th>
+                                </tr>
+                            </thead>
+                            {/* Only show devices that exist in the DB */}
+                            {this.state.Devices.Devices && this.state.Devices.Devices.map(device => {
+                                return (
+                                    <tbody key={device.id}>
+                                        {/* Only show a device if it's down*/}
+                                        {(device.status === false) ?
+                                            <tr>
+                                                <td>{device.name}</td>
+                                                <td>{device.ip_address}</td>
+                                                <td>{device.mac_address}</td>
+                                                <td>{device.description}</td>
+                                                {device.status === true ?
+                                                    <td className='table-success'>Up</td>
+                                                    :
+                                                    <td className='table-danger'>DOWN</td>
+                                                }
+                                                <td>{device.location}</td>
+                                                <td>{device.device_type}</td>
+                                            </tr>
+                                            : null}
+                                    </tbody>
+                                )
+                            })}
+                        </Table>
+                    </Col>
+                    <Col></Col>
+                </Row>
+            </div>
+        )
+    }
 }
-
-export default DownDevices;
