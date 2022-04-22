@@ -4,7 +4,7 @@ import { Form, Table } from 'react-bootstrap';
 import axios from 'axios';
 
 
-export default class HomeScreen extends React.Component{
+export default class Contacts extends React.Component{
 
     state = {
         Contacts: []
@@ -43,7 +43,19 @@ export default class HomeScreen extends React.Component{
                         return (
                             <tbody key={contact.id}>
                                     <tr>
-                                        <td>{contact.favorite}</td>
+                                        {contact.favorite === true ?
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled />
+                                                </div>
+                                            </td> 
+                                            :
+                                            <td> 
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled/>
+                                                </div>
+                                            </td> 
+                                        }
                                         <td>{contact.name}</td>
                                         <td>{contact.email}</td>
                                         <td>{contact.phone}</td>

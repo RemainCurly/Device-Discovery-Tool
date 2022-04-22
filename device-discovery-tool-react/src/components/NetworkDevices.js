@@ -58,18 +58,30 @@ export default class NetworkDevices extends React.Component {
                                     <tbody key={device.id}>
                                         <tr>
                                             {/* TODO: Autocheck boxes based on value of device.favorite */}
-                                            <td>{device.favorite}</td>
+                                            {device.favorite === true ?
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled />
+                                                    </div>
+                                                </td> 
+                                                :
+                                                <td> 
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled/>
+                                                    </div>
+                                                </td> 
+                                            }
                                             <td>{device.name}</td>
-                                            <td>{device.ip}</td>
-                                            <td>{device.mac}</td>
+                                            <td>{device.ip_address}</td>
+                                            <td>{device.mac_address}</td>
                                             <td>{device.description}</td>
-                                            {device.isUp === true ?
+                                            {device.status === true ?
                                                 <td className='table-success'>Up</td>
                                                 :
                                                 <td className='table-danger'>DOWN</td>
                                             }
                                             <td>{device.location}</td>
-                                            <td>{device.type}</td>
+                                            <td>{device.device_type}</td>
                                         </tr>
                                     </tbody>
                                 )
