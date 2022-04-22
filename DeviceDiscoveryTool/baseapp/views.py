@@ -37,14 +37,15 @@ def getOS(request, pk):
 
 
     if not pingScan:
-        nm.scan(hosts='10.0.0.0/24', arguments='-n -sP -PE -PA21,23,80,3389')
+        nm.scan(hosts=ip_baseline+'/24', arguments='-n -sP -PE -PA21,23,80,3389')
         hosts_list = [(x, nm[x]['status']['state']) for x in nm.all_hosts()]
         for host, status in hosts_list:
             print('{0}:{1}'.format(host, status))
             pingScan.append(('{0} : {1}'.format(host, status)).upper())
             info = scanner.scan(host, arguments="-O")['scan'][host]['osmatch'][0]
             info["IP_Address"] = host
-            osinfo.append(info)
+            if not flag:
+                osinfo.append(info)
 
 
     if not flag:

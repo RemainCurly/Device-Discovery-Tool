@@ -1,68 +1,84 @@
 import React from "react";
 import { Form, Row, Table, Col, Button} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
+import axios from 'axios';
 
-function NetworkDevices(props) {
+export default class NetworkDevices extends React.Component {
 
-    const toggleFavorite = device => {
-        props.toggleFavorite(device);
+    state = {
+        Devices: []
+      }
+
+    constructor(){
+        super()
+        this.funcOne()
     }
 
-    return (
-        <div>
-            <h1><center>Network Devices</center></h1>
-            <Row>
-                <Col>
-                    <div className='row m-3'>
-                        <div className='col'>
-                            <LinkContainer to="/">
-                                <Button size="lg" target="_blank" variant="primary">Home Page</Button>
-                            </LinkContainer>
-                        </div>
-                    </div>
-                </Col>
-                <Col>
-                    <Table striped bordered hover>
-                        <thead>
-                            <tr>
-                                <th>Favorite</th>
-                                <th>Device Name</th>
-                                <th>IP Address</th>
-                                <th>MAC Address</th>
-                                <th>Description</th>
-                                <th>Status</th>
-                                <th>Location</th>
-                                <th>Device Type</th>
-                            </tr>
-                        </thead>
-                        {/* Only show devices that exist in the DB */}
-                        {props.devices && props.devices.map(device => {
-                            return (
-                                <tbody key={device.id}>
-                                    <tr>
-                                        {/* TODO: Autocheck boxes based on value of device.favorite */}
-                                        <td><Form.Check onClick={() => toggleFavorite(device)} /></td>
-                                        <td>{device.name}</td>
-                                        <td>{device.ip}</td>
-                                        <td>{device.mac}</td>
-                                        <td>{device.description}</td>
-                                        {device.isUp === true ?
-                                            <td className='table-success'>Up</td>
-                                            :
-                                            <td className='table-danger'>DOWN</td>
-                                        }
-                                        <td>{device.location}</td>
-                                        <td>{device.type}</td>
-                                    </tr>
-                                </tbody>
-                            )
-                        })}
-                    </Table>
-                </Col>
-                <Col></Col>
-            </Row>
-        </div>
-    )
-}
+    funcOne(){
+        axios.get(`http://127.0.0.1:8000/network/devices?format=json`)
+          .then(res => {
+            const Devices = res.data;
+            this.setState({ Devices });
+          })
+      }      
 
-export default NetworkDevices;
+
+
+    render() {
+        return (
+            <div>
+                <h1><center>Network Devices</center></h1>
+                <Row>
+                    <Col>
+                        <div className='row m-3'>
+                            <div className='col'>
+                                <LinkContainer to="/">
+                                    <Button size="lg" target="_blank" variant="primary">Home Page</Button>
+                                </LinkContainer>
+                            </div>
+                        </div>
+                    </Col>
+                    <Col>
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th>Favorite</th>
+                                    <th>Device Name</th>
+                                    <th>IP Address</th>
+                                    <th>MAC Address</th>
+                                    <th>Description</th>
+                                    <th>Status</th>
+                                    <th>Location</th>
+                                    <th>Device Type</th>
+                                </tr>
+                            </thead>
+                            {/* Only show devices that exist in the DB */}
+                            {this.state.Devices.Devices && this.state.Devices.Devices.map(device => {
+                                return (
+                                    <tbody key={device.id}>
+                                        <tr>
+                                            {/* TODO: Autocheck boxes based on value of device.favorite */}
+                                            <td>{device.favorite}</td>
+                                            <td>{device.name}</td>
+                                            <td>{device.ip}</td>
+                                            <td>{device.mac}</td>
+                                            <td>{device.description}</td>
+                                            {device.isUp === true ?
+                                                <td className='table-success'>Up</td>
+                                                :
+                                                <td className='table-danger'>DOWN</td>
+                                            }
+                                            <td>{device.location}</td>
+                                            <td>{device.type}</td>
+                                        </tr>
+                                    </tbody>
+                                )
+                            })}
+                        </Table>
+                    </Col>
+                    <Col></Col>
+                </Row>
+            </div>
+        )
+    }
+}
