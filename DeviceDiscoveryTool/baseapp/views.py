@@ -28,6 +28,8 @@ ipPassed = ""
 
 @api_view(['GET'])
 def getOS(request, pk):
+    if pk == 'undefined':
+        pk = ip_addr
 
 
     #osinfo.append(scanner.scan(pk, arguments="-O")['scan'][pk]['osmatch'][0])
