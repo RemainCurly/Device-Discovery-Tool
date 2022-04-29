@@ -9,6 +9,7 @@ import Contacts from './components/Contacts'
 import ScanDevicesScheduled from './components/ScanDevicesScheduled'
 import DeviceUtility from './components/DeviceUtility'
 import ScanDevices from './components/ScanDevices'
+import AddContact from './components/AddContact'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/scanSchedule" component={ScanDevicesScheduled} />
           <Route path="/deviceUtility" component={DeviceUtility} />
           <Route path="/scanNow" component={ScanDevices} />
+          <Route path="/addcontact" component={AddContact} />
         </Switch>
       </main>
       <Footer />

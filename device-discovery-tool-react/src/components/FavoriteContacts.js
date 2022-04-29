@@ -77,6 +77,10 @@ export default class FavoriteContacts extends React.Component{
                     <LinkContainer to="/contacts">
                         <Button size="lg" target="_blank" variant="primary">See All Contacts</Button>
                     </LinkContainer>
+                    <hr></hr>
+                    <LinkContainer to="/addcontact">
+                        <Button size="lg" target="_blank" variant="primary">Add Contact</Button>
+                    </LinkContainer>
                 </div>
                 </div>
             </div>
