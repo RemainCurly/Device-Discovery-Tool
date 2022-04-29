@@ -27,58 +27,63 @@ export default class Contacts extends React.Component {
     render() {
         return (
             <div>
-                <center>
+                <Row>
                     <Col>
-                        <Row className='sideChartPadding'>
-                            <h1><center>Contacts</center></h1>
-                            <Table striped bordered hover>
-                                <thead>
-                                    <tr>
-                                        <th>Favorite</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone Number</th>
-                                        <th>Notes</th>
-                                    </tr>
-                                </thead>
-                                {/* Only show contacts that exist in the DB */}
-                                {this.state.Contacts.Contacts && this.state.Contacts.Contacts.map(contact => {
-                                    return (
-                                        <tbody key={contact.id}>
-                                            <tr>
-                                                {contact.favorite === true ?
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled />
-                                                        </div>
-                                                    </td>
-                                                    :
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled />
-                                                        </div>
-                                                    </td>
-                                                }
-                                                <td>{contact.name}</td>
-                                                <td>{contact.email}</td>
-                                                <td>{contact.phone}</td>
-                                                <td>{contact.notes}</td>
-                                            </tr>
-                                        </tbody>
-                                    )
-                                })}
-                            </Table>
-                        </Row>
-                        <Row className="buttonPadding">
-                            <Button className="individualButtonPadding" size="lg" variant="primary">Add New Contact</Button>
-                            <Button className="individualButtonPadding" size="lg" variant="primary">Edit Contact</Button>
-                            <Button className="individualButtonPadding" size="lg" variant="primary">Remove Contact</Button>
-                            <LinkContainer to="/">
-                                    <Button size="lg" target="_blank" variant="primary">Home Page</Button>
-                            </LinkContainer>
-                        </Row>
+                        <h1><center>Contacts</center></h1>
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th>Favorite</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone Number</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            {/* Only show contacts that exist in the DB */}
+                            {this.state.Contacts.Contacts && this.state.Contacts.Contacts.map(contact => {
+                                return (
+                                    <tbody key={contact.id}>
+                                        <tr>
+                                            {contact.favorite === true ?
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled />
+                                                    </div>
+                                                </td>
+                                                :
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled />
+                                                    </div>
+                                                </td>
+                                            }
+                                            <td>{contact.name}</td>
+                                            <td>{contact.email}</td>
+                                            <td>{contact.phone}</td>
+                                            <td>{contact.notes}</td>
+                                        </tr>
+                                    </tbody>
+                                )
+                            })}
+                        </Table>
                     </Col>
-                </center>
+                    <Col>
+                        <div className="buttonPadding">
+                            <LinkContainer to="/addcontact">
+                                <Button className="individualButtonPadding" size="lg" variant="primary">Add New Contact</Button>
+                            </LinkContainer>
+                            <br />
+                            <Button className="individualButtonPadding" size="lg" variant="primary">Edit Contact</Button>
+                            <br />
+                            <Button className="individualButtonPadding" size="lg" variant="primary">Remove Contact</Button>
+                            <br />
+                            <LinkContainer to="/">
+                                <Button size="lg" target="_blank" variant="primary">Home Page</Button>
+                            </LinkContainer>
+                        </div>
+                    </Col>
+                </Row>
             </div>
         )
     }

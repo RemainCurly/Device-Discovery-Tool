@@ -180,11 +180,15 @@
 }
 
 .buttonPadding {
-  padding: 40px 0;
-  padding-left: 40%;
-  padding-right: 40%;
+  padding: 0 40px;
+  margin-top: 20%;
 }
 
 .buttonPadding * {
-  margin: 10px 0;
+  width: 100%;
+  margin: 10px;
+}
+
+.formButtonPadding {
+  margin: 0 10px;
 }
