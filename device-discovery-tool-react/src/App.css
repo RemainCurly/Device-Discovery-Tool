@@ -174,3 +174,17 @@
   margin: auto;
   margin-bottom: 20px;
 }
+
+.sideChartPadding {
+  padding: 0 40px;
+}
+
+.buttonPadding {
+  padding: 40px 0;
+  padding-left: 40%;
+  padding-right: 40%;
+}
+
+.buttonPadding * {
+  margin: 10px 0;
+}
