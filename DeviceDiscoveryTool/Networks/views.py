@@ -1,6 +1,5 @@
 from django.shortcuts import render
 import json
-import requests
 from django.http import JsonResponse
 from django.http import HttpResponse
 from django.http import HttpRequest

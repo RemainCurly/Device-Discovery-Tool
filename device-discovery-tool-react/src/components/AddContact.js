@@ -57,7 +57,6 @@ function AddContact() {
 
     return (
         <div>
-          <Form>
             <center>
             <h1>Add Contact Form</h1>
             <hr></hr>
@@ -82,7 +81,6 @@ function AddContact() {
             <input required type="submit" name="submit"/>
             </form>
             </center>
-            </Form>
         </div>
     )
 }
