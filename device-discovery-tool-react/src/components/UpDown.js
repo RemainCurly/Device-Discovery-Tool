@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default class UpDownAlert extends React.Component {
+    _isMounted = false;
 
     state = {
         Devices: [],
@@ -15,6 +16,7 @@ export default class UpDownAlert extends React.Component {
     }
 
     componentDidMount() {
+        this._isMounted = true;
         this.axiosFunc();
     }
 
@@ -27,6 +29,10 @@ export default class UpDownAlert extends React.Component {
             });
             this.setState({ numDownDevices: counter, prevDevices: this.state.Devices });
         }
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     axiosFunc() {

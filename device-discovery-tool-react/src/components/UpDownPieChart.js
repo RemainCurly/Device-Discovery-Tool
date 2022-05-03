@@ -1,91 +1,119 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import axios from 'axios';
 
 const deviceTypes = [
     'Endpoint', 'Server', 'Access-Points', 'IoT/Cameras', 'Firewalls',
     'Switches', 'Routers', 'Phones', 'Unknown'
 ]
 
-function deviceRetriever(props, deviceType, isUp) {
-    return props.devices.filter((device) => {
-        if(device.deviceType === deviceType && device.isUp === isUp)
-            return device;
-    });
-}
+export default class UpDownPieChart extends React.Component {
+    _isMounted = false;
 
-function wasDeviceFound(props, deviceType, isUp) {
-    let found = false;
-    for(let i = 0; i < props.devices.length; i++)
-    {
-        if(props.devices[i].deviceType === deviceType && props.devices[i].isUp === isUp)
-            found = true;
+    state = {
+        Devices: [],
+        prevDevices: [],
+        numDownDevices: 0,
+        numUpDevices: 0,
     }
-    return found;
-}
 
-function randomGreenColor() {
-    return `hsl(114, 80%, 27%)`;
-}
+    retrievedData = [];
+    retrievedColors = [];
+    retrievedLabels = [];
 
-function randomRedColor() {
-    return `hsl(0, 100%, 47%)`;
-}
+    constructor() {
+        super();
+        ChartJS.register(ArcElement, Tooltip, Legend);
+    }
 
-function UpDownPieChart(props) {
+    deviceRetriever(deviceType, isUp) {
+        return this.state.Devices.Devices.filter(device => {
+            if(device.device_type === deviceType && device.status === isUp)
+                return device;
+        }).length;
+    }
 
-    ChartJS.register(ArcElement, Tooltip, Legend);
-    let retrievedData = [];
-    let retrievedColors = [];
-    let retrievedLabels = [];
+    wasDeviceFound(deviceType, isUp) {
+        let found = false;
+        this.state.Devices.Devices.map(device => {
+            if (device.device_type === deviceType && device.status === isUp)
+                found = true;
+        });
+        return found;
+    }
 
-    for(let i = 0; i < deviceTypes.length; i++)
-    {
-        if(wasDeviceFound(props, deviceTypes[i], true) === true)
-        {
-            retrievedData.push(deviceRetriever(props, deviceTypes[i], true).length);
-            retrievedColors.push(randomGreenColor());
-            retrievedLabels.push(`(${retrievedData[retrievedData.length - 1]}) ${deviceTypes[i]}`);
+    componentDidMount() {
+        this._isMounted = true;
+        this.axiosFunc();
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
+    componentDidUpdate() {
+        if (JSON.stringify(this.state.Devices.Devices) !== JSON.stringify(this.state.prevDevices.Devices)) {
+            
+            for(let i = 0; i < deviceTypes.length; i++)
+            {
+                if(this.wasDeviceFound(deviceTypes[i], true))
+                {
+                    this.retrievedData.push(this.deviceRetriever(deviceTypes[i], true));
+                    this.retrievedColors.push("hsl(114, 80%, 27%");
+                    this.retrievedLabels.push(`(${this.retrievedData[this.retrievedData.length - 1]}) ${deviceTypes[i]}`);
+                }
+            }
+
+            for(let i = deviceTypes.length; i >= 0; i--)
+            {
+                if(this.wasDeviceFound(deviceTypes[i], false))
+                {
+                    this.retrievedData.push(this.deviceRetriever(deviceTypes[i], false));
+                    this.retrievedColors.push("hsl(0, 100%, 47%");
+                    this.retrievedLabels.push(`(${this.retrievedData[this.retrievedData.length - 1]}) ${deviceTypes[i]} (Down)`);
+                }
+            }
+
+            this.setState({ prevDevices: this.state.Devices });
         }
     }
 
-    for(let i = deviceTypes.length; i >= 0; i--)
-    {
-        if(wasDeviceFound(props, deviceTypes[i], false) === true)
-        {
-            retrievedData.push(deviceRetriever(props, deviceTypes[i], false).length);
-            retrievedColors.push(randomRedColor());
-            retrievedLabels.push(`(${retrievedData[retrievedData.length - 1]}) ${deviceTypes[i]} (Down)`);
-        }
+    axiosFunc() {
+        axios.get(`http://127.0.0.1:8000/network/devices?format=json`)
+            .then(res => {
+                const Devices = res.data;
+                this.setState({ Devices: Devices });
+            })
     }
 
-    const data = {
-        labels: retrievedLabels,
+    data = {
+        labels: this.retrievedLabels,
         datasets: [
         {
             label: '# of Devices',
-            data: retrievedData,
-            backgroundColor: retrievedColors,
+            data: this.retrievedData,
+            backgroundColor: this.retrievedColors,
             borderColor: '#000000',
-            borderWidth: 1,
+            borderWidth: 1
         }]
     };
 
-    return (
-        <div className="canvas">
-            <Pie data={data} options={{
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        labels: {
-                            boxWidth: 0
+    render() {
+        return (
+            <div className="canvas">
+                <Pie data={this.data} options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                boxWidth: 0
+                            }
                         }
                     }
-                }
-            }}/>
-        </div>
-    )
+                }} />
+            </div>
+        )
+    }
 }
-
-export default UpDownPieChart;

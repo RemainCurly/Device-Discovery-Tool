@@ -5,6 +5,7 @@ import axios from 'axios';
 
 
 export default class Contacts extends React.Component {
+    _isMounted = false;
 
     state = {
         Contacts: []
@@ -15,7 +16,12 @@ export default class Contacts extends React.Component {
     }
 
     componentDidMount() {
+        this._isMounted = true;
         this.funcOne()
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     funcOne() {

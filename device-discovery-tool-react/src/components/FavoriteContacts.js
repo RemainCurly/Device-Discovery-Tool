@@ -6,6 +6,7 @@ import "../App.css"
 import axios from 'axios';
 
 export default class FavoriteContacts extends React.Component{
+    _isMounted = false;
 
     state = {
         Contacts: []
@@ -16,7 +17,12 @@ export default class FavoriteContacts extends React.Component{
     }
 
     componentDidMount() {
+        this._isMounted = true;
         this.funcOne()
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     funcOne(){

@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import axios from 'axios';
 
 export default class DownDevices extends React.Component{
+    _isMounted = false;
 
     state = {
         Devices: []
@@ -14,7 +15,12 @@ export default class DownDevices extends React.Component{
     }
 
     componentDidMount() {
+        this._isMounted = true;
         this.funcOne();
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     funcOne(){

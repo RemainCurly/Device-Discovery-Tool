@@ -1,9 +1,9 @@
 import React from 'react';
-import { Form, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import axios from 'axios';
 
 export default class FavoriteDevices extends React.Component{
-    
+    _isMounted = false;
 
     state = {
         Devices: []
@@ -14,7 +14,12 @@ export default class FavoriteDevices extends React.Component{
     }
 
     componentDidMount() {
+        this._isMounted = true;
         this.funcOne()
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     funcOne(){
