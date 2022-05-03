@@ -4,7 +4,7 @@ import '../App.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
 
-function NewPage(props) {
+function NewPage() {
   return (
     <div className='newpage'>
       <Container>

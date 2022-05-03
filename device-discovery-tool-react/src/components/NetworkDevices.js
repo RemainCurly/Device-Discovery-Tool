@@ -4,14 +4,23 @@ import { LinkContainer } from 'react-router-bootstrap'
 import axios from 'axios';
 
 export default class NetworkDevices extends React.Component {
+    _isMounted = false;
 
     state = {
         Devices: []
       }
 
     constructor(){
-        super()
-        this.funcOne()
+        super();
+    }
+
+    componentDidMount() {
+        this._isMounted = true;
+        this.funcOne();
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     funcOne(){
@@ -60,14 +69,14 @@ export default class NetworkDevices extends React.Component {
                                             {/* TODO: Autocheck boxes based on value of device.favorite */}
                                             {device.favorite === true ?
                                                 <td>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled />
+                                                    <div className="form-check">
+                                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled />
                                                     </div>
                                                 </td> 
                                                 :
                                                 <td> 
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled/>
+                                                    <div className="form-check">
+                                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled/>
                                                     </div>
                                                 </td> 
                                             }

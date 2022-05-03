@@ -18,6 +18,13 @@ flag = []
 
 
 
+
+import nmap
+import json
+
+ 
+scanner = nmap.PortScanner()
+ 
 ip_addr = '127.0.0.1'
 ip_baseline = '10.0.0.0'
 ipPassed = ""
@@ -28,6 +35,8 @@ ipPassed = ""
 
 @api_view(['GET'])
 def getOS(request, pk):
+    if pk == 'undefined':
+        pk = ip_addr
 
 
     #osinfo.append(scanner.scan(pk, arguments="-O")['scan'][pk]['osmatch'][0])
