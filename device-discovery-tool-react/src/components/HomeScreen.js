@@ -24,8 +24,7 @@ export default class HomeScreen extends React.Component  {
         super()
         this.funcOne(props)
     }
-
-
+    
     funcOne(props){
         var id = props.match.params.id
           axios.get(`http://127.0.0.1:8000/os/${id}/?format=json`)

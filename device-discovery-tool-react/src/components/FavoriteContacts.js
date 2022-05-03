@@ -12,7 +12,10 @@ export default class FavoriteContacts extends React.Component{
       }
 
     constructor(){
-        super()
+        super();
+    }
+
+    componentDidMount() {
         this.funcOne()
     }
 
@@ -49,14 +52,14 @@ export default class FavoriteContacts extends React.Component{
                                     <tr>
                                         {contact.favorite === true ?
                                             <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled />
+                                                <div className="form-check">
+                                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled />
                                                 </div>
                                             </td> 
                                             :
                                             <td> 
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled/>
+                                                <div className="form-check">
+                                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled/>
                                                 </div>
                                             </td> 
                                         }

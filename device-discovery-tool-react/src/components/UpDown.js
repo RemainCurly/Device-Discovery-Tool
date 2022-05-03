@@ -1,43 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-function UpDownAlert(props) {
+export default class UpDownAlert extends React.Component {
 
-    const [numDownDevices, setNumDownDevices] = useState(0);
+    state = {
+        Devices: [],
+        prevDevices: [],
+        numDownDevices: 0,
+    }
 
-    useEffect( () => {
-        let counter = 0;
-        props.devices.map((item) => {
-            if(item.isUp === false)
-            {
-                counter++;
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        });
+    constructor() {
+        super();
+    }
 
-        setNumDownDevices(counter);
+    componentDidMount() {
+        this.axiosFunc();
+    }
 
-    }, [numDownDevices])
+    componentDidUpdate() {
+        if (JSON.stringify(this.state.Devices.Devices) !== JSON.stringify(this.state.prevDevices.Devices)) {
+            let counter = 0;
+            this.state.Devices.Devices.map(device => {
+                if(device.status === false)
+                    counter++;
+            });
+            this.setState({ numDownDevices: counter, prevDevices: this.state.Devices });
+        }
+    }
 
-    return (
-        <div>
-            { (numDownDevices > 0)? 
-                <div className='downDevices'>
-                    <Link className={'link'} to={'/down'}>
-                        <h2><center>{numDownDevices} device(s) down!</center></h2>
-                    </Link>
-                </div>
-            : //No devices down
-                <div className='upDevices'>
-                    <h2><center>All Devices are Currently Running.</center></h2>
-                </div>
-            }
-        </div>
-    )
+    axiosFunc() {
+        axios.get(`http://127.0.0.1:8000/network/devices?format=json`)
+            .then(res => {
+                const Devices = res.data;
+                this.setState({ Devices: Devices });
+            })
+    }
+
+    render() {
+        return (
+            <div>
+                {(this.state.numDownDevices > 0) ?
+                    <div className='downDevices'>
+                        <Link className={'link'} to={'/down'}>
+                            <h2><center>{this.state.numDownDevices} device(s) down!</center></h2>
+                        </Link>
+                    </div>
+                    : //No devices down
+                    <div className='upDevices'>
+                        <h2><center>All Devices are Currently Running.</center></h2>
+                    </div>
+                }
+            </div>
+        )
+    }
 }
-
-export default UpDownAlert;

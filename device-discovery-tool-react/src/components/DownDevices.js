@@ -10,8 +10,11 @@ export default class DownDevices extends React.Component{
       }
 
     constructor(){
-        super()
-        this.funcOne()
+        super();
+    }
+
+    componentDidMount() {
+        this.funcOne();
     }
 
     funcOne(){
