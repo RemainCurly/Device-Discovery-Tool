@@ -45,6 +45,7 @@ export default class Contacts extends React.Component {
         return (
             <div>
                 <Row>
+                    <Col></Col>
                     <Col>
                         <h1><center>Contacts</center></h1>
                         <Table striped bordered hover>
@@ -100,6 +101,7 @@ export default class Contacts extends React.Component {
                             </LinkContainer>
                         </div>
                     </Col>
+                    <Col></Col>
                 </Row>
             </div>
         )
