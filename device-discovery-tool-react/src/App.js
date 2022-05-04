@@ -5,10 +5,7 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
-import Home from "./views/homePage";
 import Login from "./views/loginPage";
-import Register from "./views/registerPage";
-import ProtectedPage from "./views/ProtectedPage";
 import HomeScreen from './components/HomeScreen'
 import NetworkDevices from './components/NetworkDevices'
 import DownDevices from './components/DownDevices'
