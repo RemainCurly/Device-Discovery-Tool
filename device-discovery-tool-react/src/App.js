@@ -16,6 +16,7 @@ import Contacts from './components/Contacts'
 import ScanDevicesScheduled from './components/ScanDevicesScheduled'
 import DeviceUtility from './components/DeviceUtility'
 import ScanDevices from './components/ScanDevices'
+import AddContact from './components/AddContact'
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <PrivateRoute path="/scanSchedule" component={ScanDevicesScheduled} />
             <PrivateRoute path="/deviceUtility" component={DeviceUtility} />
             <PrivateRoute path="/scanNow" component={ScanDevices} />
+            <PrivateRoute path="/addcontact" component={AddContact} />
           </Switch>
         </AuthProvider>
         <Footer />
