@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Contact
+from .models import Contact, Device
 
 class ContactSerializer(serializers.ModelSerializer):
     email = serializers.CharField(max_length=100)

@@ -1,16 +1,10 @@
 from django.shortcuts import render
-import json
-from django.http import JsonResponse
-from django.http import HttpResponse
-from django.http import HttpRequest
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Contact
 from .models import Device
-from .serializers import ContactSerializer
 
-
-
+# TODO: Look at views.py in DjangoLearning to change all of the below code.
 @api_view(['GET', 'POST'])
 def contact(request):
     #assert isinstance(request, HttpRequest)

@@ -32,6 +32,14 @@ export default class Contacts extends React.Component {
             })
     }
 
+    //TODO: Figure out backend issues so POST/DELETE can happen
+    editContact(contact) {
+        console.log('Editing contact! ID: ' + contact);
+    }
+
+    deleteContact(contact) {
+        console.log('Deleting contact! ID: ' + contact);
+    }
 
     render() {
         return (
@@ -47,6 +55,7 @@ export default class Contacts extends React.Component {
                                     <th>Email</th>
                                     <th>Phone Number</th>
                                     <th>Notes</th>
+                                    <th>Modify</th>
                                 </tr>
                             </thead>
                             {/* Only show contacts that exist in the DB */}
@@ -71,6 +80,9 @@ export default class Contacts extends React.Component {
                                             <td>{contact.email}</td>
                                             <td>{contact.phone}</td>
                                             <td>{contact.notes}</td>
+                                            <td><Button variant="info" onClick={() => this.editContact(contact.id)}>Edit</Button>
+                                                <Button variant="danger" onClick={() => this.deleteContact(contact.id)}>Delete</Button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 )
@@ -82,10 +94,6 @@ export default class Contacts extends React.Component {
                             <LinkContainer to="/addcontact">
                                 <Button className="individualButtonPadding" size="lg" variant="primary">Add New Contact</Button>
                             </LinkContainer>
-                            <br />
-                            <Button className="individualButtonPadding" size="lg" variant="primary">Edit Contact</Button>
-                            <br />
-                            <Button className="individualButtonPadding" size="lg" variant="primary">Remove Contact</Button>
                             <br />
                             <LinkContainer to="/">
                                 <Button size="lg" target="_blank" variant="primary">Home Page</Button>
