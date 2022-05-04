@@ -1,0 +1,1 @@
+cd venv/Scripts & activate & cd ../.. & cd DeviceDiscoveryTool & python manage.py runserver
