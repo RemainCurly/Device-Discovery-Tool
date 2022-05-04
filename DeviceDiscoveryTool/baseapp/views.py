@@ -2,8 +2,6 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
-
 import nmap
 import json
 
@@ -11,21 +9,19 @@ import json
 scanner = nmap.PortScanner()
 nm = nmap.PortScanner()
  
-ip_baseline = '10.0.0.0'
-pingScan = []
-osinfo = []
-flag = []
+
 ip_addr = '127.0.0.1'
-
-
-
-
+ip_baseline = '10.0.0.0'
 
 @api_view(['GET'])
 def getOS(request, pk):
+
+    pingScan = []
+    osinfo = []
+    flag = []
+
     if pk == 'undefined':
-        pk = ip_addr
-    #osinfo.append(scanner.scan(pk, arguments="-O")['scan'][pk]['osmatch'][0])
+         pk = ip_addr
 
     info = scanner.scan(pk, arguments="-O")['scan'][pk]['osmatch'][0]
     info["IP_Address"] = pk
@@ -35,7 +31,7 @@ def getOS(request, pk):
         hosts_list = [(x, nm[x]['status']['state']) for x in nm.all_hosts()]
         for host, status in hosts_list:
             print('{0}:{1}'.format(host, status))
-            pingScan.append(('{0} : {1}'.format(host, status)).upper())
+            pingScan.append(('{0}:{1},  '.format(host, status)).upper())
             # info = scanner.scan(host, arguments="-O")['scan'][host]['osmatch'][0]
             # info["IP_Address"] = host
             # if not flag:

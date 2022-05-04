@@ -50,7 +50,7 @@ export default class Contacts extends React.Component {
                                 </tr>
                             </thead>
                             {/* Only show contacts that exist in the DB */}
-                            {this.state.Contacts.Contacts && this.state.Contacts.Contacts.map(contact => {
+                            {this.state.Contacts && this.state.Contacts.map(contact => {
                                 return (
                                     <tbody key={contact.id}>
                                         <tr>
