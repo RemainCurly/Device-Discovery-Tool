@@ -15,19 +15,7 @@ ip_baseline = '10.0.0.0'
 pingScan = []
 osinfo = []
 flag = []
-
-
-
-
-import nmap
-import json
-
- 
-scanner = nmap.PortScanner()
- 
 ip_addr = '127.0.0.1'
-ip_baseline = '10.0.0.0'
-ipPassed = ""
 
 
 
@@ -37,13 +25,10 @@ ipPassed = ""
 def getOS(request, pk):
     if pk == 'undefined':
         pk = ip_addr
-
-
     #osinfo.append(scanner.scan(pk, arguments="-O")['scan'][pk]['osmatch'][0])
 
     info = scanner.scan(pk, arguments="-O")['scan'][pk]['osmatch'][0]
     info["IP_Address"] = pk
-
 
     if not pingScan:
         nm.scan(hosts=ip_baseline+'/24', arguments='-n -sP -PE -PA21,23,80,3389')
@@ -51,11 +36,10 @@ def getOS(request, pk):
         for host, status in hosts_list:
             print('{0}:{1}'.format(host, status))
             pingScan.append(('{0} : {1}'.format(host, status)).upper())
-            info = scanner.scan(host, arguments="-O")['scan'][host]['osmatch'][0]
-            info["IP_Address"] = host
-            if not flag:
-                osinfo.append(info)
-
+            # info = scanner.scan(host, arguments="-O")['scan'][host]['osmatch'][0]
+            # info["IP_Address"] = host
+            # if not flag:
+            #     osinfo.append(info)
 
     if not flag:
         info["pinged"] = pingScan
