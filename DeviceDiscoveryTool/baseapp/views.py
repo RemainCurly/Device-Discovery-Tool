@@ -8,10 +8,12 @@ import json
  
 scanner = nmap.PortScanner()
 nm = nmap.PortScanner()
+nmScan = nmap.PortScanner()
  
 
 ip_addr = '127.0.0.1'
 ip_baseline = '10.0.0.0'
+
 
 @api_view(['GET'])
 def getOS(request, pk):
@@ -19,12 +21,32 @@ def getOS(request, pk):
     pingScan = []
     osinfo = []
     flag = []
+    st = ""
 
     if pk == 'undefined':
          pk = ip_addr
 
     info = scanner.scan(pk, arguments="-O")['scan'][pk]['osmatch'][0]
     info["IP_Address"] = pk
+
+    
+
+    nmScan.scan(pk, '21-443')
+    for host in nmScan.all_hosts():
+     print('Host : %s (%s)' % (host, nmScan[host].hostname()))
+     print('State : %s' % nmScan[host].state())
+     for proto in nmScan[host].all_protocols():
+        #  print('----------')
+        #  print('Protocol : %s' % proto)
+
+         lport = nmScan[host][proto].keys()
+         sorted(lport)
+         for port in lport:
+            # print ('port : %sstate : %s' % (port, nmScan[host][proto][port]['state']))
+            st = st + ('%s : %s, ' % (port, nmScan[host][proto][port]['state']))
+
+    info["Ports"] = st           
+    
 
     if not pingScan:
         nm.scan(hosts=ip_baseline+'/24', arguments='-n -sP -PE -PA21,23,80,3389')
