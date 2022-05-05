@@ -22,6 +22,7 @@ export default class HomeScreen extends React.Component {
 
     componentDidMount() {
         this._isMounted = true;
+        window.scrollTo(0,0);
         this.funcOne(this.props);
     }
 
