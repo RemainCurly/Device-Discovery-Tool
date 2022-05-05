@@ -7,16 +7,6 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 
-class ContactViewSet(viewsets.ModelViewSet):
-    queryset = Contact.objects.all()
-    serializer_class = ContactSerializer
-
-
-class DeviceViewSet(viewsets.ModelViewSet):
-    queryset = Device.objects.all()
-    serializer_class = DeviceSerializer
-
-# # TODO: Look at views.py in DjangoLearning to change all of the below code.
 @api_view(['GET', 'POST'])
 def contact(request):
     #assert isinstance(request, HttpRequest)
