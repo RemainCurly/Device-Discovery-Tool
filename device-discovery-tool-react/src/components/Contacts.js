@@ -25,7 +25,7 @@ export default class Contacts extends React.Component {
     }
 
     funcOne() {
-        axios.get(`http://127.0.0.1:8000/network/contacts?format=json`)
+        axios.get(`http://127.0.0.1:8000/network/contacts/`)
             .then(res => {
                 const Contacts = res.data;
                 this.setState({ Contacts });
@@ -60,7 +60,7 @@ export default class Contacts extends React.Component {
                                 </tr>
                             </thead>
                             {/* Only show contacts that exist in the DB */}
-                            {this.state.Contacts.Contacts && this.state.Contacts.Contacts.map(contact => {
+                            {this.state.Contacts && this.state.Contacts.map(contact => {
                                 return (
                                     <tbody key={contact.id}>
                                         <tr>

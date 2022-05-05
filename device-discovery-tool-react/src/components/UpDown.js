@@ -21,9 +21,9 @@ export default class UpDownAlert extends React.Component {
     }
 
     componentDidUpdate() {
-        if (JSON.stringify(this.state.Devices.Devices) !== JSON.stringify(this.state.prevDevices.Devices)) {
+        if (JSON.stringify(this.state.Devices) !== JSON.stringify(this.state.prevDevices)) {
             let counter = 0;
-            this.state.Devices.Devices.map(device => {
+            this.state.Devices.map(device => {
                 if(device.status === false)
                     counter++;
             });
@@ -36,10 +36,10 @@ export default class UpDownAlert extends React.Component {
     }
 
     axiosFunc() {
-        axios.get(`http://127.0.0.1:8000/network/devices?format=json`)
+        axios.get(`http://127.0.0.1:8000/network/devices/`)
             .then(res => {
                 const Devices = res.data;
-                this.setState({ Devices: Devices });
+                this.setState({ Devices });
             })
     }
 

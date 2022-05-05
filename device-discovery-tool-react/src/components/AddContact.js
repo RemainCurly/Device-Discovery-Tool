@@ -8,28 +8,28 @@ import axios from 'axios';
 function AddContact() {
 
   const [data, setData] = useState({
-    favorite: "",
-    cname: "",
+    favorite: false,
+    name: "",
     email: "",
     phone: "",
     notes: ""
   })
 
-  const { favorite, cname, email, phone, notes } = data;
+  const { favorite, name, email, phone, notes } = data;
 
 
   const changeHandler = e => {
-    setData({ ...data, [e.target.name]: [e.target.value] });
+    setData({ ...data, [e.target.name]: e.target.value });
   }
 
 
   const changeHandlerB = e => {
-    let newVal = "0";
+    let newVal = false;
     var checkBox = document.getElementById("myCheck");
     if (checkBox.checked == true) {
-      newVal = "1";
+      newVal = true;
     }
-    setData({ ...data, [e.target.name]: [newVal] });
+    setData({ ...data, [e.target.name]: newVal });
   }
 
   const submitHandler = e => {
@@ -40,10 +40,8 @@ function AddContact() {
     async function tryIt() {
       try {
         let result = await axios.post(
-          "http://127.0.0.1:8000/network/contacts",
-          {
-            data: data,
-          }
+          "http://127.0.0.1:8000/network/contacts/",
+            data,
         );
         console.log("Contact Added Successfully");
         alert("Contact Added Successfully!");
@@ -63,8 +61,8 @@ function AddContact() {
           <label for="favorite">Favorite: </label> <br />
           <input type="checkbox" id="myCheck" name="favorite" value={favorite} onChange={changeHandlerB} /><br />
           <br></br>
-          <label for="cname">Name: </label> <br />
-          <input required type="text" name="cname" value={cname} onChange={changeHandler} placeholder="Input Full Name" /><br />
+          <label for="name">Name: </label> <br />
+          <input required type="text" name="name" value={name} onChange={changeHandler} placeholder="Input Full Name" /><br />
           <br></br>
           <label for="email">Email: </label> <br />
           <input type="text" name="email" value={email} onChange={changeHandler} placeholder="Input Email"
