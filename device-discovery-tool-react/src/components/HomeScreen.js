@@ -22,6 +22,7 @@ export default class HomeScreen extends React.Component {
 
     componentDidMount() {
         this._isMounted = true;
+        window.scrollTo(0,0);
         this.funcOne(this.props);
     }
 
@@ -65,6 +66,7 @@ export default class HomeScreen extends React.Component {
                                         <tr>
                                             <th>Device IP</th>
                                             <th>OS Detected</th>
+                                            <th>TCP Ports</th>
                                         </tr>
                                     </thead>
                                     {this.state.OS && this.state.OS.map(OS => {
@@ -72,6 +74,7 @@ export default class HomeScreen extends React.Component {
                                             <tbody key={OS.IP_Address}>
                                                 <td>{OS.IP_Address}</td>
                                                 <td>{OS.name}</td>
+                                                <td>{OS.Ports}</td>
                                             </tbody>
                                         )
                                     })}

@@ -9,3 +9,8 @@ python-nmap==0.7.1
 pytz==2022.1
 sqlparse==0.4.2
 tzdata==2022.1
+autopep8==1.6.0
+djangorestframework-simplejwt==5.0.0
+pycodestyle==2.8.0
+PyJWT==2.3.0
+toml==0.10.2

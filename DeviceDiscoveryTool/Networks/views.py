@@ -17,7 +17,7 @@ def contact(request):
 
     if request.method == 'GET':
         contact_list = Contact.objects.order_by('name').values()
-        return Response({"Contacts": list(contact_list)})
+        return Response(contact_list)
 
     elif request.method == 'POST':
         newFav = False
