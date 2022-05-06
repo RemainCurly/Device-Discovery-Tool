@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Row, Col, Button } from 'react-bootstrap';
+import { Form, Modal, Table, Row, Col, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import axios from 'axios';
 import { toast } from 'wc-toast'
@@ -10,9 +10,12 @@ export default class Contacts extends React.Component {
 
     state = {
         Contacts: [],
-        prevContacts: []
+        prevContacts: [],
+        modalShow: false
     }
 
+    handleModalShow = () => this.setState({ modalShow: true });
+    handleModalClose = () => this.setState({ modalShow: false });
 
     handleSuccessToast = () => {
         toast.success('Contact Successfully Deleted');
@@ -36,10 +39,10 @@ export default class Contacts extends React.Component {
         this._isMounted = false;
     }
 
-    componentDidUpdate(){
-        if(JSON.stringify(this.state.Contacts) !== JSON.stringify(this.state.prevContacts)){
+    componentDidUpdate() {
+        if (JSON.stringify(this.state.Contacts) !== JSON.stringify(this.state.prevContacts)) {
             this.retrieveContacts();
-            this.setState({prevContacts: this.state.Contacts});
+            this.setState({ prevContacts: this.state.Contacts });
         }
     }
 
@@ -50,33 +53,44 @@ export default class Contacts extends React.Component {
                 const Contacts = res.data;
                 this.setState({ Contacts });
             })
-            .catch(err =>{
+            .catch(err => {
                 this.handleContactErrorToast()
             })
     }
 
-    //TODO: Figure out backend issues so POST/DELETE can happen
+    //TODO: Create function to search for entry based on ID selected
     editContact(contact) {
         console.log('Editing contact! ID: ' + contact);
+        this.setState({ modalShow: true });
     }
 
     async deleteContact(contact) {
-        console.log('Deleting contact! ID: ' + contact);
-        
         await axios.delete(`http://127.0.0.1:8000/network/contacts/${contact}`)
-        .then(res => {
-            this.retrieveContacts()
-            this.handleSuccessToast()
-        })
-        .catch(err => {
-            this.handleErrorToast()
-        })
+            .then(res => {
+                this.retrieveContacts()
+                this.handleSuccessToast()
+            })
+            .catch(err => {
+                this.handleErrorToast()
+            })
     }
 
     render() {
         return (
-            
             <div>
+                <Modal show={this.state.modalShow} onHide={this.handleModalClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Edit Contact</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Form>
+                            <Form.Group controlId="formBasicName">
+                                <Form.Label>Favorite </Form.Label>
+                                <Form.Check inline />
+                            </Form.Group>
+                        </Form>
+                    </Modal.Body>
+                </Modal>
                 <wc-toast></wc-toast>
                 <Row>
                     <Col></Col>
