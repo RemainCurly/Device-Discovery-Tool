@@ -2,6 +2,7 @@ import React from 'react';
 import { Table, Row, Col, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import axios from 'axios';
+import { toast } from 'wc-toast'
 
 
 export default class Contacts extends React.Component {
@@ -11,6 +12,20 @@ export default class Contacts extends React.Component {
         Contacts: [],
         prevContacts: []
     }
+
+
+    handleSuccessToast = () => {
+        toast.success('Contact Successfully Deleted');
+    };
+
+    handleErrorToast = () => {
+        toast.error('Error Deleting Contact');
+    };
+
+    handleContactErrorToast = () => {
+        toast.loading('Error Retreiving Contacts', { duration: 15000 });
+    };
+
 
     componentDidMount() {
         this._isMounted = true;
@@ -35,6 +50,9 @@ export default class Contacts extends React.Component {
                 const Contacts = res.data;
                 this.setState({ Contacts });
             })
+            .catch(err =>{
+                this.handleContactErrorToast()
+            })
     }
 
     //TODO: Figure out backend issues so POST/DELETE can happen
@@ -46,13 +64,20 @@ export default class Contacts extends React.Component {
         console.log('Deleting contact! ID: ' + contact);
         
         await axios.delete(`http://127.0.0.1:8000/network/contacts/${contact}`)
-
-        window.location.reload();
+        .then(res => {
+            this.retrieveContacts()
+            this.handleSuccessToast()
+        })
+        .catch(err => {
+            this.handleErrorToast()
+        })
     }
 
     render() {
         return (
+            
             <div>
+                <wc-toast></wc-toast>
                 <Row>
                     <Col></Col>
                     <Col>
