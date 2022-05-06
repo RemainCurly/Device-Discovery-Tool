@@ -39,6 +39,9 @@ export default class Contacts extends React.Component {
 
     deleteContact(contact) {
         console.log('Deleting contact! ID: ' + contact);
+        axios.delete(`http://127.0.0.1:8000/network/contacts/${contact}`)
+            .then(alert("Contact by ID "+ contact + " deleted!"))
+        window.location.reload();
     }
 
     render() {
