@@ -10,10 +10,6 @@ export default class DownDevices extends React.Component{
         Devices: []
       }
 
-    constructor(){
-        super();
-    }
-
     componentDidMount() {
         this._isMounted = true;
         this.funcOne();

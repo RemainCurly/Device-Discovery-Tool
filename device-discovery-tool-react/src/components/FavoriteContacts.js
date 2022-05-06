@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { Form, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap'
 import "../App.css"
 import axios from 'axios';
@@ -11,10 +11,6 @@ export default class FavoriteContacts extends React.Component{
     state = {
         Contacts: []
       }
-
-    constructor(){
-        super();
-    }
 
     componentDidMount() {
         this._isMounted = true;
@@ -54,7 +50,7 @@ export default class FavoriteContacts extends React.Component{
                         return (
                             <tbody key={contact.id}>
                                 {/* Only show a contact if it's favorited */}
-                                { (contact.favorite == true) ? 
+                                { (contact.favorite === true) ? 
                                     <tr>
                                         {contact.favorite === true ?
                                             <td>

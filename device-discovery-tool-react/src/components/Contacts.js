@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Table, Row, Col, Button } from 'react-bootstrap';
+import { Table, Row, Col, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import axios from 'axios';
 
@@ -8,16 +8,13 @@ export default class Contacts extends React.Component {
     _isMounted = false;
 
     state = {
-        Contacts: []
-    }
-
-    constructor() {
-        super()
+        Contacts: [],
+        prevContacts: []
     }
 
     componentDidMount() {
         this._isMounted = true;
-        this.funcOne()
+        this.retrieveContacts()
     }
 
     componentWillUnmount() {
@@ -25,11 +22,14 @@ export default class Contacts extends React.Component {
     }
 
     componentDidUpdate(){
-        this.funcOne()
+        if(JSON.stringify(this.state.Contacts) !== JSON.stringify(this.state.prevContacts)){
+            this.retrieveContacts();
+            this.setState({prevContacts: this.state.Contacts});
+        }
     }
 
 
-    funcOne() {
+    retrieveContacts() {
         axios.get(`http://127.0.0.1:8000/network/contacts/`)
             .then(res => {
                 const Contacts = res.data;
@@ -42,10 +42,12 @@ export default class Contacts extends React.Component {
         console.log('Editing contact! ID: ' + contact);
     }
 
-    deleteContact(contact) {
+    async deleteContact(contact) {
         console.log('Deleting contact! ID: ' + contact);
-        axios.delete(`http://127.0.0.1:8000/network/contacts/${contact}`)
-            .then()
+        
+        await axios.delete(`http://127.0.0.1:8000/network/contacts/${contact}`)
+
+        window.location.reload();
     }
 
     render() {

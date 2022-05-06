@@ -11,10 +11,6 @@ export default class UpDownAlert extends React.Component {
         numDownDevices: 0,
     }
 
-    constructor() {
-        super();
-    }
-
     componentDidMount() {
         this._isMounted = true;
         this.axiosFunc();

@@ -9,10 +9,6 @@ export default class FavoriteDevices extends React.Component{
         Devices: []
       }
 
-    constructor(){
-        super();
-    }
-
     componentDidMount() {
         this._isMounted = true;
         this.funcOne()
@@ -53,7 +49,7 @@ export default class FavoriteDevices extends React.Component{
                         return (
                             <tbody key={device.id}>
                                 {/* Only show a device if it's favorited */}
-                                { (device.favorite == true) ?
+                                { (device.favorite === true) ?
                                     <tr key={device.id}>
                                         {device.favorite === true ?
                                                 <td>

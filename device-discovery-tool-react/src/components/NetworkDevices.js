@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Row, Table, Col, Button} from 'react-bootstrap';
+import { Row, Table, Col, Button} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
 import axios from 'axios';
 
@@ -9,10 +9,6 @@ export default class NetworkDevices extends React.Component {
     state = {
         Devices: []
       }
-
-    constructor(){
-        super();
-    }
 
     componentDidMount() {
         this._isMounted = true;

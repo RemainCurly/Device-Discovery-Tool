@@ -1,5 +1,4 @@
 import React from 'react'
-import { Form, Table } from 'react-bootstrap';
 import "../App.css"
 import { useState } from 'react';
 
@@ -26,7 +25,7 @@ function AddContact() {
   const changeHandlerB = e => {
     let newVal = false;
     var checkBox = document.getElementById("myCheck");
-    if (checkBox.checked == true) {
+    if (checkBox.checked === true) {
       newVal = true;
     }
     setData({ ...data, [e.target.name]: newVal });
@@ -39,7 +38,7 @@ function AddContact() {
 
     async function tryIt() {
       try {
-        let result = await axios.post(
+        await axios.post(
           "http://127.0.0.1:8000/network/contacts/",
             data,
         );
@@ -75,7 +74,7 @@ function AddContact() {
           <label for="notes">Notes: </label> <br />
           <input type="text" name="notes" value={notes} onChange={changeHandler} /><br />
           <br></br>
-          <input className="formButtonPadding" required type="submit" name="submit" />
+          <input className="formButtonPadding" required type="submit" name="submit" onClick={() => window.location.href = "/contacts"} />
           <input className="formButtonPadding" required type="button" name="cancel" value="Cancel" onClick={() => window.location.href = "/contacts"} />
         </form>
       </center>
