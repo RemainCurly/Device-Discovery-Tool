@@ -11,6 +11,7 @@ export default class Contacts extends React.Component {
     state = {
         Contacts: [],
         prevContacts: [],
+        contactBeingEdited: null,
         modalShow: false
     }
 
@@ -58,9 +59,17 @@ export default class Contacts extends React.Component {
             })
     }
 
+    findContactByID(id) {
+        this.state.Contacts.filter(contact => {
+            if (contact.id === id) {
+                this.setState({ contactBeingEdited: contact });
+            }});
+    }
+
     //TODO: Create function to search for entry based on ID selected
-    editContact(contact) {
-        console.log('Editing contact! ID: ' + contact);
+    editContact(id) {
+        console.log('Editing contact! ID: ' + id);
+        this.findContactByID(id);
         this.setState({ modalShow: true });
     }
 
@@ -84,9 +93,9 @@ export default class Contacts extends React.Component {
                     </Modal.Header>
                     <Modal.Body>
                         <Form>
+                            {/* TODO: Make ternary if statements for all values in the selected contact */}
                             <Form.Group controlId="formBasicName">
-                                <Form.Label>Favorite </Form.Label>
-                                <Form.Check inline />
+                                <Form.Check inline checked label={'Favorite'}/>
                             </Form.Group>
                         </Form>
                     </Modal.Body>
