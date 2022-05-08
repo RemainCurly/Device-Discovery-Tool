@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Table, Col, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
 import axios from 'axios';
+import {ip} from './ip'
 
 export default class DownDevices extends React.Component{
     _isMounted = false;
@@ -20,7 +21,7 @@ export default class DownDevices extends React.Component{
     }
 
     funcOne(){
-        axios.get(`http://127.0.0.1:8000/network/devices/`)
+        axios.get(`http://` + ip+ `:8000/network/devices/`)
           .then(res => {
             const Devices = res.data;
             this.setState({ Devices });

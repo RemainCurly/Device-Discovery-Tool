@@ -3,6 +3,7 @@ import { Form, Modal, Table, Row, Col, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import axios from 'axios';
 import { toast } from 'wc-toast'
+import {ip} from './ip'
 
 
 export default class Contacts extends React.Component {
@@ -48,7 +49,7 @@ export default class Contacts extends React.Component {
 
 
     retrieveContacts() {
-        axios.get(`http://127.0.0.1:8000/network/contacts/`)
+        axios.get(`http://` + ip+ `:8000/network/contacts/`)
             .then(res => {
                 const Contacts = res.data;
                 this.setState({ Contacts });
@@ -65,7 +66,7 @@ export default class Contacts extends React.Component {
     }
 
     async deleteContact(contact) {
-        await axios.delete(`http://127.0.0.1:8000/network/contacts/${contact}`)
+        await axios.delete(`http://` + ip+ `:8000/network/contacts/${contact}`)
             .then(res => {
                 this.retrieveContacts()
                 this.handleSuccessToast()

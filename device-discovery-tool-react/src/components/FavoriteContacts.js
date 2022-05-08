@@ -4,6 +4,7 @@ import { Table } from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap'
 import "../App.css"
 import axios from 'axios';
+import {ip} from './ip'
 
 export default class FavoriteContacts extends React.Component{
     _isMounted = false;
@@ -22,7 +23,7 @@ export default class FavoriteContacts extends React.Component{
     }
 
     funcOne(){
-          axios.get(`http://127.0.0.1:8000/network/contacts/`)
+          axios.get(`http://` + ip+ `:8000/network/contacts/`)
             .then(res => {
               const Contacts = res.data;
               this.setState({ Contacts });

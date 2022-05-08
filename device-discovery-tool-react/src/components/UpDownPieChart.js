@@ -2,6 +2,7 @@ import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
+import {ip} from './ip'
 
 const deviceTypes = [
     'Endpoint', 'Server', 'Access-Points', 'IoT/Cameras', 'Firewalls',
@@ -80,7 +81,7 @@ export default class UpDownPieChart extends React.Component {
     }
 
     axiosFunc() {
-        axios.get(`http://127.0.0.1:8000/network/devices/`)
+        axios.get(`http://` + ip+ `:8000/network/devices/`)
             .then(res => {
                 const Devices = res.data;
                 this.setState({ Devices });

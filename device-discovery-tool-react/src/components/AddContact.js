@@ -1,6 +1,7 @@
 import React from 'react'
 import "../App.css"
 import { useState } from 'react';
+import {ip} from './ip'
 
 import axios from 'axios';
 
@@ -39,7 +40,7 @@ function AddContact() {
     async function tryIt() {
       try {
         await axios.post(
-          "http://127.0.0.1:8000/network/contacts/",
+          "http://" + ip+ ":8000/network/contacts/",
             data,
         );
         console.log("Contact Added Successfully");

@@ -8,16 +8,13 @@ import FavoriteDevices from './FavoriteDevices'
 import UpDownAlert from './UpDown'
 import LeftHandButtons from './LeftHandButtons'
 import UpDownPieChart from './UpDownPieChart';
+import {ip} from './ip'
 
 export default class HomeScreen extends React.Component {
     _isMounted = false;
 
     state = {
         OS: []
-    }
-
-    constructor() {
-        super();
     }
 
     componentDidMount() {
@@ -32,7 +29,7 @@ export default class HomeScreen extends React.Component {
 
     funcOne(props) {
         var id = props.match.params.id
-        axios.get(`http://127.0.0.1:8000/os/${id}/?format=json`)
+        axios.get(`http://` + ip+ `:8000/os/${id}/?format=json`)
             .then(res => {
                 const OS = res.data;
                 this.setState({ OS });
