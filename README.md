@@ -23,8 +23,8 @@ This repository is for the development of an application which Scans Networks, I
 
 ## Tech Stack
 
-**Client:** Web Application
- Languages/Frameworks: Django Python, React JavaScript, REST API
+**Client:** Web Application: 
+ Created in Django Python, React JavaScript, REST API
 
 **Server:** Hosted on the Client's Networks which need scanning
 
