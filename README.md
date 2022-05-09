@@ -34,7 +34,14 @@ This repository is for the development of an application which Scans Networks, I
 ## Installation
 To install dependencies:
 
-    All the required packages are in the requirements.txt. Simply npm shrink wrap. Python 3.8.x is needed. 
+Back End Set Up
+To set up the environment, the client will need to have Python 3.8.x. Once python is installed, the client must install all necessary frameworks/packages. The list is provided in github. It’s called requirements.txt. First “type /venv/Scripts/activate.bat” and hit enter. This put’s client in the Python environment. To install packages listed in file, first open the command line, and change directory(CD) to the parent directory. Then, run command “pip -r requirements.txt” in the command line. After that, all of the needed frameworks/packages will be installed. This process could take a few minutes.
+
+Front End Setup
+If still in the venv environment, exit the virtual environment by typing “/venv/Scripts/deactivate.bat.” Navigate to the React directory in application “/Device-Discovery-Tool/device-discovery-tool-react.” Run the command “npm install react” in the command line. 
+
+Run Web Application
+Navigate to /venv/Scripts/ then run “activate.bat”. This will start the virtual environment. Your terminal should now have (venv) in the lines for the directory. Navigate back to /Device-Discovery-Tool/device-discovery-tool-react/. To start the webpage, enter the command “npm start”. This will run the front end and open the webpage in your default browser. 
 
 
 ## User Manual
