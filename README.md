@@ -23,11 +23,13 @@ This repository is for the development of an application which Scans Networks, I
 
 ## Tech Stack
 
-**Client:**
+**Client:** Web Application
+ Languages/Frameworks: Django Python, React JavaScript, REST API
 
-**Server:**
+**Server:** Hosted on the Client's Networks which need scanning
 
-**Database:**
+
+**Database:** Microsoft SQL
 
 ## Installation
 To install dependencies:
