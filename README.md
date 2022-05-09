@@ -34,6 +34,8 @@ This repository is for the development of an application which Scans Networks, I
 ## Installation
 To install dependencies:
 
+    All the required packages are in the requirements.txt. Simply npm shrink wrap. Python 3.8.x is needed. 
+
 
 ## User Manual
 Consult the user manual to understand the functionality of the app and all of its individual screens.
