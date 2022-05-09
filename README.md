@@ -1,4 +1,6 @@
 # Device-Discovery-Tool
+![lgo](https://user-images.githubusercontent.com/65478895/167461702-8d20ea4b-c2ec-41d1-9e99-e3d1671cfaf9.png)
+
 This repository is for the development of an application which Scans Networks, Identifies Device information within that network, and Monitors their statuses..
 ![](https://drive.google.com/file/d/1GcWXJQvPp8YKuwMbjOiQIs9AckLX8o5Y/view?usp=sharing)
 
