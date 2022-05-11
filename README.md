@@ -6,19 +6,19 @@ This repository is for the development of an application which Scans Networks, I
 
 ## Authors:
 
--[@DJKonnect](https://www.github.com/@DJKonnect)
+-[DJKonnect](https://www.github.com/@DJKonnect)
 
--[@RemainCurly](https://www.github.com/@RemainCurly)
+-[RemainCurly](https://www.github.com/@RemainCurly)
 
--[@tsavo4](https://www.github.com/@tsavo4)
+-[tsavo4](https://www.github.com/@tsavo4)
 
--[@shobbs528](https://www.github.com/@shobbs528)
+-[shobbs528](https://www.github.com/@shobbs528)
 
--[@hkhosa25](https://www.github.com/@hkhosa25)
+-[hkhosa25](https://www.github.com/@hkhosa25)
 
--[@aayu0711](https://www.github.com/@aayu0711)
+-[aayu0711](https://www.github.com/@aayu0711)
 
--[@Samwich422](https://www.github.com/@Samwich422)
+-[Samwich422](https://www.github.com/@Samwich422)
 
 
 ## Tech Stack
