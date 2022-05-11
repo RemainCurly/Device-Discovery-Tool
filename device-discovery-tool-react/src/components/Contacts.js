@@ -111,9 +111,15 @@ export default class Contacts extends React.Component {
                             <Form.Group className="mb-3">
                                 {/* TODO: Make it so Favorite can be changed onSubmit */}
                                 {(this.state.contactBeingEdited.favorite) ?
-                                <Form.Check inline defaultChecked label={'Favorite'}/>
+                                <Form.Check type="checkbox" inline defaultChecked label={'Favorite'}
+                                    onChange={e => {
+                                        this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, favorite: false } });
+                                    }}/>
                                 :
-                                <Form.Check inline label={'Favorite'}/>
+                                <Form.Check inline label={'Favorite'}
+                                    onChange={e => {
+                                        this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, favorite: true } });
+                                    }}/>
                                 }
                             </Form.Group>
                             <Form.Group className="mb-3">
