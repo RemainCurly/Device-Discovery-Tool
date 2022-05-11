@@ -80,6 +80,10 @@ export default class Contacts extends React.Component {
     //TODO: Fix toast messages not appearing upon edit
     async editContact(contact) {
         await axios.put(`http://127.0.0.1:8000/network/contacts/${contact}/`, this.state.contactBeingEdited)
+            .then(res => {
+              this.retrieveContacts();
+              toast.success("Contact Successfully Updated");
+            })
             .catch(() => {
                 this.handleErrorToast();
             })

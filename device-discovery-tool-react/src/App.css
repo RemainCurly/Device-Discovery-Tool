@@ -216,3 +216,7 @@
   margin:0.4em auto;
   }
   }
+
+  .shorterCol * {
+    width: 90%;
+  }

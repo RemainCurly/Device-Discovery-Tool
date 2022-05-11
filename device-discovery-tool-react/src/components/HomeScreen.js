@@ -44,7 +44,7 @@ export default class HomeScreen extends React.Component {
             <div className="main">
                 <UpDownAlert />
                 <Row>
-                    <Col>
+                    <Col className="shorterCol">
                         <LeftHandButtons />
                     </Col>
                     <Col>
@@ -55,7 +55,7 @@ export default class HomeScreen extends React.Component {
                             <FavoriteContacts />
                         </Row>
                     </Col>
-                    <Col>
+                    <Col className="shorterCol">
                         <Row>
                             <UpDownPieChart />
 
