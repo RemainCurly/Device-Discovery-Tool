@@ -22,7 +22,7 @@ function NewPage() {
             <div className='row m-3'>
               <div className='col'>
                 <LinkContainer to="/down">
-                  <Button size="lg" target="_blank" variant="primary">Up/Down Status</Button>
+                  <Button size="lg" target="_blank" variant="primary">Down Devices</Button>
                 </LinkContainer>
               </div>
             </div>

@@ -1,9 +1,12 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import React from "react";
+import "./index.css";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import PrivateRoute from "./utils/PrivateRoute";
+import { AuthProvider } from "./context/AuthContext";
+import Login from "./views/loginPage";
 import HomeScreen from './components/HomeScreen'
-import auth from './components/auth'
 import NetworkDevices from './components/NetworkDevices'
 import DownDevices from './components/DownDevices'
 import Contacts from './components/Contacts'
@@ -12,26 +15,27 @@ import DeviceUtility from './components/DeviceUtility'
 import ScanDevices from './components/ScanDevices'
 import AddContact from './components/AddContact'
 
-function App(props) {
-  props = props.name
+function App() {
   return (
     <Router>
-      <Header />
-      <main className="py-3">
-        <Switch>
-          <Route path='/' component={HomeScreen} exact />
-          <Route path="/os/:id" component={HomeScreen}/>
-          <Route path="/auth" component={auth} />
-          <Route path="/network" component={NetworkDevices} />
-          <Route path="/down" component={DownDevices} />
-          <Route path="/contacts" component={Contacts} />
-          <Route path="/scanSchedule" component={ScanDevicesScheduled} />
-          <Route path="/deviceUtility" component={DeviceUtility} />
-          <Route path="/scanNow" component={ScanDevices} />
-          <Route path="/addcontact" component={AddContact} />
-        </Switch>
-      </main>
-      <Footer />
+      <div className="flex flex-col min-h-screen overflow-hidden">
+        <AuthProvider>
+          <Navbar />
+          <Switch>
+            <Route component={Login} path="/login" />
+            <PrivateRoute component={HomeScreen} path="/" exact/>
+            <PrivateRoute path="/os/:id" component={HomeScreen}/>
+            <PrivateRoute path="/network" component={NetworkDevices} />
+            <PrivateRoute path="/down" component={DownDevices} />
+            <PrivateRoute path="/contacts" component={Contacts} />
+            <PrivateRoute path="/scanSchedule" component={ScanDevicesScheduled} />
+            <PrivateRoute path="/deviceUtility" component={DeviceUtility} />
+            <PrivateRoute path="/scanNow" component={ScanDevices} />
+            <PrivateRoute path="/addcontact" component={AddContact} />
+          </Switch>
+        </AuthProvider>
+        <Footer />
+      </div>
     </Router>
   );
 }

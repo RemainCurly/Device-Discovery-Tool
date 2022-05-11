@@ -28,7 +28,7 @@ export default class UpDownPieChart extends React.Component {
     }
 
     deviceRetriever(deviceType, isUp) {
-        return this.state.Devices.Devices.filter(device => {
+        return this.state.Devices.filter(device => {
             if(device.device_type === deviceType && device.status === isUp)
                 return device;
         }).length;
@@ -36,7 +36,7 @@ export default class UpDownPieChart extends React.Component {
 
     wasDeviceFound(deviceType, isUp) {
         let found = false;
-        this.state.Devices.Devices.map(device => {
+        this.state.Devices.map(device => {
             if (device.device_type === deviceType && device.status === isUp)
                 found = true;
         });
@@ -53,7 +53,7 @@ export default class UpDownPieChart extends React.Component {
     }
 
     componentDidUpdate() {
-        if (JSON.stringify(this.state.Devices.Devices) !== JSON.stringify(this.state.prevDevices.Devices)) {
+        if (JSON.stringify(this.state.Devices) !== JSON.stringify(this.state.prevDevices)) {
             
             for(let i = 0; i < deviceTypes.length; i++)
             {
@@ -80,10 +80,10 @@ export default class UpDownPieChart extends React.Component {
     }
 
     axiosFunc() {
-        axios.get(`http://127.0.0.1:8000/network/devices?format=json`)
+        axios.get(`http://127.0.0.1:8000/network/devices/`)
             .then(res => {
                 const Devices = res.data;
-                this.setState({ Devices: Devices });
+                this.setState({ Devices });
             })
     }
 

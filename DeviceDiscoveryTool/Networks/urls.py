@@ -7,14 +7,12 @@ router = routers.DefaultRouter()
 router.register(r'contacts', views.ContactViewSet)
 router.register(r'devices', views.DeviceViewSet)
 
-
 urlpatterns = [
-	path('', include(router.urls)),
-	path('api/', include('rest_framework.urls', namespace='rest_framework'))
+	path('', include(router.urls))
 ]
 
 
 # urlpatterns = [
-# 	path('contacts', views.contact, name='contact'),
-# 	path('devices', views.device, name='device'),
+# 	path('contacts/', views.contact, name='contact'),
+# 	path('devices/', views.device, name='device'),
 # ]
