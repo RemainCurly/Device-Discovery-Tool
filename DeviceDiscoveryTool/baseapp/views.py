@@ -12,7 +12,7 @@ nmScan = nmap.PortScanner()
  
 
 ip_addr = '127.0.0.1'
-ip_baseline = '10.0.0.0'
+ip_baseline = '69.62.205.0'
 
 
 @api_view(['GET'])

@@ -1,8 +1,12 @@
 import React from 'react'
 import "../App.css"
 import { useState } from 'react';
-
+import { toast } from 'wc-toast';
 import axios from 'axios';
+
+function handleSuccessToast() {
+  toast.success('Contact Successfully Deleted');
+};
 
 function AddContact() {
 
@@ -15,7 +19,6 @@ function AddContact() {
   })
 
   const { favorite, name, email, phone, notes } = data;
-
 
   const changeHandler = e => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -40,10 +43,8 @@ function AddContact() {
       try {
         await axios.post(
           "http://127.0.0.1:8000/network/contacts/",
-            data,
+          data,
         );
-        console.log("Contact Added Successfully");
-        alert("Contact Added Successfully!");
       } catch (error) {
         alert("Error has Occured!");
         console.error(error);     // NOTE - use "error.response.data` (not "error")
@@ -57,21 +58,21 @@ function AddContact() {
         <h1>Add Contact Form</h1>
         <hr></hr>
         <form onSubmit={submitHandler}>
-          <label for="favorite">Favorite: </label> <br />
+          <label htmlFor="favorite">Favorite: </label> <br />
           <input type="checkbox" id="myCheck" name="favorite" value={favorite} onChange={changeHandlerB} /><br />
           <br></br>
-          <label for="name">Name: </label> <br />
+          <label htmlFor="name">Name: </label> <br />
           <input required type="text" name="name" value={name} onChange={changeHandler} placeholder="Input Full Name" /><br />
           <br></br>
-          <label for="email">Email: </label> <br />
+          <label htmlFor="email">Email: </label> <br />
           <input type="text" name="email" value={email} onChange={changeHandler} placeholder="Input Email"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" /><br />
           <br></br>
-          <label for="phone">Phone: </label> <br />
+          <label htmlFor="phone">Phone: </label> <br />
           <input type="text" name="phone" value={phone} onChange={changeHandler} placeholder="format: 123-456-7890"
             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" /><br />
           <br></br>
-          <label for="notes">Notes: </label> <br />
+          <label htmlFor="notes">Notes: </label> <br />
           <input type="text" name="notes" value={notes} onChange={changeHandler} /><br />
           <br></br>
           <input className="formButtonPadding" required type="submit" name="submit" onClick={() => window.location.href = "/contacts"} />

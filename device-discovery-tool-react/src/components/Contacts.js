@@ -11,7 +11,14 @@ export default class Contacts extends React.Component {
     state = {
         Contacts: [],
         prevContacts: [],
-        contactBeingEdited: null,
+        contactBeingEdited: {
+            id: 0,
+            favorite: false,
+            name: "",
+            email: "",
+            phone: "",
+            notes: ""
+        },
         modalShow: false
     }
 
@@ -30,7 +37,6 @@ export default class Contacts extends React.Component {
         toast.loading('Error Retreiving Contacts', { duration: 15000 });
     };
 
-
     componentDidMount() {
         this._isMounted = true;
         this.retrieveContacts()
@@ -47,7 +53,6 @@ export default class Contacts extends React.Component {
         }
     }
 
-
     retrieveContacts() {
         axios.get(`http://127.0.0.1:8000/network/contacts/`)
             .then(res => {
@@ -63,14 +68,21 @@ export default class Contacts extends React.Component {
         this.state.Contacts.filter(contact => {
             if (contact.id === id) {
                 this.setState({ contactBeingEdited: contact });
-            }});
+            }
+        });
     }
 
-    //TODO: Create function to search for entry based on ID selected
-    editContact(id) {
-        console.log('Editing contact! ID: ' + id);
+    triggerEdit(id) {
         this.findContactByID(id);
         this.setState({ modalShow: true });
+    }
+
+    //TODO: Fix toast messages not appearing upon edit
+    async editContact(contact) {
+        await axios.put(`http://127.0.0.1:8000/network/contacts/${contact}/`, this.state.contactBeingEdited)
+            .catch(() => {
+                this.handleErrorToast();
+            })
     }
 
     async deleteContact(contact) {
@@ -91,16 +103,46 @@ export default class Contacts extends React.Component {
                     <Modal.Header closeButton>
                         <Modal.Title>Edit Contact</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
-                        <Form>
-                            {/* TODO: Make ternary if statements for all values in the selected contact */}
-                            <Form.Group controlId="formBasicName">
-                                <Form.Check inline checked label={'Favorite'}/>
+                    <Form onSubmit={() => {
+                        this.editContact(this.state.contactBeingEdited.id);
+                        this.handleModalClose();
+                    }}>
+                        <Modal.Body>
+                            <Form.Group className="mb-3">
+                                {/* TODO: Make it so Favorite can be changed onSubmit */}
+                                {(this.state.contactBeingEdited.favorite) ?
+                                <Form.Check inline defaultChecked label={'Favorite'}/>
+                                :
+                                <Form.Check inline label={'Favorite'}/>
+                                }
                             </Form.Group>
-                        </Form>
-                    </Modal.Body>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Name</Form.Label>
+                                {/* TODO: Find out why autoFocus isn't focusing */}
+                                <Form.Control autoFocus type="text" placeholder="FirstName LastName" defaultValue={this.state.contactBeingEdited.name} onChange={e => {
+                                    this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, name: e.target.value } });
+                                }}/>
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control type="email" placeholder="Format: example@email.com" defaultValue={this.state.contactBeingEdited.email} onChange={e => {
+                                    this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, email: e.target.value } });
+                                }} />
+                                <Form.Label>Phone</Form.Label>
+                                <Form.Control type="tel" placeholder="Format: 111-111-1111" defaultValue={this.state.contactBeingEdited.phone} onChange={e => {
+                                    this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, phone: e.target.value } });
+                                }} />
+                                <Form.Label>Notes</Form.Label>
+                                <Form.Control as="textarea" rows="3" defaultValue={this.state.contactBeingEdited.notes} onChange={e => {
+                                    this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, notes: e.target.value } });
+                                }} />
+                            </Form.Group>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="primary" type="submit">Submit</Button>
+                            <Button variant="secondary" onClick={this.handleModalClose}>Close</Button>
+                        </Modal.Footer>
+                    </Form>
                 </Modal>
-                <wc-toast></wc-toast>
+                <wc-toast />
                 <Row>
                     <Col></Col>
                     <Col>
@@ -138,7 +180,7 @@ export default class Contacts extends React.Component {
                                             <td>{contact.email}</td>
                                             <td>{contact.phone}</td>
                                             <td>{contact.notes}</td>
-                                            <td><Button variant="info" onClick={() => this.editContact(contact.id)}>Edit</Button>
+                                            <td><Button variant="info" onClick={() => this.triggerEdit(contact.id)}>Edit</Button>
                                                 <Button variant="danger" onClick={() => this.deleteContact(contact.id)}>Delete</Button>
                                             </td>
                                         </tr>

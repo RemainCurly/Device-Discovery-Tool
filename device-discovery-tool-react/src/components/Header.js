@@ -1,9 +1,8 @@
 import React from 'react';
-import {Button, Navbar, Nav, Container, Row} from 'react-bootstrap'
+import {Button, Navbar, Nav, Container} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 import '../App.css';
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
 function Header()
