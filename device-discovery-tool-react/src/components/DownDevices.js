@@ -10,10 +10,6 @@ export default class DownDevices extends React.Component{
         Devices: []
       }
 
-    constructor(){
-        super();
-    }
-
     componentDidMount() {
         this._isMounted = true;
         this.funcOne();
@@ -24,7 +20,7 @@ export default class DownDevices extends React.Component{
     }
 
     funcOne(){
-        axios.get(`http://127.0.0.1:8000/network/devices?format=json`)
+        axios.get(`http://127.0.0.1:8000/network/devices/`)
           .then(res => {
             const Devices = res.data;
             this.setState({ Devices });
@@ -59,7 +55,7 @@ export default class DownDevices extends React.Component{
                                 </tr>
                             </thead>
                             {/* Only show devices that exist in the DB */}
-                            {this.state.Devices.Devices && this.state.Devices.Devices.map(device => {
+                            {this.state.Devices && this.state.Devices.map(device => {
                                 return (
                                     <tbody key={device.id}>
                                         {/* Only show a device if it's down*/}

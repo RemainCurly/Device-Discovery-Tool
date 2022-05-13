@@ -1,9 +1,8 @@
 import React from 'react';
-import {Button, Navbar, Nav, Container, Row} from 'react-bootstrap'
+import {Button, Navbar, Nav, Container} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 import '../App.css';
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
 function Header()
@@ -21,7 +20,7 @@ function Header()
                     <Navbar.Collapse id="basic-navbar-nav"/>
                         <Nav className="mr-auto"> {/* Margins auto */}
                             <LinkContainer to="#">
-                                <Button variant="secondary" bsSize="large" active onClick={logoutUser} >
+                                <Button variant="secondary" bssize="large" active onClick={logoutUser} >
                                     Log-Out
                                 </Button>
                             </LinkContainer>
@@ -36,7 +35,7 @@ function Header()
                         <Navbar.Collapse id="basic-navbar-nav"/>
                             <Nav className="mr-auto"> {/* Margins auto */}
                                 <LinkContainer to="/login">
-                                <Button variant="primary" bsSize="large">
+                                <Button variant="primary" bssize="large">
                                     Log-In
                                 </Button>
                                 </LinkContainer>
