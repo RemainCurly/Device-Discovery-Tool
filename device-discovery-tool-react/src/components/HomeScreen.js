@@ -44,7 +44,7 @@ export default class HomeScreen extends React.Component {
             <div className="main">
                 <UpDownAlert />
                 <Row>
-                    <Col className="shorterCol">
+                    <Col className="col-2">
                         <LeftHandButtons />
                     </Col>
                     <Col>

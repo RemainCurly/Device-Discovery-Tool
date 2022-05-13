@@ -6,7 +6,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 function NewPage() {
   return (
-    <div className='newpage'>
+    <div>
       <Container>
         <Row>
           <Col>
@@ -29,25 +29,19 @@ function NewPage() {
 
             <div className='row m-3'>
               <div className='col'>
-                <LinkContainer to="/scanSchedule">
-                  <Button size="lg" target="_blank" variant="primary">Scan Devices (schedule)</Button>
-                </LinkContainer>
+                <Button size="lg" target="_blank" variant="secondary">Scan Devices (schedule)</Button>
               </div>
             </div>
 
             <div className='row m-3'>
               <div className='col'>
-                <LinkContainer to="/scanNow">
-                  <Button size="lg" target="_blank" variant="primary">Scan Now</Button>
-                </LinkContainer>
+                <Button size="lg" target="_blank" variant="secondary">Scan Now</Button>
               </div>
             </div>
 
             <div className='row m-3'>
               <div className='col'>
-                <LinkContainer to="/deviceUtility">
-                  <Button size="lg" target="_blank" variant="primary">Device Utility</Button>
-                </LinkContainer>
+                <Button size="lg" target="_blank" variant="secondary">Device Utility</Button>
               </div>
             </div>
 

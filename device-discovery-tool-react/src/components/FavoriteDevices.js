@@ -28,7 +28,7 @@ export default class FavoriteDevices extends React.Component{
 
     render() {
         return (
-            <div>
+            <div className='fullWidth'>
                 <h1><center>Favorite Devices</center></h1>
                 <div className="scroll">
                 <Table striped bordered hover>
