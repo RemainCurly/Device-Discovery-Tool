@@ -3,10 +3,7 @@ import "../App.css"
 import { useState } from 'react';
 import { toast } from 'wc-toast';
 import axios from 'axios';
-
-function handleSuccessToast() {
-  toast.success('Contact Successfully Deleted');
-};
+import { useHistory } from "react-router-dom";
 
 function AddContact() {
 
@@ -18,12 +15,16 @@ function AddContact() {
     notes: ""
   })
 
+  const history = useHistory();
   const { favorite, name, email, phone, notes } = data;
 
   const changeHandler = e => {
     setData({ ...data, [e.target.name]: e.target.value });
   }
 
+  const handleSuccessToast = () => {
+    toast.success("Contact added successfully");
+  }
 
   const changeHandlerB = e => {
     let newVal = false;
@@ -45,9 +46,10 @@ function AddContact() {
           "http://127.0.0.1:8000/network/contacts/",
           data,
         );
+        history.push("/contacts");
+        handleSuccessToast();
       } catch (error) {
-        alert("Error has Occured!");
-        console.error(error);     // NOTE - use "error.response.data` (not "error")
+        alert("Error adding contact. Make sure email and phone number are entered.");
       }
     }
   }
@@ -75,7 +77,7 @@ function AddContact() {
           <label htmlFor="notes">Notes: </label> <br />
           <input type="text" name="notes" value={notes} onChange={changeHandler} /><br />
           <br></br>
-          <input className="formButtonPadding" required type="submit" name="submit" onClick={() => window.location.href = "/contacts"} />
+          <input className="formButtonPadding" required type="submit" name="submit" />
           <input className="formButtonPadding" required type="button" name="cancel" value="Cancel" onClick={() => window.location.href = "/contacts"} />
         </form>
       </center>
