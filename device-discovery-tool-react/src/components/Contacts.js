@@ -81,8 +81,8 @@ export default class Contacts extends React.Component {
     async editContact(contact) {
         await axios.put(`http://127.0.0.1:8000/network/contacts/${contact}/`, this.state.contactBeingEdited)
             .then(res => {
-              this.retrieveContacts();
-              toast.success("Contact Successfully Updated");
+                this.retrieveContacts();
+                toast.success("Contact Successfully Updated");
             })
             .catch(() => {
                 this.handleErrorToast();
@@ -115,29 +115,29 @@ export default class Contacts extends React.Component {
                             <Form.Group className="mb-3">
                                 {/* TODO: Make it so Favorite can be changed onSubmit */}
                                 {(this.state.contactBeingEdited.favorite) ?
-                                <Form.Check type="checkbox" inline defaultChecked label={'Favorite'}
-                                    onChange={e => {
-                                        this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, favorite: false } });
-                                    }}/>
-                                :
-                                <Form.Check inline label={'Favorite'}
-                                    onChange={e => {
-                                        this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, favorite: true } });
-                                    }}/>
+                                    <Form.Check type="checkbox" inline defaultChecked label={'Favorite'}
+                                        onChange={e => {
+                                            this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, favorite: false } });
+                                        }} />
+                                    :
+                                    <Form.Check inline label={'Favorite'}
+                                        onChange={e => {
+                                            this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, favorite: true } });
+                                        }} />
                                 }
                             </Form.Group>
                             <Form.Group className="mb-3">
                                 <Form.Label>Name</Form.Label>
                                 {/* TODO: Find out why autoFocus isn't focusing */}
-                                <Form.Control autoFocus type="text" placeholder="FirstName LastName" defaultValue={this.state.contactBeingEdited.name} onChange={e => {
+                                <Form.Control autoFocus type="text" required placeholder="FirstName LastName" defaultValue={this.state.contactBeingEdited.name} onChange={e => {
                                     this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, name: e.target.value } });
-                                }}/>
+                                }} />
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" placeholder="Format: example@email.com" defaultValue={this.state.contactBeingEdited.email} onChange={e => {
+                                <Form.Control type="email" required placeholder="Format: example@email.com" defaultValue={this.state.contactBeingEdited.email} onChange={e => {
                                     this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, email: e.target.value } });
                                 }} />
                                 <Form.Label>Phone</Form.Label>
-                                <Form.Control type="tel" placeholder="Format: 111-111-1111" defaultValue={this.state.contactBeingEdited.phone} onChange={e => {
+                                <Form.Control type="tel" required placeholder="Format: 111-111-1111" defaultValue={this.state.contactBeingEdited.phone} onChange={e => {
                                     this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, phone: e.target.value } });
                                 }} />
                                 <Form.Label>Notes</Form.Label>
