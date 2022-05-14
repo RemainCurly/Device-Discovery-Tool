@@ -133,11 +133,11 @@ export default class Contacts extends React.Component {
                                     this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, name: e.target.value } });
                                 }} />
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" required placeholder="Format: example@email.com" defaultValue={this.state.contactBeingEdited.email} onChange={e => {
+                                <Form.Control type="email" required placeholder="Format: example@email.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" defaultValue={this.state.contactBeingEdited.email} onChange={e => {
                                     this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, email: e.target.value } });
                                 }} />
                                 <Form.Label>Phone</Form.Label>
-                                <Form.Control type="tel" required placeholder="Format: 111-111-1111" defaultValue={this.state.contactBeingEdited.phone} onChange={e => {
+                                <Form.Control type="tel" required placeholder="Format: 111-111-1111" pattern='[0-9]{3}[0-9]{3}[0-9]{4}' defaultValue={this.state.contactBeingEdited.phone} onChange={e => {
                                     this.setState({ contactBeingEdited: { ...this.state.contactBeingEdited, phone: e.target.value } });
                                 }} />
                                 <Form.Label>Notes</Form.Label>

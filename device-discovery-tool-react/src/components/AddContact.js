@@ -72,7 +72,7 @@ function AddContact() {
           <br></br>
           <label htmlFor="phone">Phone: </label> <br />
           <input type="text" name="phone" value={phone} onChange={changeHandler} placeholder="format: 123-456-7890"
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" /><br />
+            pattern="[0-9]{3}[0-9]{3}[0-9]{4}" /><br />
           <br></br>
           <label htmlFor="notes">Notes: </label> <br />
           <input type="text" name="notes" value={notes} onChange={changeHandler} /><br />
